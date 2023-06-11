@@ -19,6 +19,8 @@ public class StallManager : MonoBehaviour
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
+    //private float progressSpeed=0.0002f;
+    private float progressSpeed=0.01f;
 
     int tableLeft = 2;
     int tableRight = 3;
@@ -87,7 +89,7 @@ public class StallManager : MonoBehaviour
     void runSushiMaker(Vector3Int position){
         //gradually fill the sushi stall's progress bar
         stallProgress.gameObject.SetActive(true);
-        stallProgress.value+=0.0002f;
+        stallProgress.value+=progressSpeed;
 
         //when progress bar is maxed, place the appropriate sushi at the open position
         if(stallProgress.value==1){

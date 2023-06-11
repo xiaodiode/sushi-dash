@@ -13,7 +13,7 @@ public class SushiMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x<-4){
+        if(transform.position.x<-16){
             Destroy(gameObject);
         }
     }
