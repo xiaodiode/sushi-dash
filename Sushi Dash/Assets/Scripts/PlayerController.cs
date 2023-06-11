@@ -6,7 +6,7 @@ using System;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //movement variables
     private float horizontalInput,verticalInput;
     private float moveStep,xLimit,yLimit;
     //private bool hasSushi;
@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     public int playerCoins;
     public GameObject canvas;
     public GameObject[] upgradeArrows;
-    public Tilemap sushiMap;
-    public Tilemap plateMap;
+    public Tilemap sushiMap,plateMap;
     public Sprite[] sushi;
     public Tile plate;
     private Vector3Int[,] tablePositions;
