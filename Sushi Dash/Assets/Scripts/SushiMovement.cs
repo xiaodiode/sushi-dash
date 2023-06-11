@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SushiMovement : MonoBehaviour
 {
-    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +13,8 @@ public class SushiMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.x<-4){
+            Destroy(gameObject);
+        }
     }
 }

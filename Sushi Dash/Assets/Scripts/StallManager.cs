@@ -15,7 +15,7 @@ public class StallManager : MonoBehaviour
     public PlayerController player;
 
     private Vector3Int[] platePositions = new Vector3Int[4];
-    private Vector3 heldSushiOffset = new Vector3(0.05f,0,0);
+    
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
@@ -28,7 +28,6 @@ public class StallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         int tableTop = tableNum*tableYOffset;
         int tableBot = (tableNum*tableYOffset)-1;
         platePositions[0] = new Vector3Int(tableLeft,tableTop,0);
@@ -36,45 +35,43 @@ public class StallManager : MonoBehaviour
         platePositions[2] = new Vector3Int(tableRight,tableTop,0);
         platePositions[3] = new Vector3Int(tableRight,tableBot,0);
 
-        //tableLevel = (int)player.tableLevels[tableNum];
-        tableLevel=0;
+        tableLevel = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-        if((int)(Math.Round(player.transform.position.x))==6){
-            if(player.getHasSushi()){
-                heldSushi.transform.position = player.transform.position + heldSushiOffset;
-            }
-            if((int)(Math.Round(player.transform.position.y))==(tableNum*(tableYOffset))){
+        if((int)(Math.Round(player.transform.position.x))==6 && 
+        (int)(Math.Round(player.transform.position.y))==(tableNum*(tableYOffset))){
                 //upgrade the stall when SHIFT is pressed
-                if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
-                    if(upgradeArrow.activeSelf && tableLevel<=2){
-                        tableLevel++;
-                        plateMap.SetTile(platePositions[tableLevel],plate);
-                    }
+            if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
+                if(upgradeArrow.activeSelf && tableLevel<=2){
+                    tableLevel++;
+                    plateMap.SetTile(platePositions[tableLevel],plate);
                 }
-                //pick up any available sushi from stall when SPACE is pressed as long as player is not holding anything
-                if(Input.GetKeyDown(KeyCode.Space) && player.getHasSushi()==false){
-                    sushiPosition = getSushiPosition();
-                    if(sushiPosition != -1){
-                        sushiMap.SetTile(platePositions[sushiPosition],plate);
-                        heldSushi = Instantiate(sushiObject,player.transform.position,sushiObject.transform.rotation);
-                        player.setHasSushi(true);
-                    }
-                    else{
-                        player.setHasSushi(false);
-                    }
+            }
+            //pick up any available sushi from stall when SPACE is pressed as long as player is not holding anything
+            if(Input.GetKeyDown(KeyCode.Space) && player.getHasSushi()==false){
+                sushiPosition = getSushiPosition();
+                if(sushiPosition != -1){
+                    sushiMap.SetTile(platePositions[sushiPosition],plate);
+                    player.setChosenSushi(sushiObject);
+                    player.setHasSushi(true);
+                }
+                else{
+                    player.setHasSushi(false);
                 }
             }
         }
-        if((int)(Math.Round(player.transform.position.x))==3){
-            if(player.getHasSushi()){
-                heldSushi.transform.position = player.transform.position - heldSushiOffset;
-            }
-        }
+        
+
+
+        // if((int)(Math.Round(player.transform.position.x))==3){
+        //     if(player.getHasSushi()){
+        //         heldSushi.transform.position = player.transform.position - heldSushiOffset;
+        //     }
+        // }
 
         
         checkEmptyPlates();
