@@ -16,14 +16,17 @@ public class StallManager : MonoBehaviour
 
     private Vector3Int[] platePositions = new Vector3Int[4];
     private int tableLevel;
+    private int sushiPosition;
+
+    int tableLeft = 2;
+    int tableRight = 3;
+    int tableYOffset = -3;
+        
     
     // Start is called before the first frame update
     void Start()
     {
         
-        int tableLeft = 2;
-        int tableRight = 3;
-        int tableYOffset = -3;
         int tableTop = tableNum*tableYOffset;
         int tableBot = (tableNum*tableYOffset)-1;
         platePositions[0] = new Vector3Int(tableLeft,tableTop,0);
@@ -39,17 +42,25 @@ public class StallManager : MonoBehaviour
     void Update()
     {
         
-        if((int)(Math.Round(player.transform.position.x))==6 && (int)(Math.Round(player.transform.position.y))==(tableNum*(-3))){
+        if((int)(Math.Round(player.transform.position.x))==6 && (int)(Math.Round(player.transform.position.y))==(tableNum*(tableYOffset))){
+            //upgrade the stall when SHIFT is pressed
             if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
-
                 if(upgradeArrow.activeSelf && tableLevel<=2){
                     tableLevel++;
                     plateMap.SetTile(platePositions[tableLevel],plate);
                 }
             }
+            //pick up any available sushi from stall when SPACE is pressed
+            if(Input.GetKeyDown(KeyCode.Space)){
+                sushiPosition = getSushiPosition();
+                if(sushiPosition != -1){
+                    sushiMap.SetTile(platePositions[sushiPosition],plate);
+                }
+            }
         }
+
         
-        updateTable();
+        checkEmptyPlates();
         
         
     }
@@ -75,13 +86,14 @@ public class StallManager : MonoBehaviour
         Checks the table for any empty plates based on level. If an empty
         position is found, the sushi maker and its progress bar are triggered
     */
-    void updateTable(){
+    void checkEmptyPlates(){
         if(tableLevel==0){
             if(sushiMap.GetTile(platePositions[0])!=sushi){ 
                 runSushiMaker(platePositions[0]);
             }
-            else
+            else{
                 stallProgress.gameObject.SetActive(false);
+            }
         }
         else if(tableLevel==1){
             if(sushiMap.GetTile(platePositions[0])!=sushi){ 
@@ -90,8 +102,10 @@ public class StallManager : MonoBehaviour
             else if(sushiMap.GetTile(platePositions[1])!=sushi){
                 runSushiMaker(platePositions[1]);
             }
-            else
+            else{
                 stallProgress.gameObject.SetActive(false);
+
+            }
         }
         else if(tableLevel==2){
             if(sushiMap.GetTile(platePositions[0])!=sushi){ 
@@ -103,8 +117,10 @@ public class StallManager : MonoBehaviour
             else if(sushiMap.GetTile(platePositions[2])!=sushi){
                 runSushiMaker(platePositions[2]);
             }
-            else
+            else{
+                sushiPosition=2;
                 stallProgress.gameObject.SetActive(false);
+            }
         }
         else if(tableLevel==3){
             if(sushiMap.GetTile(platePositions[0])!=sushi){ 
@@ -122,6 +138,48 @@ public class StallManager : MonoBehaviour
             else
                 stallProgress.gameObject.SetActive(false);
         }
+    }
+    int getSushiPosition(){
+        if(tableLevel==0){
+            if(sushiMap.GetTile(platePositions[0])==sushi)
+                return 0;
+            else
+                return -1;
+        }
+
+        else if(tableLevel==1){
+            if(sushiMap.GetTile(platePositions[0])==sushi)
+                return 0;
+            else if(sushiMap.GetTile(platePositions[1])==sushi)
+                return 1;
+            else
+                return -1;
+        }
+
+        else if(tableLevel==2){
+            if(sushiMap.GetTile(platePositions[0])==sushi)
+                return 0;
+            else if(sushiMap.GetTile(platePositions[1])==sushi)
+                return 1;
+            else if(sushiMap.GetTile(platePositions[2])==sushi)
+                return 2;
+            else
+                return -1;
+        }
+
+        else if(tableLevel==3){
+            if(sushiMap.GetTile(platePositions[0])==sushi)
+                return 0;
+            else if(sushiMap.GetTile(platePositions[1])==sushi)
+                return 1;
+            else if(sushiMap.GetTile(platePositions[2])==sushi)
+                return 2;
+            else if(sushiMap.GetTile(platePositions[3])==sushi)
+                return 3;
+            else
+                return -1;
+        }
+        return -1;
     }
 
 }
