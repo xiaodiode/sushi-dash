@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     //movement variables
     private float horizontalInput,verticalInput;
     private float moveStep,xLimit,yLimit;
-    //private bool hasSushi;
+    private bool hasSushi;
     public int playerLevel=1;
     public int playerCoins;
     public GameObject canvas;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
-        //hasSushi=false;
+        hasSushi=false;
         playerCoins=0;
         moveStep=3;
         xLimit=6;
@@ -66,5 +66,12 @@ public class PlayerController : MonoBehaviour
         
         // transform.Translate(Vector3.right*horizontalInput*Time.deltaTime*speed);
         // transform.Translate(Vector3.up*verticalInput*Time.deltaTime*speed);
+    }
+
+    public void setHasSushi(bool boolean){
+        hasSushi = boolean;
+    }
+    public bool getHasSushi(){
+        return hasSushi;
     }
 }

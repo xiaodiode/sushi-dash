@@ -1504,6 +1504,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
+      propertyPath: sushiObject
+      value: 
+      objectReference: {fileID: 5852705343252777952, guid: 558927a30d27bd14d9699c791d3e9639, type: 3}
+    - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
       propertyPath: upgradeArrow
       value: 
       objectReference: {fileID: 482118359}
@@ -2278,6 +2282,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
+      propertyPath: sushiObject
+      value: 
+      objectReference: {fileID: 5390720918787750680, guid: 5c67606c20a9a3f49bb0bbf353dd1f49, type: 3}
+    - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
       propertyPath: upgradeArrow
       value: 
       objectReference: {fileID: 621008986}
@@ -2993,6 +3001,10 @@ PrefabInstance:
       propertyPath: tableLevel
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
+      propertyPath: sushiObject
+      value: 
+      objectReference: {fileID: 5178796501324272904, guid: 84ef2d7420272a64b9aeb173592e43ce, type: 3}
     - target: {fileID: 1544175537262368853, guid: 55f08260e37123c41b10520bd07d03cb, type: 3}
       propertyPath: upgradeArrow
       value: 
