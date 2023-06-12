@@ -19,8 +19,8 @@ public class StallManager : MonoBehaviour
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
-    //private float progressSpeed=0.0002f;
-    private float progressSpeed=0.01f;
+    private float progressSpeed=0.0002f;
+    //private float progressSpeed=0.01f;
 
     int tableLeft = 2;
     int tableRight = 3;
