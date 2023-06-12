@@ -12,13 +12,14 @@ public class CustomerSpawner : MonoBehaviour
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
+    private float startSpawnTime = 2;
+    private float repeatRate = 8;
     
-    private int orderNum;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnCustomer",2,2);
+        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
 
     }
 
@@ -31,23 +32,15 @@ public class CustomerSpawner : MonoBehaviour
     void spawnCustomer(){
         randomLaneIndex = Random.Range(0,lanes.Length);
         randomCustomerIndex = Random.Range(0,customerTypes.Length);
-        orderNum = randomCustomerIndex+1;
 
-        Vector3 spawnPos = new Vector3(-16,lanes[randomLaneIndex],0);
+        Vector3 spawnPos = new Vector3(-20,lanes[randomLaneIndex],0);
         GameObject customer = (customerTypes[randomCustomerIndex]);
+
+        Instantiate(customer,spawnPos,customer.transform.rotation);
 
         
     }
 
-    private GameObject getComponentByName(GameObject gameObject, string componentName){
-        GameObject[] components = gameObject.GetComponentsInChildren<GameObject>(true);
-        foreach(GameObject component in components){
-            if(component.name == componentName){
-                return component;
-            }
-        }
-        return null;
-    }
 }
 // GameObject instantiatedObject = Instantiate(prefab);
 

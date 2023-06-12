@@ -116,10 +116,4 @@ public class PlayerController : MonoBehaviour
     public void setChosenSushi(GameObject currSushi){
         chosenSushi = currSushi;
     }
-    // void keepMoving(GameObject sushi){
-    //     while(sushi.transform.position.x!=-4){
-    //         sushi.transform.Translate(Vector3.left*4*Time.deltaTime);
-    //     }
-    //     Destroy(sushi);
-    // }
 }
