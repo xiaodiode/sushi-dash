@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7164959204403869751}
   - component: {fileID: 67190559652127626}
   - component: {fileID: 7418403749734924664}
+  - component: {fileID: 6844972462728228439}
+  - component: {fileID: 5261522235567344856}
   m_Layer: 0
   m_Name: Customer1
   m_TagString: Untagged
@@ -100,10 +102,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a4085730bd8f44e80feae82c783abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sushiImages:
-  - {fileID: 5033218368259084898, guid: 918a7b14d7823784e9b9ccf187c5f082, type: 3}
-  - {fileID: 2374633226859187032, guid: 15fe9d1b60839104fba7862cb8d2037d, type: 3}
-  - {fileID: 9065160743786877631, guid: 8888b23531556864499d37649c816a5b, type: 3}
+  sushiImages: []
+--- !u!50 &6844972462728228439
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511969474541331337}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 2
+--- !u!61 &5261522235567344856
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511969474541331337}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0046896935, y: -0.018761158}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.3658438, y: 2.2438955}
+  m_EdgeRadius: 0
 --- !u!1 &8283623054565729440
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621542914306362226, guid: aca67369fe08d8b44a07742c626536b3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 1.606
       objectReference: {fileID: 0}
     - target: {fileID: 4621542914306362226, guid: aca67369fe08d8b44a07742c626536b3, type: 3}
       propertyPath: m_LocalPosition.z

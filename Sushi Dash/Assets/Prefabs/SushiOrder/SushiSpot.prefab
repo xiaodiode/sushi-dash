@@ -101,3 +101,7 @@ MonoBehaviour:
   - {fileID: -7731999332979549332, guid: dbac07669141a6a4ead6d686400c474f, type: 3}
   - {fileID: -838622440030393080, guid: dbac07669141a6a4ead6d686400c474f, type: 3}
   - {fileID: 1716269828203949527, guid: dbac07669141a6a4ead6d686400c474f, type: 3}
+  sushiProjectiles:
+  - {fileID: 5178796501324272904, guid: 84ef2d7420272a64b9aeb173592e43ce, type: 3}
+  - {fileID: 5390720918787750680, guid: 5c67606c20a9a3f49bb0bbf353dd1f49, type: 3}
+  - {fileID: 5852705343252777952, guid: 558927a30d27bd14d9699c791d3e9639, type: 3}

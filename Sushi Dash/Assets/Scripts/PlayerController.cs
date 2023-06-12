@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
 
         if(thrownSushi != null){
             thrownSushi.transform.Rotate(0,0,2f);
-            //thrownSushi.transform.Translate(Vector3.left*180*Time.deltaTime);
             thrownSushi.transform.position += Vector3.left*20*Time.deltaTime;
         }
 
@@ -76,6 +75,7 @@ public class PlayerController : MonoBehaviour
         else{
             if(Input.GetKeyDown(KeyCode.Space) && hasSushi){
                 thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
+                Debug.Log("heldSushi: " + heldSushi);
                 Destroy(heldSushi);
                 hasSushi = false;
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Checkmark : MonoBehaviour
 {
     // Start is called before the first frame update
+    private bool isActive;
     void Start()
     {
         
@@ -17,5 +18,9 @@ public class Checkmark : MonoBehaviour
     }
     public void enable(bool boolean){
         gameObject.SetActive(boolean);
+        isActive=boolean;
+    }
+    public bool isEnabled(){
+        return isActive;
     }
 }
