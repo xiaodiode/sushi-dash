@@ -8,7 +8,8 @@ using System;
 public class StallManager : MonoBehaviour
 {
     public Tile plate,sushi;
-    public GameObject upgradeArrow, sushiObject;
+    public GameObject upgradeArrow;
+    public SushiMovement sushiObject;
     public Tilemap plateMap,sushiMap;
     public int tableNum;
     public Slider stallProgress;
@@ -20,7 +21,7 @@ public class StallManager : MonoBehaviour
     private int tableLevel;
     private int sushiPosition;
     //private float progressSpeed=0.0002f;
-    private float progressSpeed=0.001f;
+    private float progressSpeed=0.01f;
 
     int tableLeft = 2;
     int tableRight = 3;

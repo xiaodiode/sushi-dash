@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerMovement : MonoBehaviour
 {
-    public CustomerSpawner customerSpawner;
+    
     public bool gameOver;
     private Checkmark checkmark1, checkmark2, checkmark3;
     private SushiSpot sushi1,sushi2,sushi3;
@@ -20,7 +20,6 @@ public class CustomerMovement : MonoBehaviour
     void Start()
     {
         gameOver = false;
-        customerSpawner = GetComponentInChildren<CustomerSpawner>();
         myCollider = GetComponent<Collider2D>();
 
         checkmark1 = getCheckmarkByName(gameObject,"Checkmark1");

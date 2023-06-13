@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public GameObject[] customerTypes;
+    public CustomerMovement[] customerTypes;
     private CustomerMovement customer;
     public bool gameOver;
     
@@ -37,9 +37,11 @@ public class CustomerSpawner : MonoBehaviour
         randomCustomerIndex = Random.Range(0,customerTypes.Length);
 
         Vector3 spawnPos = new Vector3(-20,lanes[randomLaneIndex],0);
-        GameObject customerType = (customerTypes[randomCustomerIndex]);
+        CustomerMovement customerType = (customerTypes[randomCustomerIndex]);
 
-        Instantiate(customerType,spawnPos,customerType.transform.rotation);
+        customer = Instantiate(customerType,spawnPos,customerType.transform.rotation);
+
+        customer.transform.parent = transform;
     }
 
 }

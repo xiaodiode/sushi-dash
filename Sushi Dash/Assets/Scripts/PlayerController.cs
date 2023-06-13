@@ -12,12 +12,11 @@ public class PlayerController : MonoBehaviour
 
     //player attributes
     private bool hasSushi;
-    private GameObject heldSushi, chosenSushi;
+    private SushiMovement heldSushi, chosenSushi, thrownSushi;
     public int playerLevel=1;
-    public int playerCoins;
+    public int playerCoins=0;
 
     //sushi stall and table variables
-    public GameObject canvas;
     public GameObject[] upgradeArrows;
     public Tilemap sushiMap,plateMap;
     public Sprite[] sushi;
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 forwardOffset = new Vector3(0,0,1);
     private Vector3 tempScale = new Vector3();
     int flag=0;
-    GameObject thrownSushi;
     
     void Start()
     {
@@ -36,11 +34,9 @@ public class PlayerController : MonoBehaviour
         tableX = 6;
         yLimit = (playerLevel*(-3))- 3;
 
-        canvas.SetActive(true);
         
         chosenSushi = null;
         hasSushi = false;
-        playerCoins = 0;
         moveStep = 3;
     }
 
@@ -49,10 +45,6 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement();
 
-        if(thrownSushi != null){
-            thrownSushi.transform.Rotate(0,0,2f);
-            thrownSushi.transform.position += Vector3.left*20*Time.deltaTime;
-        }
 
         if(hasSushi && chosenSushi!=null){
             heldSushi = Instantiate(chosenSushi,transform.position + heldSushiOffset - transform.forward,chosenSushi.transform.rotation);
@@ -76,7 +68,9 @@ public class PlayerController : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.Space) && hasSushi){
                 thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
                 Debug.Log("heldSushi: " + heldSushi);
-                Destroy(heldSushi);
+                heldSushi.destroy();
+                thrownSushi.move = true;
+                Debug.Log("thrownSushi: " + thrownSushi + " " + thrownSushi.move);
                 hasSushi = false;
             }
         }
@@ -113,7 +107,7 @@ public class PlayerController : MonoBehaviour
     public bool getHasSushi(){
         return hasSushi;
     }
-    public void setChosenSushi(GameObject currSushi){
+    public void setChosenSushi(SushiMovement currSushi){
         chosenSushi = currSushi;
     }
 }
