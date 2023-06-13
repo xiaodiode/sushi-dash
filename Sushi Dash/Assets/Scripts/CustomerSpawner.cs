@@ -58,7 +58,3 @@ public class CustomerSpawner : MonoBehaviour
     }
 
 }
-// GameObject instantiatedObject = Instantiate(prefab);
-
-//         // Access the desired component of the instantiated object
-//         SomeComponent component = instantiatedObject.GetComponent<SomeComponent>();

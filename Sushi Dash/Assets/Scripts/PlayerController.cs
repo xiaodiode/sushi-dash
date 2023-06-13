@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
         if(hasSushi && chosenSushi!=null){
             heldSushi = Instantiate(chosenSushi,transform.position + heldSushiOffset - transform.forward,chosenSushi.transform.rotation);
+            SushiMovement sushiScript = heldSushi.GetComponent<SushiMovement>();
+            sushiScript.enabled = false;
             chosenSushi = null;
         }
         else if(hasSushi){
@@ -67,10 +69,12 @@ public class PlayerController : MonoBehaviour
         else{
             if(Input.GetKeyDown(KeyCode.Space) && hasSushi){
                 thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
+                SushiMovement sushiScript = thrownSushi.GetComponent<SushiMovement>();
+                sushiScript.enabled = true;
                 Debug.Log("heldSushi: " + heldSushi);
                 heldSushi.destroy();
-                thrownSushi.move = true;
-                Debug.Log("thrownSushi: " + thrownSushi + " " + thrownSushi.move);
+                thrownSushi.spin = true;
+                Debug.Log("thrownSushi: " + thrownSushi + " " + thrownSushi.spin);
                 hasSushi = false;
             }
         }
