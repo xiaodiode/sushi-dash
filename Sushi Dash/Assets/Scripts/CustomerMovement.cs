@@ -17,8 +17,10 @@ public class CustomerMovement : MonoBehaviour
     private int randomSushiIndex;
     private int customerType;
     private float speed = 2f;
+    private CustomerSpawner customerSpawner;
     void Start()
     {
+        customerSpawner = GetComponentInParent<CustomerSpawner>();
         gameOver = false;
         myCollider = GetComponent<Collider2D>();
 
@@ -85,6 +87,7 @@ public class CustomerMovement : MonoBehaviour
                 speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
+                customerSpawner.updateCoins(10);
             }
         }
         else if(customerType == 2){
@@ -100,6 +103,7 @@ public class CustomerMovement : MonoBehaviour
                 speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
+                customerSpawner.updateCoins(20);
             }
         }
         else if(customerType == 3){
@@ -119,6 +123,7 @@ public class CustomerMovement : MonoBehaviour
                 speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
+                customerSpawner.updateCoins(30);
             }
         }
     }
