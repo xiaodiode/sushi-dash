@@ -5,9 +5,8 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     public GameObject[] customerTypes;
-    
-    
-    private GameObject checkmark1,checkmark2,checkmark3;
+    private CustomerMovement customer;
+    public bool gameOver;
     
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
@@ -27,6 +26,10 @@ public class CustomerSpawner : MonoBehaviour
     void Update()
     {
         
+        if(gameOver){
+            CancelInvoke("spawnCustomer");
+        }
+        
     }
 
     void spawnCustomer(){
@@ -34,11 +37,9 @@ public class CustomerSpawner : MonoBehaviour
         randomCustomerIndex = Random.Range(0,customerTypes.Length);
 
         Vector3 spawnPos = new Vector3(-20,lanes[randomLaneIndex],0);
-        GameObject customer = (customerTypes[randomCustomerIndex]);
+        GameObject customerType = (customerTypes[randomCustomerIndex]);
 
-        Instantiate(customer,spawnPos,customer.transform.rotation);
-
-        
+        Instantiate(customerType,spawnPos,customerType.transform.rotation);
     }
 
 }

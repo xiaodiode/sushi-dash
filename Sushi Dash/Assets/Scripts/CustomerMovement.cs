@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class CustomerMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public CustomerSpawner customerSpawner;
+    public bool gameOver;
     private Checkmark checkmark1, checkmark2, checkmark3;
     private SushiSpot sushi1,sushi2,sushi3;
-    public GameObject[] sushiImages;
+    
     private Collider2D myCollider;
-    private Vector3 speedRate = new Vector3(.002f,0,0);
+    private Vector3 speedRate = new Vector3(1f,0,0);
+    private int xMin = -21;
+    private float xMax = 1f;
     
     private int randomSushiIndex;
     private int customerType;
     private float speed = 2f;
     void Start()
     {
+        gameOver = false;
+        customerSpawner = GetComponentInChildren<CustomerSpawner>();
         myCollider = GetComponent<Collider2D>();
 
         checkmark1 = getCheckmarkByName(gameObject,"Checkmark1");
@@ -38,7 +43,7 @@ public class CustomerMovement : MonoBehaviour
             checkmark3.enable(false);
             customerType = 3; 
         }
-
+        
         
 
     }
@@ -46,11 +51,14 @@ public class CustomerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x>-21)
-            transform.position = transform.position + speedRate;
-            //transform.Translate(Vector3.right*speed*Time.deltaTime);
+        if(transform.position.x > xMin)
+            transform.position = transform.position + speedRate*Time.deltaTime;
         else    
             Destroy(gameObject);
+        
+        if(transform.position.x > xMax){ //pause game
+            Time.timeScale = 0;
+        }
     }
     private Checkmark getCheckmarkByName(GameObject gameObject, string componentName){
         Checkmark[] components = gameObject.GetComponentsInChildren<Checkmark>(true);
@@ -75,7 +83,7 @@ public class CustomerMovement : MonoBehaviour
             Debug.Log("collision.gameObject.GetComponent<SpriteRenderer>(): " + collision.gameObject.GetComponent<SpriteRenderer>().sprite + " sushi trigger: " + sushi1.getSushiTrigger());
             if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi1.getSushiTrigger()) && !checkmark1.isEnabled()){
                 checkmark1.enable(true);
-                speed = -speed;
+                speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
             }
@@ -90,7 +98,7 @@ public class CustomerMovement : MonoBehaviour
                 Destroy(collision.gameObject);
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled()){
-                speed = -speed;
+                speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
             }
@@ -109,7 +117,7 @@ public class CustomerMovement : MonoBehaviour
                 Destroy(collision.gameObject);
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled() && checkmark3.isEnabled()){
-                speed = -speed;
+                speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
             }
