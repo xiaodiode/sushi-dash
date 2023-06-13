@@ -6,14 +6,11 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     public PlayerController player;
-    private Canvas coinCanvas;
     private TextMeshProUGUI coinText;
     // Start is called before the first frame update
     void Start()
     {
-        coinCanvas = gameObject.transform.Find("Coin Canvas").GetComponent<Canvas>();
-        coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
-        Debug.Log("coinCanvas: " + coinCanvas + " coinText: " + coinText);
+        coinText = gameObject.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
         
     }
 

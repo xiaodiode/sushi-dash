@@ -15,13 +15,14 @@ public class StallManager : MonoBehaviour
     public int tableNum;
     public Slider stallProgress;
     public PlayerController player;
+    public GameObject placeholder;
 
     private Vector3Int[] platePositions = new Vector3Int[4];
     
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
-    private float progressSpeed=0.1f;
+    private float progressSpeed = 0.07f;
     public bool upgradeAction;
     // private float progressSpeed=0.01f;
 
@@ -120,10 +121,10 @@ public class StallManager : MonoBehaviour
     void runSushiMaker(Vector3Int position){
         //gradually fill the sushi stall's progress bar
         stallProgress.gameObject.SetActive(true);
-        stallProgress.value+=progressSpeed*Time.deltaTime;
+        stallProgress.value += progressSpeed;
 
         //when progress bar is maxed, place the appropriate sushi at the open position
-        if(stallProgress.value==1){
+        if(stallProgress.value==100){
             sushiMap.SetTile(position, sushi);
             stallProgress.value=0;
         }

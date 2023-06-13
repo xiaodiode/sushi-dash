@@ -22,7 +22,7 @@ public class SushiMovement : MonoBehaviour
         transform.Rotate(0,0,2f);
     }
     private void launchSushi(){
-        transform.Rotate(0,0,80f*Time.deltaTime);
+        transform.Rotate(0,0,180f*Time.deltaTime);
         transform.position += Vector3.left*20*Time.deltaTime;
     }
     public void destroy(){
