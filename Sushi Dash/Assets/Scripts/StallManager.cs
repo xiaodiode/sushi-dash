@@ -11,6 +11,7 @@ public class StallManager : MonoBehaviour
     public GameObject upgradeArrow;
     public SushiMovement sushiObject;
     public Tilemap plateMap,sushiMap;
+    public CustomerSpawner customerSpawner;
     public int tableNum;
     public Slider stallProgress;
     public PlayerController player;
@@ -20,8 +21,8 @@ public class StallManager : MonoBehaviour
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
-    //private float progressSpeed=0.0002f;
-    private float progressSpeed=0.01f;
+    private float progressSpeed=0.0004f;
+    // private float progressSpeed=0.01f;
 
     int tableLeft = 2;
     int tableRight = 3;
@@ -39,11 +40,19 @@ public class StallManager : MonoBehaviour
         platePositions[3] = new Vector3Int(tableRight,tableBot,0);
 
         tableLevel = 0;
+
+        upgradeArrow.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(player.playerCoins >= 50 && tableLevel != 3){
+            upgradeArrow.SetActive(true);
+        }
+        else{
+            upgradeArrow.SetActive(false);
+        }
         
         if((int)(Math.Round(player.transform.position.x))==6 && 
         (int)(Math.Round(player.transform.position.y))==(tableNum*(tableYOffset))){
@@ -51,6 +60,7 @@ public class StallManager : MonoBehaviour
             if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
                 if(upgradeArrow.activeSelf && tableLevel<=2){
                     tableLevel++;
+                    customerSpawner.updateCoins(-50);
                     plateMap.SetTile(platePositions[tableLevel],plate);
                 }
             }
