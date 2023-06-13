@@ -12,8 +12,8 @@ public class CustomerSpawner : MonoBehaviour
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
-    private float startSpawnTime = 2;
-    private float repeatRate = 8;
+    private float startSpawnTime = 5;
+    private float repeatRate = 10;
 
     private int totalCoins;
     
@@ -21,8 +21,8 @@ public class CustomerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalCoins = 0;
-        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
+        totalCoins = 1000;
+        //InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
         
     }
 

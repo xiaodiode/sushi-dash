@@ -21,7 +21,8 @@ public class StallManager : MonoBehaviour
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
-    private float progressSpeed=0.0004f;
+    private float progressSpeed=0.1f;
+    public bool upgradeAction;
     // private float progressSpeed=0.01f;
 
     int tableLeft = 2;
@@ -32,6 +33,7 @@ public class StallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        upgradeAction = false;
         int tableTop = tableNum*tableYOffset;
         int tableBot = (tableNum*tableYOffset)-1;
         platePositions[0] = new Vector3Int(tableLeft,tableTop,0);
@@ -47,6 +49,13 @@ public class StallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if(player.currentWorldTouch != Vector3.zero){
+        //     Debug.Log("currentWorldTouch: " + player.currentWorldTouch);
+        // }
+        // if(player.currentWorldTouch.x >= 6.5 && player.currentWorldTouch.x <= 10.5 &&
+        // player.currentWorldTouch.y < (1-(3*tableNum)) && player.currentWorldTouch.y > (-1-(3*tableNum))){
+        //     upgradeAction = true;
+        // }
         if(player.playerCoins >= 50 && tableLevel != 3){
             upgradeArrow.SetActive(true);
         }
@@ -54,18 +63,29 @@ public class StallManager : MonoBehaviour
             upgradeArrow.SetActive(false);
         }
         
+        if(upgradeAction){
+            upgradeAction = false;
+            if(upgradeArrow.activeSelf && tableLevel<=2){
+                tableLevel++;
+                customerSpawner.updateCoins(-50);
+                plateMap.SetTile(platePositions[tableLevel],plate);
+                
+            }
+        }
         if((int)(Math.Round(player.transform.position.x))==6 && 
         (int)(Math.Round(player.transform.position.y))==(tableNum*(tableYOffset))){
                 //upgrade the stall when SHIFT is pressed
             if(Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
+                upgradeAction = false;
                 if(upgradeArrow.activeSelf && tableLevel<=2){
                     tableLevel++;
                     customerSpawner.updateCoins(-50);
                     plateMap.SetTile(platePositions[tableLevel],plate);
+                    
                 }
             }
             //pick up any available sushi from stall when SPACE is pressed as long as player is not holding anything
-            if(Input.GetKeyDown(KeyCode.Space) && player.getHasSushi()==false){
+            if((Input.GetKeyDown(KeyCode.Space)  || player.sushiAction) && player.getHasSushi()==false){
                 sushiPosition = getSushiPosition();
                 if(sushiPosition != -1){
                     sushiMap.SetTile(platePositions[sushiPosition],plate);
@@ -100,7 +120,7 @@ public class StallManager : MonoBehaviour
     void runSushiMaker(Vector3Int position){
         //gradually fill the sushi stall's progress bar
         stallProgress.gameObject.SetActive(true);
-        stallProgress.value+=progressSpeed;
+        stallProgress.value+=progressSpeed*Time.deltaTime;
 
         //when progress bar is maxed, place the appropriate sushi at the open position
         if(stallProgress.value==1){

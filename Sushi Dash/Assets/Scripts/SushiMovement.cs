@@ -14,7 +14,7 @@ public class SushiMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x<-16){
+        if(transform.position.x<-20){
             Destroy(gameObject);
         }
         
@@ -22,7 +22,7 @@ public class SushiMovement : MonoBehaviour
         transform.Rotate(0,0,2f);
     }
     private void launchSushi(){
-        transform.Rotate(0,0,2f);
+        transform.Rotate(0,0,80f*Time.deltaTime);
         transform.position += Vector3.left*20*Time.deltaTime;
     }
     public void destroy(){
