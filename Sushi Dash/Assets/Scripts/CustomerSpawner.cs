@@ -21,8 +21,8 @@ public class CustomerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalCoins = 1000;
-        //InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
+        totalCoins = 0;
+        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
         
     }
 

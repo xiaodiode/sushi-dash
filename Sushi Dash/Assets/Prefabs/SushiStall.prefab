@@ -41,15 +41,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544175537262368855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 809522c9e2dafbb42a676a00222638a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 250f9ab247ee6e14f877b12d66296f94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plate: {fileID: 11400000, guid: cee8bf414d4729245ba7d14cd85a1648, type: 2}
-  sushi: {fileID: 11400000, guid: 0fbee0252a53cd04da56a9e4f66dae2d, type: 2}
+  plate: {fileID: 11400000, guid: 74ba36b556911004e95d7f638eebe39d, type: 2}
+  sushi: {fileID: 0}
   upgradeArrow: {fileID: 0}
+  sushiObject: {fileID: 0}
   plateMap: {fileID: 0}
   sushiMap: {fileID: 0}
-  playerCoins: 0
+  customerSpawner: {fileID: 0}
   tableNum: 0
   stallProgress: {fileID: 0}
-  tableLevel: 1
+  player: {fileID: 0}
+  placeholder: {fileID: 0}
+  upgradeAction: 0

@@ -15,16 +15,16 @@ public class StallManager : MonoBehaviour
     public int tableNum;
     public Slider stallProgress;
     public PlayerController player;
-    public GameObject placeholder;
+    //public GameObject placeholder;
 
     private Vector3Int[] platePositions = new Vector3Int[4];
     
     private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
-    private float progressSpeed = 0.07f;
+    //private float progressSpeed = 0.07f;
     public bool upgradeAction;
-    // private float progressSpeed=0.01f;
+    private float progressSpeed=0.5f;
 
     int tableLeft = 2;
     int tableRight = 3;

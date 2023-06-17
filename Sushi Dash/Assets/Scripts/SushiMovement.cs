@@ -5,10 +5,10 @@ using UnityEngine;
 public class SushiMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool spin;
+    private float spin_speed;
     void Start()
     {
-        spin = false;
+        spin_speed = 10f;
     }
 
     // Update is called once per frame
@@ -19,11 +19,7 @@ public class SushiMovement : MonoBehaviour
         }
         
         transform.position += Vector3.left*20*Time.deltaTime;
-        transform.Rotate(0,0,2f);
-    }
-    private void launchSushi(){
-        transform.Rotate(0,0,180f*Time.deltaTime);
-        transform.position += Vector3.left*20*Time.deltaTime;
+        transform.Rotate(0,0,spin_speed);
     }
     public void destroy(){
         Destroy(gameObject);

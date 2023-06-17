@@ -14,9 +14,9 @@ public class CustomerMovement : MonoBehaviour
     private int xMin = -21;
     private float xMax = 1f;
     
-    private int randomSushiIndex;
+    // private int randomSushiIndex;
     private int customerType;
-    private float speed = 2f;
+    // private float speed = 2f;
     private CustomerSpawner customerSpawner;
     void Start()
     {

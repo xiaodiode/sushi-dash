@@ -19,16 +19,16 @@ public class PlayerController : MonoBehaviour
     public int playerCoins=0;
 
     //sushi stall and table variables
-    public GameObject[] upgradeArrows;
-    public Tilemap sushiMap,plateMap;
-    public Sprite[] sushi;
+    // public GameObject[] upgradeArrows;
+    // public Tilemap sushiMap,plateMap;
+    // public Sprite[] sushi;
     public StallManager[] tables;
-    public Tile plate;
-    private Vector3Int[,] tablePositions;
-    private int currTable, currTableLvl;
+    // public Tile plate;
+    // private Vector3Int[,] tablePositions;
+    // private int currTable, currTableLvl;
     private Vector3 heldSushiOffset = new Vector3(0.1f,0,0);
-    private Vector3 forwardOffset = new Vector3(0,0,1);
-    private Vector3 tempScale = new Vector3();
+    // private Vector3 forwardOffset = new Vector3(0,0,1);
+    // private Vector3 tempScale = new Vector3();
     private Vector2 startTouchPosition, endTouchPosition;
     private bool swipeLeft, swipeRight, swipeUp, swipeDown;
     public bool sushiAction;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private Touch touch;
     public Vector3 currentWorldTouch;
     
-    int flag=0;
     
     void Start()
     {
@@ -93,8 +92,6 @@ public class PlayerController : MonoBehaviour
                 sushiScript.enabled = true;
                 Debug.Log("heldSushi: " + heldSushi);
                 heldSushi.destroy();
-                thrownSushi.spin = true;
-                Debug.Log("thrownSushi: " + thrownSushi + " " + thrownSushi.spin);
                 hasSushi = false;
             }
         }
