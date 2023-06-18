@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public GameManager gameManager;
     public CustomerMovement[] customerTypes;
     private CustomerMovement customer;
     public PlayerController player;
@@ -16,19 +17,23 @@ public class CustomerSpawner : MonoBehaviour
     private float repeatRate = 10;
 
     private int totalCoins;
+
+    int stop = 0; int initialize = 1; int proceed = 2;
     
 
     // Start is called before the first frame update
     void Start()
     {
         totalCoins = 0;
-        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(gameManager.gameMode == proceed)
+            InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
         if(gameOver){
             CancelInvoke("spawnCustomer");
         }

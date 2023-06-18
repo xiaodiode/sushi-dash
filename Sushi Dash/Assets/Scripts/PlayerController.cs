@@ -18,17 +18,8 @@ public class PlayerController : MonoBehaviour
     public int playerLevel=1;
     public int playerCoins=0;
 
-    //sushi stall and table variables
-    // public GameObject[] upgradeArrows;
-    // public Tilemap sushiMap,plateMap;
-    // public Sprite[] sushi;
     public StallManager[] tables;
-    // public Tile plate;
-    // private Vector3Int[,] tablePositions;
-    // private int currTable, currTableLvl;
     private Vector3 heldSushiOffset = new Vector3(0.1f,0,0);
-    // private Vector3 forwardOffset = new Vector3(0,0,1);
-    // private Vector3 tempScale = new Vector3();
     private Vector2 startTouchPosition, endTouchPosition;
     private bool swipeLeft, swipeRight, swipeUp, swipeDown;
     public bool sushiAction;
@@ -53,14 +44,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //initializing touch input variables
         swipeLeft = false;
         swipeRight = false;
         swipeUp = false;
         swipeDown = false;
 
         sushiAction = false;
-
-        
 
         playerMovement();
 
@@ -81,8 +71,6 @@ public class PlayerController : MonoBehaviour
         }
         if(Math.Round(transform.position.x)==tableX){
             if(Input.GetKeyDown(KeyCode.Space)){
-                // Debug.Log("This is the player table level: " + currTableLvl);
-                // Debug.Log("This is the player table: " + currTable);
             }
         }
         else{

@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public CustomerSpawner customerSpawner;
     public GameObject canvas;
     
+    public int gameMode;
         
     void Start()
     {
-        canvas.SetActive(true);
+        //canvas.SetActive(true);
     }
 
     // Update is called once per frame
