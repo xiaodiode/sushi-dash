@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private Canvas gameplayCanvas, mainMenuCanvas, coinCanvas;
     private TextMeshProUGUI coinText;
     public int gameMode;
-    int stop = 0; int initialize = 1; int proceed = 2;
+    public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
     private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,11 @@ public class GameManager : MonoBehaviour
     }
     public void setGameMode(){
         gameMode = initialize;
+    }
+
+    public void pauseGameMode(){
+        gameMode = pause;
+        Time.timeScale = 0;
     }
 
 }

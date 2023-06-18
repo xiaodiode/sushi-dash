@@ -50,7 +50,7 @@ public class StallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameManager.gameMode == 2){
+        if(gameManager.gameMode == gameManager.proceed){
             if(player.playerCoins >= 50 && tableLevel != 3){
                 upgradeArrow.SetActive(true);
             }

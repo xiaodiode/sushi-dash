@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         swipeDown = false;
 
         sushiAction = false;
-        if(gameManager.gameMode == 2){
+        if(gameManager.gameMode == gameManager.proceed){
             playerMovement();
 
 
