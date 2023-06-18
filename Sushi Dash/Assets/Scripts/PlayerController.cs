@@ -7,6 +7,7 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     public Camera gameCamera;
+    public GameManager gameManager;
 
     //movement variables
     private float horizontalInput,verticalInput;
@@ -51,36 +52,37 @@ public class PlayerController : MonoBehaviour
         swipeDown = false;
 
         sushiAction = false;
+        if(gameManager.gameMode == 2){
+            playerMovement();
 
-        playerMovement();
 
-
-        if(hasSushi && chosenSushi!=null){
-            heldSushi = Instantiate(chosenSushi,transform.position + heldSushiOffset - transform.forward,chosenSushi.transform.rotation);
-            SushiMovement sushiScript = heldSushi.GetComponent<SushiMovement>();
-            sushiScript.enabled = false;
-            chosenSushi = null;
-        }
-        else if(hasSushi){
+            if(hasSushi && chosenSushi!=null){
+                heldSushi = Instantiate(chosenSushi,transform.position + heldSushiOffset - transform.forward,chosenSushi.transform.rotation);
+                SushiMovement sushiScript = heldSushi.GetComponent<SushiMovement>();
+                sushiScript.enabled = false;
+                chosenSushi = null;
+            }
+            else if(hasSushi){
+                if(Math.Round(transform.position.x)==tableX){
+                    heldSushi.transform.position = transform.position + heldSushiOffset - transform.forward;
+                }
+                else{
+                    heldSushi.transform.position = transform.position - heldSushiOffset - transform.forward;
+                }
+            }
             if(Math.Round(transform.position.x)==tableX){
-                heldSushi.transform.position = transform.position + heldSushiOffset - transform.forward;
+                if(Input.GetKeyDown(KeyCode.Space)){
+                }
             }
             else{
-                heldSushi.transform.position = transform.position - heldSushiOffset - transform.forward;
-            }
-        }
-        if(Math.Round(transform.position.x)==tableX){
-            if(Input.GetKeyDown(KeyCode.Space)){
-            }
-        }
-        else{
-            if((Input.GetKeyDown(KeyCode.Space) || sushiAction) && hasSushi){
-                thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
-                SushiMovement sushiScript = thrownSushi.GetComponent<SushiMovement>();
-                sushiScript.enabled = true;
-                Debug.Log("heldSushi: " + heldSushi);
-                heldSushi.destroy();
-                hasSushi = false;
+                if((Input.GetKeyDown(KeyCode.Space) || sushiAction) && hasSushi){
+                    thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
+                    SushiMovement sushiScript = thrownSushi.GetComponent<SushiMovement>();
+                    sushiScript.enabled = true;
+                    Debug.Log("heldSushi: " + heldSushi);
+                    heldSushi.destroy();
+                    hasSushi = false;
+                }
             }
         }
 
