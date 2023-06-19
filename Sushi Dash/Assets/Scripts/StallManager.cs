@@ -7,10 +7,14 @@ using System;
 
 public class StallManager : MonoBehaviour
 {
+    public Image sushiImage;
+    private Sprite sushiSprite;
+    public SushiConversions sushiConversions;
     public GameManager gameManager;
-    public Tile plate,sushi;
+    public Tile plate;
+    private Tile sushiTile;
     public GameObject upgradeArrow;
-    public SushiMovement sushiObject;
+    private SushiMovement sushiObject;
     public Tilemap plateMap,sushiMap;
     public CustomerSpawner customerSpawner;
     public int tableNum;
@@ -19,7 +23,6 @@ public class StallManager : MonoBehaviour
 
     private Vector3Int[] platePositions = new Vector3Int[4];
     
-    private GameObject heldSushi;
     private int tableLevel;
     private int sushiPosition;
     //private float progressSpeed = 0.07f;
@@ -34,6 +37,10 @@ public class StallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sushiSprite = sushiImage.sprite;
+        sushiTile = sushiConversions.getSushiTile(sushiSprite);
+        sushiObject = sushiConversions.getSushiObject(sushiSprite);
+        
         upgradeAction = false;
         int tableTop = tableNum*tableYOffset;
         int tableBot = (tableNum*tableYOffset)-1;
@@ -112,7 +119,7 @@ public class StallManager : MonoBehaviour
 
         //when progress bar is maxed, place the appropriate sushi at the open position
         if(stallProgress.value==100){
-            sushiMap.SetTile(position, sushi);
+            sushiMap.SetTile(position, sushiTile);
             stallProgress.value=0;
         }
     }
@@ -123,7 +130,7 @@ public class StallManager : MonoBehaviour
     */
     void checkEmptyPlates(){
         if(tableLevel==0){
-            if(sushiMap.GetTile(platePositions[0])!=sushi){ 
+            if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
                 runSushiMaker(platePositions[0]);
             }
             else{
@@ -131,10 +138,10 @@ public class StallManager : MonoBehaviour
             }
         }
         else if(tableLevel==1){
-            if(sushiMap.GetTile(platePositions[0])!=sushi){ 
+            if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
                 runSushiMaker(platePositions[0]);
             }
-            else if(sushiMap.GetTile(platePositions[1])!=sushi){
+            else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
                 runSushiMaker(platePositions[1]);
             }
             else{
@@ -143,13 +150,13 @@ public class StallManager : MonoBehaviour
             }
         }
         else if(tableLevel==2){
-            if(sushiMap.GetTile(platePositions[0])!=sushi){ 
+            if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
                 runSushiMaker(platePositions[0]);
             }
-            else if(sushiMap.GetTile(platePositions[1])!=sushi){
+            else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
                 runSushiMaker(platePositions[1]);
             }
-            else if(sushiMap.GetTile(platePositions[2])!=sushi){
+            else if(sushiMap.GetTile(platePositions[2])!=sushiTile){
                 runSushiMaker(platePositions[2]);
             }
             else{
@@ -158,16 +165,16 @@ public class StallManager : MonoBehaviour
             }
         }
         else if(tableLevel==3){
-            if(sushiMap.GetTile(platePositions[0])!=sushi){ 
+            if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
                 runSushiMaker(platePositions[0]);
             }
-            else if(sushiMap.GetTile(platePositions[1])!=sushi){
+            else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
                 runSushiMaker(platePositions[1]);
             }
-            else if(sushiMap.GetTile(platePositions[2])!=sushi){
+            else if(sushiMap.GetTile(platePositions[2])!=sushiTile){
                 runSushiMaker(platePositions[2]);
             }
-            else if(sushiMap.GetTile(platePositions[3])!=sushi){
+            else if(sushiMap.GetTile(platePositions[3])!=sushiTile){
                 runSushiMaker(platePositions[3]);
             }
             else
@@ -176,40 +183,40 @@ public class StallManager : MonoBehaviour
     }
     int getSushiPosition(){
         if(tableLevel==0){
-            if(sushiMap.GetTile(platePositions[0])==sushi)
+            if(sushiMap.GetTile(platePositions[0])==sushiTile)
                 return 0;
             else
                 return -1;
         }
 
         else if(tableLevel==1){
-            if(sushiMap.GetTile(platePositions[0])==sushi)
+            if(sushiMap.GetTile(platePositions[0])==sushiTile)
                 return 0;
-            else if(sushiMap.GetTile(platePositions[1])==sushi)
+            else if(sushiMap.GetTile(platePositions[1])==sushiTile)
                 return 1;
             else
                 return -1;
         }
 
         else if(tableLevel==2){
-            if(sushiMap.GetTile(platePositions[0])==sushi)
+            if(sushiMap.GetTile(platePositions[0])==sushiTile)
                 return 0;
-            else if(sushiMap.GetTile(platePositions[1])==sushi)
+            else if(sushiMap.GetTile(platePositions[1])==sushiTile)
                 return 1;
-            else if(sushiMap.GetTile(platePositions[2])==sushi)
+            else if(sushiMap.GetTile(platePositions[2])==sushiTile)
                 return 2;
             else
                 return -1;
         }
 
         else if(tableLevel==3){
-            if(sushiMap.GetTile(platePositions[0])==sushi)
+            if(sushiMap.GetTile(platePositions[0])==sushiTile)
                 return 0;
-            else if(sushiMap.GetTile(platePositions[1])==sushi)
+            else if(sushiMap.GetTile(platePositions[1])==sushiTile)
                 return 1;
-            else if(sushiMap.GetTile(platePositions[2])==sushi)
+            else if(sushiMap.GetTile(platePositions[2])==sushiTile)
                 return 2;
-            else if(sushiMap.GetTile(platePositions[3])==sushi)
+            else if(sushiMap.GetTile(platePositions[3])==sushiTile)
                 return 3;
             else
                 return -1;

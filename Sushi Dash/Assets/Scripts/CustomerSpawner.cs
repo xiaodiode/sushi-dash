@@ -13,7 +13,7 @@ public class CustomerSpawner : MonoBehaviour
     private int randomLaneIndex;
     private int randomCustomerIndex;
     private float startSpawnTime = 5;
-    private float repeatRate = 3;
+    private float repeatRate = 6;
 
     private int totalCoins;
     
