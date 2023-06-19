@@ -1555,6 +1555,167 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: a06c8ecb6ac6f944d95d838e9ace4a1b, type: 3}
+--- !u!1001 &256793546
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5519646
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.9628127
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.015452031
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushi
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c3ff48048e2d304da2a7aafea91b6ef, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 451672641}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: plateMap
+      value: 
+      objectReference: {fileID: 2132324811}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiMap
+      value: 
+      objectReference: {fileID: 941662169}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: tableNum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiImage
+      value: 
+      objectReference: {fileID: 55902772}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1020290755}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObject
+      value: 
+      objectReference: {fileID: 5912606754646552174, guid: ef14eef5bd74ce440a60c68fe594614b, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: upgradeArrow
+      value: 
+      objectReference: {fileID: 482118359}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: stallProgress
+      value: 
+      objectReference: {fileID: 1989041736}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: upgradeAction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: customerSpawner
+      value: 
+      objectReference: {fileID: 1875979596}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiConversions
+      value: 
+      objectReference: {fileID: 1661490543}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b587271ddf6c47943893cf9fb4c53ad2, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b4b7b912c008c4248931683c0afbdad3, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c3ff48048e2d304da2a7aafea91b6ef, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3736262234361565298, guid: 512899a56485e4748bdd8ded052f02ca, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1755135366110638019, guid: 6d97aac64ba79f2409cee4045ad5d15f, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 5912606754646552174, guid: ef14eef5bd74ce440a60c68fe594614b, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 4445549704473147552, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368855, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_Name
+      value: SushiStall3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
 --- !u!1 &278106259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2763,9 +2924,61 @@ PrefabInstance:
       propertyPath: sushiConversions
       value: 
       objectReference: {fileID: 1661490543}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b587271ddf6c47943893cf9fb4c53ad2, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b4b7b912c008c4248931683c0afbdad3, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c3ff48048e2d304da2a7aafea91b6ef, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3736262234361565298, guid: 512899a56485e4748bdd8ded052f02ca, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1755135366110638019, guid: 6d97aac64ba79f2409cee4045ad5d15f, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 5912606754646552174, guid: ef14eef5bd74ce440a60c68fe594614b, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 4445549704473147552, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
     - target: {fileID: 1544175537262368855, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_Name
       value: SushiStall1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368855, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4781,6 +4994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SushiStall3
       objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368855, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6125,50 +6342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738766239}
   m_CullTransparentMesh: 1
---- !u!1 &1741274061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1741274063}
-  - component: {fileID: 1741274062}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1741274062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741274061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a268a2fae5faeb743976dc0a8ca83d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1741274063
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741274061}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.48, y: -6.99, z: -0.056130875}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758592274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,7 +6555,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1544175537262368852, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6476,6 +6649,54 @@ PrefabInstance:
       propertyPath: sushiConversions
       value: 
       objectReference: {fileID: 1661490543}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b587271ddf6c47943893cf9fb4c53ad2, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b4b7b912c008c4248931683c0afbdad3, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiTiles.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c3ff48048e2d304da2a7aafea91b6ef, type: 2}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3736262234361565298, guid: 512899a56485e4748bdd8ded052f02ca, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1755135366110638019, guid: 6d97aac64ba79f2409cee4045ad5d15f, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 5912606754646552174, guid: ef14eef5bd74ce440a60c68fe594614b, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 4445549704473147552, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: sushiSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
     - target: {fileID: 1544175537262368855, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: m_Name
       value: SushiStall2

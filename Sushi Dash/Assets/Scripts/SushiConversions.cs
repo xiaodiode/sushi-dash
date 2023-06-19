@@ -8,6 +8,7 @@ public class SushiConversions : MonoBehaviour
     public Tile[] sushiTiles;
     public SushiMovement[] sushiObjects;
     public Sprite[] sushiSprites;
+    public bool dictionaryReady = false;
     private IDictionary<Sprite, Tile> spriteToTile = new Dictionary<Sprite, Tile>();
     private IDictionary<Sprite, SushiMovement> spriteToObject = new Dictionary<Sprite, SushiMovement>();
     // Start is called before the first frame update
@@ -17,6 +18,8 @@ public class SushiConversions : MonoBehaviour
             spriteToTile.Add(sushiSprites[i], sushiTiles[i]);
             spriteToObject.Add(sushiSprites[i], sushiObjects[i]);
         }
+        StallManager[] stalls = FindObjectsOfType<StallManager>();
+        dictionaryReady = true;
     }
 
     // Update is called once per frame

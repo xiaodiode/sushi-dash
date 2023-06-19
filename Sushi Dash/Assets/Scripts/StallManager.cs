@@ -37,9 +37,8 @@ public class StallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sushiSprite = sushiImage.sprite;
-        sushiTile = sushiConversions.getSushiTile(sushiSprite);
-        sushiObject = sushiConversions.getSushiObject(sushiSprite);
+        //wait for dictionary to completely fill before setting private variables
+        StartCoroutine(WaitForDictionary());
         
         upgradeAction = false;
         int tableTop = tableNum*tableYOffset;
@@ -107,6 +106,14 @@ public class StallManager : MonoBehaviour
         
     }
     
+    private IEnumerator WaitForDictionary(){
+        while(!sushiConversions.dictionaryReady){
+            yield return null;
+        }
+        sushiSprite = sushiImage.sprite;
+        sushiTile = sushiConversions.getSushiTile(sushiSprite);
+        sushiObject = sushiConversions.getSushiObject(sushiSprite);
+    }
     /*
         The nearest empty position is found on the table and triggers
         the sushi stall's progress bar to make another sushi. 
