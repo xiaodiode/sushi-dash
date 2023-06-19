@@ -44,6 +44,7 @@ public class StallManager : MonoBehaviour
 
         tableLevel = 0;
 
+
         upgradeArrow.SetActive(false);
     }
 
@@ -214,6 +215,24 @@ public class StallManager : MonoBehaviour
                 return -1;
         }
         return -1;
+    }
+    
+    public void resetStallManager(){
+        tableLevel = 0;
+
+        upgradeAction = false;
+        upgradeArrow.SetActive(false);
+
+        stallProgress.gameObject.SetActive(false);
+        stallProgress.value = 0;
+
+        for(int i=0; i<platePositions.Length; i++){
+            sushiMap.SetTile(platePositions[i], null);
+            plateMap.SetTile(platePositions[i], null);
+        }
+
+        plateMap.SetTile(platePositions[0], plate);
+        
     }
 
 }

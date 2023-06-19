@@ -13,7 +13,7 @@ public class CustomerSpawner : MonoBehaviour
     private int randomLaneIndex;
     private int randomCustomerIndex;
     private float startSpawnTime = 5;
-    private float repeatRate = 10;
+    private float repeatRate = 3;
 
     private int totalCoins;
     
@@ -55,6 +55,16 @@ public class CustomerSpawner : MonoBehaviour
     }
     private void setCoins(){
         player.playerCoins = totalCoins;
+    }
+    public void resetCustomerSpawner(){
+        foreach(Transform child in transform){
+            Destroy(child.gameObject);
+        }
+        totalCoins = 0;
+        gameObject.SetActive(false);
+    }
+    public void startCustomerSpawner(){
+        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
     }
 
 }

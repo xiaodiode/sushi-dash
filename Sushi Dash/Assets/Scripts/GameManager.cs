@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public PlayerController player;
     public CustomerSpawner customerSpawner;
-    private Canvas gameplayCanvas, mainMenuCanvas, coinCanvas;
+    public StallManager[] stallManagers;
+    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas;
     private TextMeshProUGUI coinText;
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
 
         gameplayCanvas = gameObject.transform.Find("Gameplay Canvas").GetComponent<Canvas>();
+        pauseCanvas = gameplayCanvas.transform.Find("Pause Canvas").GetComponent<Canvas>();
         coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
         coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
 
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
             player.transform.position = intialPlayerPosition;
             coinText.text = player.playerCoins.ToString();
             gameplayCanvas.gameObject.SetActive(true);
+            pauseCanvas.gameObject.SetActive(false);
             mainMenuCanvas.gameObject.SetActive(false);
             customerSpawner.gameObject.SetActive(true);
             gameMode = proceed;
@@ -51,11 +54,37 @@ public class GameManager : MonoBehaviour
     }
     public void setGameMode(){
         gameMode = initialize;
+        Time.timeScale = 1;
+        //customerSpawner.startCustomerSpawner();
     }
 
     public void pauseGameMode(){
+        pauseCanvas.gameObject.SetActive(true);
         gameMode = pause;
         Time.timeScale = 0;
+    }
+    public void resumeGameMode(){
+        pauseCanvas.gameObject.SetActive(false);
+        gameMode = proceed;
+        Time.timeScale = 1;
+    }
+
+    public void quitGameMode(){
+        Time.timeScale = 0;
+        gameMode = stop;
+        mainMenuCanvas.gameObject.SetActive(true);
+        gameplayCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(false);
+
+        player.resetPlayer();
+        customerSpawner.resetCustomerSpawner();
+        for(int i=0; i<stallManagers.Length; i++){
+            stallManagers[i].resetStallManager();
+        }
+        SushiMovement[] sushis = FindObjectsOfType<SushiMovement>();
+        foreach(SushiMovement sushi in sushis){
+            Destroy(sushi.gameObject);
+        }
     }
 
 }

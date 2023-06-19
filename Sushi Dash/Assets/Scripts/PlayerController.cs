@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 touchPosition, gamePosition;
     private Touch touch;
     public Vector3 currentWorldTouch;
+
+    private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
     
     
     void Start()
@@ -181,8 +183,6 @@ public class PlayerController : MonoBehaviour
                 transform.position=new Vector3(transform.position.x,transform.position.y-moveStep,transform.position.z);
         }
         
-        // transform.Translate(Vector3.right*horizontalInput*Time.deltaTime*speed);
-        // transform.Translate(Vector3.up*verticalInput*Time.deltaTime*speed);
     }
 
     public void setHasSushi(bool boolean){
@@ -199,5 +199,18 @@ public class PlayerController : MonoBehaviour
         gamePosition = gameCamera.ScreenToWorldPoint(touchPos);
 
         return gamePosition;
+    }
+
+    public void resetPlayer(){
+        gameObject.transform.position = intialPlayerPosition;
+        playerCoins = 0;
+        hasSushi = false;
+        // if(hasSushi){
+        //     Destroy(heldSushi);
+        //     hasSushi = false;
+        // }
+        // if(thrownSushi != null){
+        //     Destroy(thrownSushi);
+        // }
     }
 }
