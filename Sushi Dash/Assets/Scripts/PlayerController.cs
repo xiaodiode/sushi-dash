@@ -81,7 +81,6 @@ public class PlayerController : MonoBehaviour
                     thrownSushi = Instantiate(heldSushi, heldSushi.transform.position, heldSushi.transform.rotation);
                     SushiMovement sushiScript = thrownSushi.GetComponent<SushiMovement>();
                     sushiScript.enabled = true;
-                    Debug.Log("heldSushi: " + heldSushi);
                     heldSushi.destroy();
                     hasSushi = false;
                 }

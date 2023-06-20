@@ -8,6 +8,7 @@ using System;
 public class StallManager : MonoBehaviour
 {
     public Image sushiImage;
+    public Button sushiButton;
     private Sprite sushiSprite;
     public SushiConversions sushiConversions;
     public GameManager gameManager;
@@ -32,6 +33,10 @@ public class StallManager : MonoBehaviour
     int tableLeft = 2;
     int tableRight = 3;
     int tableYOffset = -3;
+
+    private SpriteRenderer outButton, inButton;
+    Color color;
+    float darken = .5f; float lighten = 1f;
         
     
     // Start is called before the first frame update
@@ -39,8 +44,14 @@ public class StallManager : MonoBehaviour
     {
         //wait for dictionary to completely fill before setting private variables
         StartCoroutine(WaitForDictionary());
+        //mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
         
+        outButton = sushiButton.transform.Find("OuterButton").GetComponent<SpriteRenderer>();
+        inButton = outButton.transform.Find("InnerButton").GetComponent<SpriteRenderer>();
+
+        enableUI(true);
         upgradeAction = false;
+
         int tableTop = tableNum*tableYOffset;
         int tableBot = (tableNum*tableYOffset)-1;
         platePositions[0] = new Vector3Int(tableLeft,tableTop,0);
@@ -51,7 +62,9 @@ public class StallManager : MonoBehaviour
         tableLevel = 0;
 
 
-        upgradeArrow.SetActive(false);
+        
+        
+
     }
 
     // Update is called once per frame
@@ -59,10 +72,10 @@ public class StallManager : MonoBehaviour
     {
         if(gameManager.gameMode == gameManager.proceed){
             if(player.playerCoins >= 50 && tableLevel != 3){
-                upgradeArrow.SetActive(true);
+                enableUI(true);
             }
             else{
-                upgradeArrow.SetActive(false);
+                enableUI(false);
             }
             
             if(upgradeAction){
@@ -106,6 +119,11 @@ public class StallManager : MonoBehaviour
         
     }
     
+    /*
+        Makes sure the sushi tile and sushi object dictionaries are 
+        completely filled and ready to use before calling them to 
+        initialize the respective stall manager variables.
+    */
     private IEnumerator WaitForDictionary(){
         while(!sushiConversions.dictionaryReady){
             yield return null;
@@ -114,6 +132,40 @@ public class StallManager : MonoBehaviour
         sushiTile = sushiConversions.getSushiTile(sushiSprite);
         sushiObject = sushiConversions.getSushiObject(sushiSprite);
     }
+
+    private void enableUI(bool enable){
+        if(!enable){
+            color = outButton.color;
+            color.a = darken;
+            outButton.color = color;
+
+            color = inButton.color;
+            color.a = darken;
+            inButton.color = color;
+
+            color = sushiImage.color;
+            color.a = darken;
+            sushiImage.color = color;
+            
+            upgradeArrow.SetActive(false);
+        }
+        else{
+            color = outButton.color;
+            color.a = lighten;
+            outButton.color = color;
+
+            color = inButton.color;
+            color.a = lighten;
+            inButton.color = color;
+
+            color = sushiImage.color;
+            color.a = lighten;
+            sushiImage.color = color;
+            
+            upgradeArrow.SetActive(true);
+        }
+    }
+
     /*
         The nearest empty position is found on the table and triggers
         the sushi stall's progress bar to make another sushi. 
@@ -188,6 +240,7 @@ public class StallManager : MonoBehaviour
                 stallProgress.gameObject.SetActive(false);
         }
     }
+
     int getSushiPosition(){
         if(tableLevel==0){
             if(sushiMap.GetTile(platePositions[0])==sushiTile)
@@ -235,7 +288,7 @@ public class StallManager : MonoBehaviour
         tableLevel = 0;
 
         upgradeAction = false;
-        upgradeArrow.SetActive(false);
+        enableUI(false);
 
         stallProgress.gameObject.SetActive(false);
         stallProgress.value = 0;
@@ -246,6 +299,13 @@ public class StallManager : MonoBehaviour
         }
 
         plateMap.SetTile(platePositions[0], plate);
+        
+    }
+
+    public void sushiButtonPressed(){
+        if(upgradeArrow.activeSelf){
+            upgradeAction = true;
+        }
         
     }
 
