@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     public StallManager[] stallManagers;
     private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas;
     private TextMeshProUGUI coinText;
+    private Button resume;
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
     private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour
 
         gameplayCanvas = gameObject.transform.Find("Gameplay Canvas").GetComponent<Canvas>();
         pauseCanvas = gameplayCanvas.transform.Find("Pause Canvas").GetComponent<Canvas>();
+        resume = pauseCanvas.transform.Find("Resume Button").GetComponent<Button>();
         coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
         coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
 
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void pauseGameMode(){
         pauseCanvas.gameObject.SetActive(true);
+        resume.gameObject.SetActive(true);
         gameMode = pause;
         Time.timeScale = 0;
     }
@@ -85,6 +89,13 @@ public class GameManager : MonoBehaviour
         foreach(SushiMovement sushi in sushis){
             Destroy(sushi.gameObject);
         }
+    }
+
+    public void gameOver(){
+        pauseCanvas.gameObject.SetActive(true);
+        resume.gameObject.SetActive(false);
+        gameMode = pause;
+        Time.timeScale = 0;
     }
 
 }

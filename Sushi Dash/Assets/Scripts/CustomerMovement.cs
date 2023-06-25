@@ -11,8 +11,7 @@ public class CustomerMovement : MonoBehaviour
     
     private Collider2D myCollider;
     private Vector3 speedRate = new Vector3(1f,0,0);
-    private int xMin = -21;
-    private float xMax = 1f;
+    private int xMin = -31;
     
     // private int randomSushiIndex;
     private int customerType;
@@ -57,9 +56,6 @@ public class CustomerMovement : MonoBehaviour
         else    
             Destroy(gameObject);
         
-        if(transform.position.x > xMax){ //pause game
-            Time.timeScale = 0;
-        }
     }
     private Checkmark getCheckmarkByName(GameObject gameObject, string componentName){
         Checkmark[] components = gameObject.GetComponentsInChildren<Checkmark>(true);

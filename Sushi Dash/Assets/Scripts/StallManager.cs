@@ -28,7 +28,8 @@ public class StallManager : MonoBehaviour
     private int sushiPosition;
     //private float progressSpeed = 0.07f;
     public bool upgradeAction;
-    private float progressSpeed=0.5f;
+    private float progressTime = 4f;
+    private float startTime, passedTime, progress, progressUpdating;
 
     int tableLeft = 2;
     int tableRight = 3;
@@ -45,6 +46,8 @@ public class StallManager : MonoBehaviour
         //wait for dictionary to completely fill before setting private variables
         StartCoroutine(WaitForDictionary());
         //mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
+
+        progressUpdating = 0;
         
         outButton = sushiButton.transform.Find("OuterButton").GetComponent<SpriteRenderer>();
         inButton = outButton.transform.Find("InnerButton").GetComponent<SpriteRenderer>();
@@ -61,9 +64,6 @@ public class StallManager : MonoBehaviour
 
         tableLevel = 0;
 
-
-        
-        
 
     }
 
@@ -171,17 +171,26 @@ public class StallManager : MonoBehaviour
         the sushi stall's progress bar to make another sushi. 
         The new sushi will be placed at the given empty position
     */
-    void runSushiMaker(Vector3Int position){
-        //gradually fill the sushi stall's progress bar
-        stallProgress.gameObject.SetActive(true);
-        stallProgress.value += progressSpeed;
-
+    void runSushiMaker(Vector3Int position, float timeStarted){
+        
         //when progress bar is maxed, place the appropriate sushi at the open position
         if(stallProgress.value==100){
             sushiMap.SetTile(position, sushiTile);
             stallProgress.value=0;
+            progressUpdating = 0;
         }
+        else{
+            progressUpdating = 1;
+            passedTime = Time.time - timeStarted;
+            progress = Mathf.Clamp01(passedTime/progressTime);
+            //gradually fill the sushi stall's progress bar
+            stallProgress.gameObject.SetActive(true);
+            stallProgress.value = progress * 100;
+        }
+        
     }
+
+
 
     /*
         Checks the table for any empty plates based on level. If an empty
@@ -190,7 +199,10 @@ public class StallManager : MonoBehaviour
     void checkEmptyPlates(){
         if(tableLevel==0){
             if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
-                runSushiMaker(platePositions[0]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[0], startTime);
             }
             else{
                 stallProgress.gameObject.SetActive(false);
@@ -198,10 +210,16 @@ public class StallManager : MonoBehaviour
         }
         else if(tableLevel==1){
             if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
-                runSushiMaker(platePositions[0]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[0], startTime);
             }
             else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
-                runSushiMaker(platePositions[1]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[1], startTime);
             }
             else{
                 stallProgress.gameObject.SetActive(false);
@@ -210,13 +228,22 @@ public class StallManager : MonoBehaviour
         }
         else if(tableLevel==2){
             if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
-                runSushiMaker(platePositions[0]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[0], startTime);
             }
             else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
-                runSushiMaker(platePositions[1]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[1], startTime);
             }
             else if(sushiMap.GetTile(platePositions[2])!=sushiTile){
-                runSushiMaker(platePositions[2]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[2], startTime);
             }
             else{
                 sushiPosition=2;
@@ -225,16 +252,28 @@ public class StallManager : MonoBehaviour
         }
         else if(tableLevel==3){
             if(sushiMap.GetTile(platePositions[0])!=sushiTile){ 
-                runSushiMaker(platePositions[0]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[0], startTime);
             }
             else if(sushiMap.GetTile(platePositions[1])!=sushiTile){
-                runSushiMaker(platePositions[1]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[1], startTime);
             }
             else if(sushiMap.GetTile(platePositions[2])!=sushiTile){
-                runSushiMaker(platePositions[2]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[2], startTime);
             }
             else if(sushiMap.GetTile(platePositions[3])!=sushiTile){
-                runSushiMaker(platePositions[3]);
+                if(progressUpdating == 0 ){
+                    startTime = Time.time;
+                }
+                runSushiMaker(platePositions[3], startTime);
             }
             else
                 stallProgress.gameObject.SetActive(false);

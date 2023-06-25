@@ -6,6 +6,7 @@ public class Register : MonoBehaviour
 {
     public GameObject[] customers;
     public CustomerSpawner customerSpawner;
+    public GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +19,15 @@ public class Register : MonoBehaviour
         
     }
     void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject == customers[0] || collision.gameObject == customers[1]
-        || collision.gameObject == customers[2]){
+        Debug.Log("Collided with: " + collision);
+        if(collision.gameObject.GetComponent<CustomerMovement>() != null){
+            Time.timeScale = 0;
             customerSpawner.gameOver = true;
+            Debug.Log("collided");
+            gameManager.gameOver();
             Destroy(collision.gameObject);
+
+            
         }
     }
 }

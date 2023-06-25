@@ -12,11 +12,11 @@ public class CustomerSpawner : MonoBehaviour
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
+    private float spawnXPosition = -30;
     private float startSpawnTime = 4;
     private float repeatRate = 3.25f;
 
     private int totalCoins;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,7 @@ public class CustomerSpawner : MonoBehaviour
         randomLaneIndex = Random.Range(0,lanes.Length);
         randomCustomerIndex = Random.Range(0,customerTypes.Length);
 
-        Vector3 spawnPos = new Vector3(-20,lanes[randomLaneIndex],0);
+        Vector3 spawnPos = new Vector3(spawnXPosition,lanes[randomLaneIndex],0);
         CustomerMovement customerType = (customerTypes[randomCustomerIndex]);
 
         customer = Instantiate(customerType,spawnPos,customerType.transform.rotation);
