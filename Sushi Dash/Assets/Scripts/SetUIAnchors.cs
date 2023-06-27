@@ -29,5 +29,3 @@ public class SetUIAnchors : MonoBehaviour
         uiElement.anchoredPosition = localPosition;
     }
 }
-sdlfkjsdl
-fsdfjoweijfowiejf
