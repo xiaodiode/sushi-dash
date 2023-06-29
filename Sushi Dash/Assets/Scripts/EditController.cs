@@ -25,24 +25,6 @@ public class EditController : MonoBehaviour
         
     }
 
-    public void changeBackground(Button button){
-        Transform backgroundButton = transform.parent;
-        Image newBackground = backgroundButton.gameObject.GetComponent<Image>();
-        background.sprite = newBackground.sprite;
-        Debug.Log("changing background!!");
-    }
-
-    public void changeForeground(Button button){
-        Debug.Log("changing foreground!!");
-        Debug.Log("transform: " + transform);
-        Transform foregroundButton = button.transform.Find("ForegroundButton").GetComponent<Transform>();
-        Image newForeground = foregroundButton.gameObject.GetComponent<Image>();
-        Debug.Log("newForeground: " + newForeground);
-        foreground.sprite = newForeground.sprite;
-        Debug.Log("foreground.sprite: " + foreground.sprite);
-
-        
-    }
 
     public void enableSushiScroll(){
         sushiScroll.SetActive(true);

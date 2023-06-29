@@ -7802,10 +7802,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1591235705}
         m_TargetAssemblyTypeName: EditController, Assembly-CSharp
         m_MethodName: changeForeground
-        m_Mode: 2
+        m_Mode: 4
         m_Arguments:
-          m_ObjectArgument: {fileID: 1410092697}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
