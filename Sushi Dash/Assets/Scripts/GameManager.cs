@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public CustomerSpawner customerSpawner;
     public StallManager[] stallManagers;
-    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas;
+    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas;
+    public Canvas backgroundCanvas;
     private TextMeshProUGUI coinText;
     private Button resume;
     public int gameMode;
@@ -27,10 +28,17 @@ public class GameManager : MonoBehaviour
         coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
         coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
 
+        //backgroundCanvas = gameObject.transform.Find("Background/Foreground").GetComponent<GameObject>();
+
+        editCanvas = gameObject.transform.Find("Edit Canvas").GetComponent<Canvas>();
+
         gameMode = stop;
 
         gameObject.SetActive(true);
-        mainMenuCanvas.gameObject.SetActive(true);
+        editCanvas.gameObject.SetActive(true);
+        backgroundCanvas.gameObject.SetActive(true);
+        //mainMenuCanvas.gameObject.SetActive(true);
+        mainMenuCanvas.gameObject.SetActive(false);
         gameplayCanvas.gameObject.SetActive(false);
 
         
