@@ -10,21 +10,25 @@ public class GachaHandler : MonoBehaviour
     public ContentSpawner contentSpawner;
     private Sprite randomSprite;
     private Button button;
-    private float commonChance = 0.6f; private float uncommonChance = 0.3f; private float rareChance = 0.1f;
+    private int commonChance = 6; private int uncommonChance = 3; private int rareChance = 1;
     private List<string> rarityPicker = new List<string>();
     private string randomRarity, imageName;
     // Start is called before the first frame update
     void Start()
     {
         button = gameObject.transform.GetComponent<Button>();
-        for(int i=0; i<commonChance*10; i++){
+        for(int i=0; i<commonChance; i++){
             rarityPicker.Add("common");
         }
-        for(int i=0; i<uncommonChance*10; i++){
+        for(int i=0; i<uncommonChance; i++){
             rarityPicker.Add("uncommon");
         }
-        for(int i=0; i<rareChance*10; i++){
+        for(int i=0; i<rareChance; i++){
             rarityPicker.Add("rare");
+        }
+
+        for(int i=0; i<rarityPicker.Count; i++){
+            Debug.Log("rarityPicker[" + i + "]: " + rarityPicker[i]);
         }
 
         if(gachaItem.CompareTag("sushi")){
@@ -46,32 +50,25 @@ public class GachaHandler : MonoBehaviour
         
     }
     private void setInventory(){
-        Debug.Log("gachaItem: " + gachaItem);
-        int randomRarityIndex = Random.Range(0,10);
+        int randomRarityIndex = Random.Range(0,rarityPicker.Count);
+        Debug.Log("limit: " + rarityPicker.Count);
+        Debug.Log("rarityPicker[limit]: " + rarityPicker[rarityPicker.Count - 1]);
         randomRarity = rarityPicker[randomRarityIndex];
-        Debug.Log("randomRarity = " + randomRarity);
         if(randomRarity == "common"){
             randomRarityIndex = Random.Range(0,common.Length);
             randomSprite = common[randomRarityIndex];
-            Debug.Log("randomSprite: " + randomSprite);
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
-            Debug.Log("gachaItem updated sprite: " + gachaItem.GetComponent<Image>().sprite);
         }
         else if(randomRarity == "uncommon"){
             randomRarityIndex = Random.Range(0,uncommon.Length);
             randomSprite = uncommon[randomRarityIndex];
-            Debug.Log("randomSprite: " + randomSprite);
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
-            Debug.Log("gachaItem updated sprite: " + gachaItem.GetComponent<Image>().sprite);
         }
         else{
             randomRarityIndex = Random.Range(0,rare.Length);
             randomSprite = rare[randomRarityIndex];
-            Debug.Log("randomSprite: " + randomSprite);
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
-            Debug.Log("gachaItem updated sprite: " + gachaItem.GetComponent<Image>().sprite);
         }
-        Debug.Log("contentSpawner: " + contentSpawner);
         contentSpawner.setInventoryObject(gachaItem);
         contentSpawner.createButton();
     }
