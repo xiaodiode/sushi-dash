@@ -10,8 +10,10 @@ public class GachaHandler : MonoBehaviour
     public ContentSpawner contentSpawner;
     private Sprite randomSprite;
     private Button button;
-    private int commonChance = 6; private int uncommonChance = 3; private int rareChance = 1;
+    int commonChance = 6; int uncommonChance = 3; int rareChance = 1;
     private List<string> rarityPicker = new List<string>();
+    private List<Sprite> inInventory = new List<Sprite>();
+    private bool addToInventory;
     private string randomRarity, imageName;
     // Start is called before the first frame update
     void Start()
@@ -27,9 +29,6 @@ public class GachaHandler : MonoBehaviour
             rarityPicker.Add("rare");
         }
 
-        for(int i=0; i<rarityPicker.Count; i++){
-            Debug.Log("rarityPicker[" + i + "]: " + rarityPicker[i]);
-        }
 
         if(gachaItem.CompareTag("sushi")){
             imageName = "Image_S";        
@@ -50,26 +49,43 @@ public class GachaHandler : MonoBehaviour
         
     }
     private void setInventory(){
+        addToInventory = false;
         int randomRarityIndex = Random.Range(0,rarityPicker.Count);
-        Debug.Log("limit: " + rarityPicker.Count);
-        Debug.Log("rarityPicker[limit]: " + rarityPicker[rarityPicker.Count - 1]);
         randomRarity = rarityPicker[randomRarityIndex];
         if(randomRarity == "common"){
             randomRarityIndex = Random.Range(0,common.Length);
             randomSprite = common[randomRarityIndex];
+            if(!inInventory.Contains(randomSprite)){
+                inInventory.Add(randomSprite);
+                addToInventory = true;
+            }
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
         else if(randomRarity == "uncommon"){
             randomRarityIndex = Random.Range(0,uncommon.Length);
             randomSprite = uncommon[randomRarityIndex];
+            if(!inInventory.Contains(randomSprite)){
+                inInventory.Add(randomSprite);
+                addToInventory = true;
+            }
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
         else{
             randomRarityIndex = Random.Range(0,rare.Length);
             randomSprite = rare[randomRarityIndex];
+            if(!inInventory.Contains(randomSprite)){
+                inInventory.Add(randomSprite);
+                addToInventory = true;
+            }
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
-        contentSpawner.setInventoryObject(gachaItem);
-        contentSpawner.createButton();
+        if(addToInventory){
+            contentSpawner.setInventoryObject(gachaItem);
+            contentSpawner.createButton();
+        }
+        else{
+            Debug.Log("did not add to inventory -- " + randomSprite);
+        }
+        
     }
 }

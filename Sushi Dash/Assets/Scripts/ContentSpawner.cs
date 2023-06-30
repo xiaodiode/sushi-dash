@@ -38,10 +38,7 @@ public class ContentSpawner : MonoBehaviour
         ready = true;
     }
     public void setInventoryObject(checkClick gachaItem){
-        Debug.Log("SETTING INVENTORY OBJECT gachaItem: " + gachaItem);
-        Debug.Log("inventoryObject: " + inventoryObject);
         inventoryObject = gachaItem;
-        Debug.Log("inventoryObject: " + inventoryObject);
     }
 
     public void createButton(){
