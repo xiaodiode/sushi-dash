@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ContentSpawner : MonoBehaviour
 {
-    public checkClick inventoryObject;
-    public Image sushi, background, foreground;
+    #pragma warning disable
+    private checkClick inventoryObject;
+    public bool ready;
+    private Image sushi, background, foreground;
     private string contentType;
 
     // Start is called before the first frame update
     void Start()
     {
+        ready = false;
         if(gameObject.CompareTag("sushi")){
             contentType = "sushi";
         }
@@ -28,12 +31,24 @@ public class ContentSpawner : MonoBehaviour
         
     }
 
+    public void setContent(Image newSushi, Image newBackground, Image newForeground){
+        sushi = newSushi;
+        background = newBackground;
+        foreground = newForeground;
+        ready = true;
+    }
+    public void setInventoryObject(checkClick gachaItem){
+        Debug.Log("SETTING INVENTORY OBJECT gachaItem: " + gachaItem);
+        Debug.Log("inventoryObject: " + inventoryObject);
+        inventoryObject = gachaItem;
+        Debug.Log("inventoryObject: " + inventoryObject);
+    }
+
     public void createButton(){
         checkClick newButton = Instantiate(inventoryObject, inventoryObject.transform.position, inventoryObject.transform.rotation);
-        Debug.Log("newbutton scale: " + newButton.transform.localScale);
-        Debug.Log("inventoryObject scale: " + inventoryObject.transform.localScale);
         
         newButton.transform.parent = transform;
+        
         newButton.GetComponent<RectTransform>().localScale = inventoryObject.GetComponent<RectTransform>().localScale;
         
 
@@ -47,4 +62,5 @@ public class ContentSpawner : MonoBehaviour
             newButton.setForeground(foreground);
         }
     }
+    #pragma warning restore
 }
