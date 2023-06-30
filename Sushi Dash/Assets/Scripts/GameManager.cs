@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     public CustomerSpawner customerSpawner;
     public StallManager[] stallManagers;
-    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas;
+    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
+                    wallpaperCanvas, returnCanvas;
     public Canvas backgroundCanvas;
-    private TextMeshProUGUI coinText;
-    private Button resume;
+    public Button resetEditTab;
+    private TextMeshProUGUI coinText, modeText;
+    private Button resumeButton;
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
     private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
@@ -21,25 +23,30 @@ public class GameManager : MonoBehaviour
     {
         customerSpawner.gameObject.SetActive(false);
         mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
+        returnCanvas = gameObject.transform.Find("Return Canvas").GetComponent<Canvas>();
 
         gameplayCanvas = gameObject.transform.Find("Gameplay Canvas").GetComponent<Canvas>();
+        modeText = gameplayCanvas.transform.Find("Mode Text").GetComponent<TextMeshProUGUI>();
         pauseCanvas = gameplayCanvas.transform.Find("Pause Canvas").GetComponent<Canvas>();
-        resume = pauseCanvas.transform.Find("Resume Button").GetComponent<Button>();
+        resumeButton = pauseCanvas.transform.Find("Resume Button").GetComponent<Button>();
         coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
         coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
 
-        //backgroundCanvas = gameObject.transform.Find("Background/Foreground").GetComponent<GameObject>();
+        wallpaperCanvas = gameObject.transform.Find("Wallpaper").GetComponent<Canvas>();
 
         editCanvas = gameObject.transform.Find("Edit Canvas").GetComponent<Canvas>();
+
+        gachaCanvas = gameObject.transform.Find("Gacha Canvas").GetComponent<Canvas>();
 
         gameMode = stop;
 
         gameObject.SetActive(true);
         editCanvas.gameObject.SetActive(true);
-        backgroundCanvas.gameObject.SetActive(true);
-        //mainMenuCanvas.gameObject.SetActive(true);
-        mainMenuCanvas.gameObject.SetActive(false);
+        gachaCanvas.gameObject.SetActive(false);
+        mainMenuCanvas.gameObject.SetActive(true);
+        wallpaperCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
+        returnCanvas.gameObject.SetActive(false);
 
         
     }
@@ -49,8 +56,10 @@ public class GameManager : MonoBehaviour
     {
         if(gameMode == initialize){
             player.transform.position = intialPlayerPosition;
+            modeText.text = "GAME MODE";
             coinText.text = player.playerCoins.ToString();
             gameplayCanvas.gameObject.SetActive(true);
+            editCanvas.gameObject.SetActive(false);
             pauseCanvas.gameObject.SetActive(false);
             mainMenuCanvas.gameObject.SetActive(false);
             customerSpawner.gameObject.SetActive(true);
@@ -71,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void pauseGameMode(){
         pauseCanvas.gameObject.SetActive(true);
-        resume.gameObject.SetActive(true);
+        resumeButton.gameObject.SetActive(true);
         gameMode = pause;
         Time.timeScale = 0;
     }
@@ -85,6 +94,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         gameMode = stop;
         mainMenuCanvas.gameObject.SetActive(true);
+        editCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
 
@@ -101,9 +111,33 @@ public class GameManager : MonoBehaviour
 
     public void gameOver(){
         pauseCanvas.gameObject.SetActive(true);
-        resume.gameObject.SetActive(false);
+        resumeButton.gameObject.SetActive(false);
         gameMode = pause;
         Time.timeScale = 0;
     }
+
+    public void editMode(){
+        modeText.text = "EDIT MODE";
+        mainMenuCanvas.gameObject.SetActive(false);
+        returnCanvas.gameObject.SetActive(true);
+
+    }
+
+    public void gachaMode(){
+        mainMenuCanvas.gameObject.SetActive(false);
+        gachaCanvas.gameObject.SetActive(true);
+        returnCanvas.gameObject.SetActive(true);
+
+    }
+
+    public void returnToMainMenu(){
+        mainMenuCanvas.gameObject.SetActive(true);
+        gachaCanvas.gameObject.SetActive(false);
+        resetEditTab.onClick.Invoke();
+        returnCanvas.gameObject.SetActive(false);
+
+    }
+
+    
 
 }

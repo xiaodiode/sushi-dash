@@ -62,22 +62,26 @@ public class GachaHandler : MonoBehaviour
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
         else if(randomRarity == "uncommon"){
-            randomRarityIndex = Random.Range(0,uncommon.Length);
-            randomSprite = uncommon[randomRarityIndex];
-            if(!inInventory.Contains(randomSprite)){
-                inInventory.Add(randomSprite);
-                addToInventory = true;
+            if(uncommon.Length!=0){
+                randomRarityIndex = Random.Range(0,uncommon.Length);
+                randomSprite = uncommon[randomRarityIndex];
+                if(!inInventory.Contains(randomSprite)){
+                    inInventory.Add(randomSprite);
+                    addToInventory = true;
+                }
+                gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
             }
-            gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
         else{
-            randomRarityIndex = Random.Range(0,rare.Length);
-            randomSprite = rare[randomRarityIndex];
-            if(!inInventory.Contains(randomSprite)){
-                inInventory.Add(randomSprite);
-                addToInventory = true;
+            if(rare.Length!=0){
+                randomRarityIndex = Random.Range(0,rare.Length);
+                randomSprite = rare[randomRarityIndex];
+                if(!inInventory.Contains(randomSprite)){
+                    inInventory.Add(randomSprite);
+                    addToInventory = true;
+                }
+                gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
             }
-            gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
         }
         if(addToInventory){
             contentSpawner.setInventoryObject(gachaItem);
