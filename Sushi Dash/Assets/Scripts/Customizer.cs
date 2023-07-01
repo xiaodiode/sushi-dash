@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class checkClick : MonoBehaviour
+public class Customizer : MonoBehaviour
 {
     private Image sushi, foreground, background;
     private Button button;

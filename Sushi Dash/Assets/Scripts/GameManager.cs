@@ -8,25 +8,34 @@ public class GameManager : MonoBehaviour
 {
     public PlayerController player;
     public CustomerSpawner customerSpawner;
+    public LevelSpawner levelSpawner;
     public StallManager[] stallManagers;
     private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
-                    wallpaperCanvas, returnCanvas;
+                    wallpaperCanvas, returnCanvas, levelCanvas;
     public Canvas backgroundCanvas;
     public Button resetEditTab;
     private TextMeshProUGUI coinText, modeText;
-    private Button resumeButton;
+    private Button resumeButton, returnButton;
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
+    private bool levelMode;
+    private bool endlessMode;
     private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
     // Start is called before the first frame update
     void Start()
     {
+        levelMode = false;
+        endlessMode = false; 
+        levelSpawner.gameObject.SetActive(true);
         customerSpawner.gameObject.SetActive(false);
         mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
+
         returnCanvas = gameObject.transform.Find("Return Canvas").GetComponent<Canvas>();
+        modeText = returnCanvas.transform.Find("Mode Text").GetComponent<TextMeshProUGUI>();
+        returnButton = returnCanvas.transform.Find("Return Button").GetComponent<Button>();
 
         gameplayCanvas = gameObject.transform.Find("Gameplay Canvas").GetComponent<Canvas>();
-        modeText = gameplayCanvas.transform.Find("Mode Text").GetComponent<TextMeshProUGUI>();
+        
         pauseCanvas = gameplayCanvas.transform.Find("Pause Canvas").GetComponent<Canvas>();
         resumeButton = pauseCanvas.transform.Find("Resume Button").GetComponent<Button>();
         coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
@@ -38,6 +47,8 @@ public class GameManager : MonoBehaviour
 
         gachaCanvas = gameObject.transform.Find("Gacha Canvas").GetComponent<Canvas>();
 
+        levelCanvas = gameObject.transform.Find("Level Canvas").GetComponent<Canvas>();
+
         gameMode = stop;
 
         gameObject.SetActive(true);
@@ -46,7 +57,7 @@ public class GameManager : MonoBehaviour
         mainMenuCanvas.gameObject.SetActive(true);
         wallpaperCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
-        returnCanvas.gameObject.SetActive(false);
+        returnCanvas.gameObject.SetActive(true);
 
         
     }
@@ -56,21 +67,26 @@ public class GameManager : MonoBehaviour
     {
         if(gameMode == initialize){
             player.transform.position = intialPlayerPosition;
-            modeText.text = "GAME MODE";
+            
             coinText.text = player.playerCoins.ToString();
+            levelCanvas.gameObject.SetActive(false);
             gameplayCanvas.gameObject.SetActive(true);
             editCanvas.gameObject.SetActive(false);
             pauseCanvas.gameObject.SetActive(false);
             mainMenuCanvas.gameObject.SetActive(false);
             customerSpawner.gameObject.SetActive(true);
+            returnButton.gameObject.SetActive(false);
+
+            if(levelMode){
+                modeText.text = "Level " + player.selectedLevel.ToString();
+            }
             gameMode = proceed;
+
         }
         if(gameMode == proceed){
             coinText.text = player.playerCoins.ToString();
         }
-        else{
-            
-        }
+        // Debug.Log("gameMode: " + gameMode + " stop = 0; initialize = 1; proceed = 2; pause = 3;");
     }
     public void setGameMode(){
         gameMode = initialize;
@@ -93,6 +109,7 @@ public class GameManager : MonoBehaviour
     public void quitGameMode(){
         Time.timeScale = 0;
         gameMode = stop;
+        returnButton.gameObject.SetActive(true);
         mainMenuCanvas.gameObject.SetActive(true);
         editCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
@@ -119,22 +136,41 @@ public class GameManager : MonoBehaviour
     public void editMode(){
         modeText.text = "EDIT MODE";
         mainMenuCanvas.gameObject.SetActive(false);
-        returnCanvas.gameObject.SetActive(true);
+        levelCanvas.gameObject.SetActive(false);
 
     }
 
     public void gachaMode(){
+        modeText.text = "Gacha";
         mainMenuCanvas.gameObject.SetActive(false);
+        levelCanvas.gameObject.SetActive(false);
         gachaCanvas.gameObject.SetActive(true);
-        returnCanvas.gameObject.SetActive(true);
 
     }
 
     public void returnToMainMenu(){
+        returnButton.gameObject.SetActive(true);
         mainMenuCanvas.gameObject.SetActive(true);
         gachaCanvas.gameObject.SetActive(false);
+        levelCanvas.gameObject.SetActive(false);
         resetEditTab.onClick.Invoke();
-        returnCanvas.gameObject.SetActive(false);
+        levelMode = false;
+        endlessMode = false;
+
+    }
+
+    public void enableLevelMode(){
+        levelMode = true;
+        modeText.text = "Level Selection";
+        mainMenuCanvas.gameObject.SetActive(false);
+        levelCanvas.gameObject.SetActive(true);
+    }
+
+    public void enableEndlessMode(){
+        endlessMode = true;
+    }
+
+    public void levelSelected(){
 
     }
 

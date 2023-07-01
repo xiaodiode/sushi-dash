@@ -16,7 +16,8 @@ public class PlayerController : MonoBehaviour
     //player attributes
     private bool hasSushi;
     private SushiMovement heldSushi, chosenSushi, thrownSushi;
-    public int playerLevel=1;
+    public int selectedLevel = 0;
+    public int levelsUnlocked = 1;
     public int playerCoins=0;
 
     public StallManager[] tables;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         thrownSushi = null;
         tableX = 6;
-        yLimit = (playerLevel*(-3))- 3;
+        yLimit = -6;
 
         
         chosenSushi = null;

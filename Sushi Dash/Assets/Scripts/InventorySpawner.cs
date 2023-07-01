@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ContentSpawner : MonoBehaviour
+public class InventorySpawner : MonoBehaviour
 {
     #pragma warning disable
-    private checkClick inventoryObject;
+    private Customizer inventoryObject;
     public bool ready;
     private Image sushi, background, foreground;
     private string contentType;
@@ -37,12 +37,12 @@ public class ContentSpawner : MonoBehaviour
         foreground = newForeground;
         ready = true;
     }
-    public void setInventoryObject(checkClick gachaItem){
+    public void setInventoryObject(Customizer gachaItem){
         inventoryObject = gachaItem;
     }
 
     public void createButton(){
-        checkClick newButton = Instantiate(inventoryObject, inventoryObject.transform.position, inventoryObject.transform.rotation);
+        Customizer newButton = Instantiate(inventoryObject, inventoryObject.transform.position, inventoryObject.transform.rotation);
         
         newButton.transform.parent = transform;
         

@@ -115,6 +115,10 @@ public class StallManager : MonoBehaviour
             
             checkEmptyPlates();
         }
+        else if(gameManager.gameMode == gameManager.stop){
+            stallProgress.value = 0;
+            progressUpdating = 0;
+        }
         
         
     }

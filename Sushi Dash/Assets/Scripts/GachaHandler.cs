@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class GachaHandler : MonoBehaviour
 {
     public Sprite[] common, uncommon, rare;
-    public checkClick gachaItem;
-    public ContentSpawner contentSpawner;
+    public Customizer gachaItem;
+    public InventorySpawner contentSpawner;
     private Sprite randomSprite;
     private Button button;
     int commonChance = 6; int uncommonChance = 3; int rareChance = 1;

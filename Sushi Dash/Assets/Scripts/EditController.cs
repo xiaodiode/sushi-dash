@@ -7,7 +7,7 @@ using TMPro;
 public class EditController : MonoBehaviour
 {
     public Image sushi, background, foreground;
-    public ContentSpawner[] contentSpawners;
+    public InventorySpawner[] contentSpawners;
     public GameObject editCanvas;
     public GameObject sushiScroll, backgroundScroll, foregroundScroll;
     private Button[] sushiInventory, backgroundInventory, foregroundInventory;
