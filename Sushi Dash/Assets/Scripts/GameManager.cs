@@ -6,10 +6,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public Timer timer;
     public PlayerController player;
     public CustomerSpawner customerSpawner;
     public LevelSpawner levelSpawner;
     public StallManager[] stallManagers;
+    
     private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
                     wallpaperCanvas, returnCanvas, levelCanvas;
     public Canvas backgroundCanvas;
@@ -76,15 +78,17 @@ public class GameManager : MonoBehaviour
             mainMenuCanvas.gameObject.SetActive(false);
             customerSpawner.gameObject.SetActive(true);
             returnButton.gameObject.SetActive(false);
-
+            
             if(levelMode){
                 modeText.text = "Level " + player.selectedLevel.ToString();
             }
+            timer.startTimer();
             gameMode = proceed;
-
+            
         }
         if(gameMode == proceed){
             coinText.text = player.playerCoins.ToString();
+            
         }
         // Debug.Log("gameMode: " + gameMode + " stop = 0; initialize = 1; proceed = 2; pause = 3;");
     }
@@ -98,15 +102,18 @@ public class GameManager : MonoBehaviour
         pauseCanvas.gameObject.SetActive(true);
         resumeButton.gameObject.SetActive(true);
         gameMode = pause;
+        timer.pauseTimer();
         Time.timeScale = 0;
     }
     public void resumeGameMode(){
         pauseCanvas.gameObject.SetActive(false);
         gameMode = proceed;
+        timer.resumeTimer();
         Time.timeScale = 1;
     }
 
     public void quitGameMode(){
+        timer.resetTimer();
         Time.timeScale = 0;
         gameMode = stop;
         returnButton.gameObject.SetActive(true);
