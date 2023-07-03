@@ -67,6 +67,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timer.levelClear){
+            gameOver();
+        }
         if(gameMode == initialize){
             player.transform.position = intialPlayerPosition;
             
@@ -81,8 +84,13 @@ public class GameManager : MonoBehaviour
             
             if(levelMode){
                 modeText.text = "Level " + player.selectedLevel.ToString();
+                timer.startCountDown();
             }
-            timer.startTimer();
+            else{
+                modeText.text = "Endless Mode";
+                timer.startCountUp();
+            }
+            
             gameMode = proceed;
             
         }
@@ -134,6 +142,10 @@ public class GameManager : MonoBehaviour
     }
 
     public void gameOver(){
+        if(timer.levelClear){
+            levelSpawner.levelButtons[player.levelsUnlocked].setUnlocked(true);
+            player.levelsUnlocked+=1;
+        }
         pauseCanvas.gameObject.SetActive(true);
         resumeButton.gameObject.SetActive(false);
         gameMode = pause;

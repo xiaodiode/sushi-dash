@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool hasSushi;
     private SushiMovement heldSushi, chosenSushi, thrownSushi;
     public int selectedLevel = 0;
-    public int levelsUnlocked = 1;
+    public int levelsUnlocked = 10;
     public int playerCoins=0;
 
     public StallManager[] tables;
@@ -205,12 +205,5 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = intialPlayerPosition;
         playerCoins = 0;
         hasSushi = false;
-        // if(hasSushi){
-        //     Destroy(heldSushi);
-        //     hasSushi = false;
-        // }
-        // if(thrownSushi != null){
-        //     Destroy(thrownSushi);
-        // }
     }
 }

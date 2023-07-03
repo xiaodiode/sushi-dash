@@ -7,6 +7,7 @@ public class LevelSpawner : MonoBehaviour
     public PlayerController player;
     public GameManager gameManager;
     public LevelButton levelButton;
+    public List<LevelButton> levelButtons = new List<LevelButton>();
     public bool ready = false;
     private int maxLevels = 100;
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class LevelSpawner : MonoBehaviour
             newButton.setLevel(i);
             newButton.setFirstClear(false);
             newButton.setGameManager(gameManager);
+            levelButtons.Add(newButton);
             
 
             if(i >= 1 && i <=10){
