@@ -142,10 +142,6 @@ public class GameManager : MonoBehaviour
     }
 
     public void gameOver(){
-        if(timer.levelClear){
-            levelSpawner.levelButtons[player.levelsUnlocked].setUnlocked(true);
-            player.levelsUnlocked+=1;
-        }
         pauseCanvas.gameObject.SetActive(true);
         resumeButton.gameObject.SetActive(false);
         gameMode = pause;
@@ -183,6 +179,12 @@ public class GameManager : MonoBehaviour
         modeText.text = "Level Selection";
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(true);
+        if(timer.levelClear){
+            Debug.Log("levelSpawner size: " + levelSpawner.levelButtons.Count);
+            Debug.Log("player.levelUnlocked: " + player.levelsUnlocked);
+            levelSpawner.levelButtons[player.levelsUnlocked-1].setUnlocked(true);
+        }
+        timer.levelClear = false;
     }
 
     public void enableEndlessMode(){

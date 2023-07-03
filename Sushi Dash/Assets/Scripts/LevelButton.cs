@@ -10,10 +10,10 @@ public class LevelButton : MonoBehaviour
     private GameManager gameManager;
     private Button button;
     private TextMeshProUGUI levelText;
-    private Image locked;
     private int level;
     private bool first_clear, unlocked;
     private float lockedAlpha = 0.5f;
+    private float unlockedAlpha = 1f;
 
     Color tempColor;
     // Start is called before the first frame update
@@ -50,14 +50,15 @@ public class LevelButton : MonoBehaviour
     }
     public void setUnlocked(bool boolean){
         tempColor = button.GetComponent<Image>().color;
-        tempColor.a = lockedAlpha;
         
-        Debug.Log("locked object: " + locked);
         unlocked = boolean;
         if(boolean){
+            tempColor.a = unlockedAlpha;
             button.interactable = true;
+            button.GetComponent<Image>().color = tempColor;
         }
         else{
+            tempColor.a = lockedAlpha;
             button.interactable = false;
             button.GetComponent<Image>().color = tempColor;
         }

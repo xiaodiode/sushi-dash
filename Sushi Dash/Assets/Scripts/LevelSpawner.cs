@@ -20,18 +20,17 @@ public class LevelSpawner : MonoBehaviour
             newButton.setLevel(i);
             newButton.setFirstClear(false);
             newButton.setGameManager(gameManager);
-            levelButtons.Add(newButton);
             
-
-            if(i >= 1 && i <=10){
+            if(i==1){
                 newButton.setUnlocked(true);
             }
             else{
                 newButton.setUnlocked(false);
             }
-            
             newButton.setPlayer(player);
+            levelButtons.Add(newButton);
         }
+        
         ready = true;
     }
 

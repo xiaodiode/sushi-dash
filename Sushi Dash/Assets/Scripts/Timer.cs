@@ -6,12 +6,13 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public PlayerController player;
     private int hours, minutes, seconds;
     private int secondsStarted, secondsPassed;
     private TextMeshProUGUI time;
     private string leadingZeroH, leadingZeroM, leadingZeroS;
     private string timeText = "00:00:00";
-    private int totalSeconds = 30;
+    private int totalSeconds = 5;
     bool countUp = false; bool countDown = false;
     public bool levelClear;
     int wasCountingUp = -1;
@@ -71,8 +72,10 @@ public class Timer : MonoBehaviour
                 leadingZeroS = ":0";
             }
             if(secondsPassed == 0){
-                pauseTimer();
                 levelClear = true;
+                if(player.selectedLevel == player.levelsUnlocked)
+                    player.levelsUnlocked+=1;
+                pauseTimer();
             }
             timeText = leadingZeroM + minutes.ToString() + leadingZeroS + seconds.ToString();
             
