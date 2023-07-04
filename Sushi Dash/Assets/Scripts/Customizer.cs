@@ -37,9 +37,7 @@ public class Customizer : MonoBehaviour
     private void changeBackground(){
         Transform backgroundButton = button.transform.Find("Image_B").GetComponent<Transform>();
         Image newBackground = backgroundButton.gameObject.GetComponent<Image>();
-        Debug.Log("original background.sprite: " + background.sprite);
         background.sprite = newBackground.sprite;
-        Debug.Log("new background.sprite: " + background.sprite);
     }
     private void changeForeground(){
         Transform foregroundButton = button.transform.Find("Image_F").GetComponent<Transform>();

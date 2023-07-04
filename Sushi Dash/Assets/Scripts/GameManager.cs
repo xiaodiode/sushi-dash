@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public StallManager[] stallManagers;
     
     private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
-                    wallpaperCanvas, returnCanvas, levelCanvas;
+                    wallpaperCanvas, returnCanvas, levelCanvas, sushiBuffCanvas;
     public Canvas backgroundCanvas;
     public Button resetEditTab;
     private TextMeshProUGUI coinText, modeText;
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
         wallpaperCanvas = gameObject.transform.Find("Wallpaper").GetComponent<Canvas>();
 
         editCanvas = gameObject.transform.Find("Edit Canvas").GetComponent<Canvas>();
+        sushiBuffCanvas = gameObject.transform.Find("SushiBuff Canvas").GetComponent<Canvas>();
 
         gachaCanvas = gameObject.transform.Find("Gacha Canvas").GetComponent<Canvas>();
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         gameMode = stop;
 
         gameObject.SetActive(true);
+        sushiBuffCanvas.gameObject.SetActive(true);
         editCanvas.gameObject.SetActive(true);
         gachaCanvas.gameObject.SetActive(false);
         mainMenuCanvas.gameObject.SetActive(true);

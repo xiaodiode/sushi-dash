@@ -21,7 +21,7 @@ public class LevelSpawner : MonoBehaviour
             newButton.setFirstClear(false);
             newButton.setGameManager(gameManager);
             
-            if(i==1){
+            if(i<=player.levelsUnlocked){
                 newButton.setUnlocked(true);
             }
             else{

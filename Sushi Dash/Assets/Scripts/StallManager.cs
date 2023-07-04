@@ -346,8 +346,13 @@ public class StallManager : MonoBehaviour
     }
 
     public void sushiButtonPressed(){
-        if(upgradeArrow.activeSelf){
-            upgradeAction = true;
+        if(gameManager.gameMode == gameManager.stop){
+           if(upgradeArrow.activeSelf){
+                upgradeAction = true;
+            } 
+        }
+        else{
+            
         }
         
     }
