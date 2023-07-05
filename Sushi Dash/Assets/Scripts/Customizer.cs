@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Customizer : MonoBehaviour
 {
+    private InventorySpawner inventorySpawner;
     private Image sushi, foreground, background;
     private Button button;
     // Start is called before the first frame update
@@ -33,6 +34,7 @@ public class Customizer : MonoBehaviour
     private void changeSushi(){
         Transform sushiButton = button.transform.Find("Image_S").GetComponent<Transform>();
         Image newSushi = sushiButton.gameObject.GetComponent<Image>();
+        inventorySpawner.selectedSushi = newSushi;
     }
     private void changeBackground(){
         Transform backgroundButton = button.transform.Find("Image_B").GetComponent<Transform>();
@@ -53,5 +55,8 @@ public class Customizer : MonoBehaviour
     }
     public void setForeground(Image newForeground){
         foreground = newForeground;
+    }
+    public void setInventorySpawner(InventorySpawner newInventorySpawner){
+        inventorySpawner = newInventorySpawner;
     }
 }

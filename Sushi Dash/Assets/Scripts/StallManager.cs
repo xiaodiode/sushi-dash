@@ -8,6 +8,7 @@ using System;
 public class StallManager : MonoBehaviour
 {
     public Image sushiImage;
+    public Image newSushiImage;
     public Button sushiButton;
     private Sprite sushiSprite;
     public SushiConversions sushiConversions;
@@ -43,6 +44,7 @@ public class StallManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        newSushiImage = null;
         //wait for dictionary to completely fill before setting private variables
         StartCoroutine(WaitForDictionary());
         //mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
@@ -52,7 +54,7 @@ public class StallManager : MonoBehaviour
         outButton = sushiButton.transform.Find("OuterButton").GetComponent<SpriteRenderer>();
         inButton = outButton.transform.Find("InnerButton").GetComponent<SpriteRenderer>();
 
-        enableUI(false);
+        enableUI(true);
         upgradeAction = false;
 
         int tableTop = tableNum*tableYOffset;
@@ -135,6 +137,7 @@ public class StallManager : MonoBehaviour
         sushiSprite = sushiImage.sprite;
         sushiTile = sushiConversions.getSushiTile(sushiSprite);
         sushiObject = sushiConversions.getSushiObject(sushiSprite);
+        Debug.Log("sushiSprite: " + sushiSprite + " sushiTile: " + sushiTile + " sushiObject: " + sushiObject);
     }
 
     private void enableUI(bool enable){
@@ -352,7 +355,10 @@ public class StallManager : MonoBehaviour
             } 
         }
         else{
-            
+            if(newSushiImage != null){
+                sushiImage.sprite = newSushiImage.sprite;
+                StartCoroutine(WaitForDictionary());
+            }
         }
         
     }

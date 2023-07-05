@@ -6,6 +6,8 @@ public class InventorySpawner : MonoBehaviour
 {
     #pragma warning disable
     private Customizer inventoryObject;
+    public StallManager[] stallManagers;
+    public Image selectedSushi;
     public bool ready;
     private Image sushi, background, foreground;
     private string contentType;
@@ -13,6 +15,7 @@ public class InventorySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selectedSushi = null;
         ready = false;
         if(gameObject.CompareTag("sushi")){
             contentType = "sushi";
@@ -29,6 +32,15 @@ public class InventorySpawner : MonoBehaviour
     void Update()
     {
         
+        if(contentType == "sushi" && selectedSushi!= null){
+            // Debug.Log("selectedSushi.sprite: " + selectedSushi.sprite);
+            for(int i=0; i<stallManagers.Length; i++){
+                stallManagers[i].newSushiImage = selectedSushi;
+            }
+        }
+        else{
+            selectedSushi = null;
+        }
     }
 
     public void setContent(Image newSushi, Image newBackground, Image newForeground){
@@ -51,6 +63,7 @@ public class InventorySpawner : MonoBehaviour
 
         if(contentType == "sushi"){
             newButton.setSushi(sushi);
+            newButton.setInventorySpawner(this);
         }
         else if(contentType == "background"){
             newButton.setBackground(background);
