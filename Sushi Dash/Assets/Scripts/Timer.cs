@@ -6,6 +6,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public GameManager gameManager;
     public PlayerController player;
     private int hours, minutes, seconds;
     private int secondsStarted, secondsPassed;
@@ -75,7 +76,8 @@ public class Timer : MonoBehaviour
                 levelClear = true;
                 if(player.selectedLevel == player.levelsUnlocked)
                     player.levelsUnlocked+=1;
-                pauseTimer();
+                gameManager.gameOver();
+                resetTimer();
             }
             timeText = leadingZeroM + minutes.ToString() + leadingZeroS + seconds.ToString();
             

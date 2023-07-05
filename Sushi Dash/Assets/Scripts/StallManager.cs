@@ -52,7 +52,7 @@ public class StallManager : MonoBehaviour
         outButton = sushiButton.transform.Find("OuterButton").GetComponent<SpriteRenderer>();
         inButton = outButton.transform.Find("InnerButton").GetComponent<SpriteRenderer>();
 
-        enableUI(true);
+        enableUI(false);
         upgradeAction = false;
 
         int tableTop = tableNum*tableYOffset;
@@ -346,7 +346,7 @@ public class StallManager : MonoBehaviour
     }
 
     public void sushiButtonPressed(){
-        if(gameManager.gameMode == gameManager.stop){
+        if(gameManager.gameMode != gameManager.stop){
            if(upgradeArrow.activeSelf){
                 upgradeAction = true;
             } 

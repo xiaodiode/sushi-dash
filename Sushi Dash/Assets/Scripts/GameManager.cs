@@ -63,15 +63,13 @@ public class GameManager : MonoBehaviour
         gameplayCanvas.gameObject.SetActive(false);
         returnCanvas.gameObject.SetActive(true);
 
+
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer.levelClear){
-            gameOver();
-        }
         if(gameMode == initialize){
             player.transform.position = intialPlayerPosition;
             
@@ -88,7 +86,7 @@ public class GameManager : MonoBehaviour
                 modeText.text = "Level " + player.selectedLevel.ToString();
                 timer.startCountDown();
             }
-            else{
+            else if(endlessMode){
                 modeText.text = "Endless Mode";
                 timer.startCountUp();
             }
@@ -100,7 +98,7 @@ public class GameManager : MonoBehaviour
             coinText.text = player.playerCoins.ToString();
             
         }
-        // Debug.Log("gameMode: " + gameMode + " stop = 0; initialize = 1; proceed = 2; pause = 3;");
+        //  Debug.Log("gameMode: " + gameMode + " stop = 0; initialize = 1; proceed = 2; pause = 3;");
     }
     public void setGameMode(){
         gameMode = initialize;
@@ -124,7 +122,10 @@ public class GameManager : MonoBehaviour
 
     public void quitGameMode(){
         timer.resetTimer();
+        Debug.Log("ENTERED QUIT MODE");
         Time.timeScale = 0;
+        levelMode = false;
+        endlessMode = false;
         gameMode = stop;
         returnButton.gameObject.SetActive(true);
         mainMenuCanvas.gameObject.SetActive(true);
@@ -166,6 +167,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void returnToMainMenu(){
+        gameMode = stop;
         returnButton.gameObject.SetActive(true);
         mainMenuCanvas.gameObject.SetActive(true);
         gachaCanvas.gameObject.SetActive(false);
@@ -191,6 +193,7 @@ public class GameManager : MonoBehaviour
 
     public void enableEndlessMode(){
         endlessMode = true;
+        setGameMode();
     }
 
     public void levelSelected(){
