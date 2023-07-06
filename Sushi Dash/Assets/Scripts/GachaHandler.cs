@@ -64,7 +64,7 @@ public class GachaHandler : MonoBehaviour
             if(gachaItem.CompareTag("sushi")){
                 SushiBuff sushiBuff = gachaItem.transform.GetComponent<SushiBuff>();
                 string sushiName = sushiConversions.getSushiName(randomSprite);
-                Debug.Log("sushiName: " + sushiName);
+                // Debug.Log("sushiName: " + sushiName);
                 sushiBuff.setSushiName(sushiName);
             }
         }

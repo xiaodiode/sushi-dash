@@ -6,6 +6,7 @@ using TMPro;
 
 public class EditController : MonoBehaviour
 {
+    public TextMeshProUGUI sushiBuffText;
     public Image sushi, background, foreground;
     public InventorySpawner[] contentSpawners;
     public GameObject editCanvas;
@@ -49,6 +50,7 @@ public class EditController : MonoBehaviour
         sushiScroll.SetActive(true);
         backgroundScroll.SetActive(false);
         foregroundScroll.SetActive(false);
+        sushiBuffText.text = "";
     }
 
     public void enableBackgroundScroll(){

@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 55902773}
   - component: {fileID: 55902772}
   m_Layer: 5
-  m_Name: SushiImage3
+  m_Name: SushiImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -558,6 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6592acfd11cd24aa7ba27ea554c75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiConversions: {fileID: 0}
   common:
   - {fileID: 7794169282846594475, guid: 48d61fb12c150844fbdf2e52254dea61, type: 3}
   - {fileID: -8052923422562369831, guid: 6d1c5804579de8a42a8edde929c010a4, type: 3}
@@ -2321,6 +2322,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1875979596}
     - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: inventorySpawner
+      value: 
+      objectReference: {fileID: 424005528}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: sushiConversions
       value: 
       objectReference: {fileID: 1661490543}
@@ -3775,6 +3780,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9441afc8e7658244aabccc9ddd60398d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiBuffText: {fileID: 1005518585}
+  sushiName: 
+  sushiBuff: 
+  sushiLevel: 0
+  stallManagers:
+  - {fileID: 2043058286}
+  - {fileID: 2134738662}
+  - {fileID: 156029079}
+  selectedSushi: {fileID: 0}
   ready: 0
 --- !u!1 &451672636
 GameObject:
@@ -4382,6 +4396,10 @@ PrefabInstance:
       propertyPath: customerSpawner
       value: 
       objectReference: {fileID: 1875979596}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: inventorySpawner
+      value: 
+      objectReference: {fileID: 424005528}
     - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: sushiConversions
       value: 
@@ -6051,7 +6069,7 @@ GameObject:
   - component: {fileID: 741272393}
   - component: {fileID: 741272392}
   m_Layer: 5
-  m_Name: SushiImage2
+  m_Name: SushiImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6392,6 +6410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9441afc8e7658244aabccc9ddd60398d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiBuffText: {fileID: 0}
+  sushiName: 
+  sushiBuff: 
+  sushiLevel: 0
+  stallManagers:
+  - {fileID: 2043058286}
+  - {fileID: 2134738662}
+  - {fileID: 156029079}
+  selectedSushi: {fileID: 0}
   ready: 0
 --- !u!1 &881424667
 GameObject:
@@ -7145,7 +7172,7 @@ GameObject:
   - component: {fileID: 1003480049}
   - component: {fileID: 1003480048}
   m_Layer: 5
-  m_Name: SushiImage1
+  m_Name: SushiImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7530,6 +7557,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9441afc8e7658244aabccc9ddd60398d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiBuffText: {fileID: 1005518585}
+  sushiName: 
+  sushiBuff: 
+  sushiLevel: 0
+  stallManagers: []
+  selectedSushi: {fileID: 0}
   ready: 0
 --- !u!114 &1008326718
 MonoBehaviour:
@@ -7692,6 +7725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198f358efd0b2d545a37ed82a0f60963, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inEditMode: 0
   timer: {fileID: 1891037306}
   player: {fileID: 451672641}
   customerSpawner: {fileID: 1875979596}
@@ -8566,6 +8600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6592acfd11cd24aa7ba27ea554c75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiConversions: {fileID: 0}
   common:
   - {fileID: 1996320605784428448, guid: 927bd89706416c748828afb80c3c6a29, type: 3}
   - {fileID: -2395235143007456107, guid: a21485a2c464d5f40b63f1e4ec9f43b0, type: 3}
@@ -8897,6 +8932,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9441afc8e7658244aabccc9ddd60398d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiBuffText: {fileID: 0}
+  sushiName: 
+  sushiBuff: 
+  sushiLevel: 0
+  stallManagers:
+  - {fileID: 2043058286}
+  - {fileID: 2134738662}
+  - {fileID: 156029079}
+  selectedSushi: {fileID: 0}
   ready: 0
 --- !u!1 &1268423461
 GameObject:
@@ -11230,6 +11274,10 @@ MonoBehaviour:
   - {fileID: 4445549704473147552, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
   - {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
   - {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+  sushiNames:
+  - Egg Nigiri
+  - Salmon Nigiri
+  - Tuna Nigiri
   dictionaryReady: 0
 --- !u!4 &1661490544
 Transform:
@@ -11864,8 +11912,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1020290755}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: setGameMode
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: enableEndlessMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12488,6 +12536,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1875979596}
     - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
+      propertyPath: inventorySpawner
+      value: 
+      objectReference: {fileID: 424005528}
+    - target: {fileID: 1544175537262368853, guid: e8530a7d8665f314e820c453d5694d49, type: 3}
       propertyPath: sushiConversions
       value: 
       objectReference: {fileID: 1661490543}
@@ -12705,6 +12757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170022fc52434b94d873ac4e814ddca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1020290755}
   player: {fileID: 451672641}
   levelClear: 0
 --- !u!114 &1891037307
@@ -13104,6 +13157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6592acfd11cd24aa7ba27ea554c75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiConversions: {fileID: 1661490543}
   common:
   - {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
   - {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}

@@ -8,8 +8,8 @@ public class SushiBuff : MonoBehaviour
 {
     private Button button;
     public string sushiName;
-    private int level;
-    private string rarity, buffDescription;
+    public int level;
+    public string rarity, buffDescription;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +18,13 @@ public class SushiBuff : MonoBehaviour
         buffDescription = "Skill: ";
 
         switch(sushiName){
-            case "salmon":
+            case "Salmon Nigiri":
                 salmonBuff();
                 break;
-            case "tuna":
+            case "Tuna Nigiri":
                 tunaBuff();
                 break;
-            case "egg":
+            case "Egg Nigiri":
                 eggBuff();
                 break;
         }
