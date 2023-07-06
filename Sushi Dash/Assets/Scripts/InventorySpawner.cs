@@ -7,7 +7,7 @@ public class InventorySpawner : MonoBehaviour
 {
     #pragma warning disable
     public TextMeshProUGUI sushiBuffText;
-    public string sushiName, sushiBuff;
+    public string sushiName, sushiBuff, sushiRarity;
     public int sushiLevel;
     private Customizer inventoryObject;
     public StallManager[] stallManagers;
@@ -41,7 +41,8 @@ public class InventorySpawner : MonoBehaviour
             for(int i=0; i<stallManagers.Length; i++){
                 stallManagers[i].newSushiImage = selectedSushi;
             }
-            sushiBuffText.text = sushiName + "\n" ;
+            sushiBuffText.text = sushiName + "\nLevel: " + (sushiLevel+1).ToString() + "\nRarity: " + sushiRarity
+                + "\n\nSushi Buff: " + sushiBuff;
             selectedSushi = null;
         }
         else if(contentType != "sushi"){

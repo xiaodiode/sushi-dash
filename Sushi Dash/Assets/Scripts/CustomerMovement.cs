@@ -77,7 +77,7 @@ public class CustomerMovement : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision){
         if(customerType==1){
-            Debug.Log("collision.gameObject.GetComponent<SpriteRenderer>(): " + collision.gameObject.GetComponent<SpriteRenderer>().sprite + " sushi trigger: " + sushi1.getSushiTrigger());
+            // Debug.Log("collision.gameObject.GetComponent<SpriteRenderer>(): " + collision.gameObject.GetComponent<SpriteRenderer>().sprite + " sushi trigger: " + sushi1.getSushiTrigger());
             if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi1.getSushiTrigger()) && !checkmark1.isEnabled()){
                 checkmark1.enable(true);
                 speedRate = -speedRate;

@@ -39,6 +39,7 @@ public class Customizer : MonoBehaviour
         inventorySpawner.sushiName = sushiBuff.sushiName;
         inventorySpawner.sushiLevel = sushiBuff.level;
         inventorySpawner.sushiBuff = sushiBuff.buffDescription;
+        inventorySpawner.sushiRarity = sushiBuff.rarity;
     }
     private void changeBackground(){
         Transform backgroundButton = button.transform.Find("Image_B").GetComponent<Transform>();

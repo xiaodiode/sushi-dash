@@ -10,11 +10,12 @@ public class SushiBuff : MonoBehaviour
     public string sushiName;
     public int level;
     public string rarity, buffDescription;
+    public float baseBuff, buffRate;
     // Start is called before the first frame update
     void Start()
     {
         button = gameObject.GetComponent<Button>();
-        level = 1;
+        level = 0;
         buffDescription = "Skill: ";
 
         switch(sushiName){
@@ -41,13 +42,17 @@ public class SushiBuff : MonoBehaviour
     }
 
     private void salmonBuff(){
-        rarity = "common";
+        baseBuff = .01f;
+        buffRate = .01f;
+        rarity = "Common";
+        buffDescription = "Speed up the sushi-making progress by <color=red>" + (100*(baseBuff + (buffRate*level))).ToString() + 
+        "%</color> (+" + (100*buffRate).ToString() + "% / level)";
     }
     private void tunaBuff(){
-        rarity = "common";
+        rarity = "Common";
     }
     private void eggBuff(){
-        rarity = "common";
+        rarity = "Common";
     }
 
     public void setSushiDescription(){
