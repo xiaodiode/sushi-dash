@@ -10790,6 +10790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7142f8649a81234e935f6d856d93784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiBuffText: {fileID: 1005518585}
   sushi: {fileID: 0}
   background: {fileID: 1470601266}
   foreground: {fileID: 265182487}
