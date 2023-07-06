@@ -7,6 +7,7 @@ using System;
 
 public class StallManager : MonoBehaviour
 {
+    public InventorySpawner inventorySpawner;
     public Image sushiImage;
     public Image newSushiImage;
     public Button sushiButton;
@@ -54,7 +55,7 @@ public class StallManager : MonoBehaviour
         outButton = sushiButton.transform.Find("OuterButton").GetComponent<SpriteRenderer>();
         inButton = outButton.transform.Find("InnerButton").GetComponent<SpriteRenderer>();
 
-        enableUI(true);
+        enableUI(false);
         upgradeAction = false;
 
         int tableTop = tableNum*tableYOffset;
@@ -72,6 +73,9 @@ public class StallManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameManager.inEditMode == true){
+            enableUI(true);
+        }
         if(gameManager.gameMode == gameManager.proceed){
             if(player.playerCoins >= 50 && tableLevel != 3){
                 enableUI(true);
@@ -169,7 +173,10 @@ public class StallManager : MonoBehaviour
             color.a = lighten;
             sushiImage.color = color;
             
-            upgradeArrow.SetActive(true);
+            if(!gameManager.inEditMode)
+                upgradeArrow.SetActive(true);
+            else   
+                upgradeArrow.SetActive(false);
         }
     }
 
@@ -358,6 +365,9 @@ public class StallManager : MonoBehaviour
             if(newSushiImage != null){
                 sushiImage.sprite = newSushiImage.sprite;
                 StartCoroutine(WaitForDictionary());
+                for(int i=0; i<inventorySpawner.stallManagers.Length; i++){
+                    inventorySpawner.stallManagers[i].newSushiImage = null;
+                }
             }
         }
         

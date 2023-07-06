@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool inEditMode;
     public Timer timer;
     public PlayerController player;
     public CustomerSpawner customerSpawner;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        inEditMode = false;
         levelMode = false;
         endlessMode = false; 
         levelSpawner.gameObject.SetActive(true);
@@ -153,6 +155,7 @@ public class GameManager : MonoBehaviour
 
     public void editMode(){
         modeText.text = "EDIT MODE";
+        inEditMode = true;
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(false);
 
@@ -167,6 +170,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void returnToMainMenu(){
+        inEditMode = false;
         gameMode = stop;
         returnButton.gameObject.SetActive(true);
         mainMenuCanvas.gameObject.SetActive(true);

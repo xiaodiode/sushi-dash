@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GachaHandler : MonoBehaviour
 {
+    public SushiConversions sushiConversions;
     public Sprite[] common, uncommon, rare;
     public Customizer gachaItem;
     public InventorySpawner contentSpawner;
@@ -60,6 +61,12 @@ public class GachaHandler : MonoBehaviour
                 addToInventory = true;
             }
             gachaItem.transform.Find(imageName).GetComponent<Image>().sprite = randomSprite;
+            if(gachaItem.CompareTag("sushi")){
+                SushiBuff sushiBuff = gachaItem.transform.GetComponent<SushiBuff>();
+                string sushiName = sushiConversions.getSushiName(randomSprite);
+                Debug.Log("sushiName: " + sushiName);
+                sushiBuff.setSushiName(sushiName);
+            }
         }
         else if(randomRarity == "uncommon"){
             if(uncommon.Length!=0){

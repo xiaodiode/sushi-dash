@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class InventorySpawner : MonoBehaviour
 {
     #pragma warning disable
+    public TextMeshProUGUI sushiBuffText;
+    public string sushiName, sushiBuff;
     private Customizer inventoryObject;
     public StallManager[] stallManagers;
     public Image selectedSushi;
@@ -37,10 +40,17 @@ public class InventorySpawner : MonoBehaviour
             for(int i=0; i<stallManagers.Length; i++){
                 stallManagers[i].newSushiImage = selectedSushi;
             }
-        }
-        else{
+            sushiBuffText.text = sushiName;
             selectedSushi = null;
         }
+        else if(contentType != "sushi"){
+            sushiBuffText.text = "";
+            selectedSushi = null;
+            for(int i=0; i<stallManagers.Length; i++){
+                stallManagers[i].newSushiImage = null;
+            }
+        }
+        
     }
 
     public void setContent(Image newSushi, Image newBackground, Image newForeground){
