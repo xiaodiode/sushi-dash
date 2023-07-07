@@ -6,6 +6,7 @@ using TMPro;
 public class InventorySpawner : MonoBehaviour
 {
     #pragma warning disable
+    public GachaPopup gachaPopup;
     public TextMeshProUGUI sushiBuffText;
     public string sushiName, sushiBuff, sushiRarity;
     public int sushiLevel;
@@ -72,16 +73,34 @@ public class InventorySpawner : MonoBehaviour
         
         newButton.GetComponent<RectTransform>().localScale = inventoryObject.GetComponent<RectTransform>().localScale;
         
+        gachaPopup.gachaItemCanvas.gameObject.SetActive(true);
+
 
         if(contentType == "sushi"){
+            // Debug.Log("sushibuff: " + newButton.transform.GetComponent<SushiBuff>());
+            // Debug.Log("gachaPopup: " + gachaPopup);
+            // SushiBuff newSushiBuff = newButton.transform.GetComponent<SushiBuff>();
             newButton.setSushi(sushi);
             newButton.setInventorySpawner(this);
+            //Debug.Log("sushi.sprite: " + sushi.sprite);
+            // Debug.Log("\ngachapopup.sushi.sprite: " + gachaPopup.sushi.sprite);
+            
+            // gachaPopup.background.gameObject.SetActive(false);
+            // gachaPopup.foreground.gameObject.SetActive(false);
+            // gachaPopup.sushi.gameObject.SetActive(true);
+            // gachaPopup.sushi.sprite = sushi.sprite;
+            // gachaPopup.gachaItemText.text = newSushiBuff.sushiName + "\nLevel: " + (newSushiBuff.level+1).ToString() + "\nRarity: " + 
+            //     newSushiBuff.rarity + "\n\nSushi Buff: " + newSushiBuff.buffDescription;
         }
         else if(contentType == "background"){
             newButton.setBackground(background);
+
+            
         }
         else if(contentType == "foreground"){
             newButton.setForeground(foreground);
+
+            
         }
     }
     #pragma warning restore

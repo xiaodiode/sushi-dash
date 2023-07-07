@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SushiSpot : MonoBehaviour
 {
-    //public Sprite[] sushiImages;
     private List<Sprite> sushiSprites = new List<Sprite>();
     private KeyPressButton[] sushiButtons;
     private Sprite sushiTrigger;

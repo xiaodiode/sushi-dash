@@ -58,4 +58,7 @@ public class SushiBuff : MonoBehaviour
     public void setSushiDescription(){
         
     }
+    public void increaseLevel(){
+        level+=1;
+    }
 }
