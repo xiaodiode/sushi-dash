@@ -17,15 +17,7 @@ public class SushiBuff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speedBuff = 0;
-        freezeBuff = 0;
-        completionBuff = 0;
-        slowBuff = 0;
-        killBuff = 0;
-        lifeBuff = 0;
-        levelBuff = 0;
-        coinBuff = 0; 
-        gemBuff = 0;
+        
 
         level = 0;
 
@@ -59,6 +51,14 @@ public class SushiBuff : MonoBehaviour
         "%</color> (+" + (100*buffRate).ToString() + "% / level)";
 
         speedBuff = baseBuff + (buffRate*level);
+        freezeBuff = 0;
+        completionBuff = 0;
+        slowBuff = 0;
+        killBuff = 0;
+        lifeBuff = 0;
+        levelBuff = 0;
+        coinBuff = 0; 
+        gemBuff = 0;
     }
     private void tunaBuff(){
         baseBuff = 5;
@@ -68,6 +68,14 @@ public class SushiBuff : MonoBehaviour
         "</color> coins (+" + (buffRate).ToString() + " coins / level)";
 
         coinBuff = Mathf.FloorToInt(baseBuff + (buffRate*level)); 
+        speedBuff = 0;
+        freezeBuff = 0;
+        completionBuff = 0;
+        slowBuff = 0;
+        killBuff = 0;
+        lifeBuff = 0;
+        levelBuff = 0; 
+        gemBuff = 0;
     }
     private void eggBuff(){
         baseBuff = .01f;
@@ -77,6 +85,14 @@ public class SushiBuff : MonoBehaviour
         "%</color> (+" + (100*buffRate).ToString() + "% / level)";
 
         slowBuff = baseBuff + (buffRate*level);
+        speedBuff = 0;
+        freezeBuff = 0;
+        completionBuff = 0;
+        killBuff = 0;
+        lifeBuff = 0;
+        levelBuff = 0;
+        coinBuff = 0; 
+        gemBuff = 0;
     }
 
     public void increaseLevel(){

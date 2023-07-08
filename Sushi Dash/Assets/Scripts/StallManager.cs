@@ -7,6 +7,7 @@ using System;
 
 public class StallManager : MonoBehaviour
 {
+    public ActiveBuffs activeBuffs;
     public InventorySpawner inventorySpawner;
     public Image sushiImage;
     public Image newSushiImage;
@@ -141,7 +142,7 @@ public class StallManager : MonoBehaviour
         sushiSprite = sushiImage.sprite;
         sushiTile = sushiConversions.getSushiTile(sushiSprite);
         sushiObject = sushiConversions.getSushiObject(sushiSprite);
-        Debug.Log("sushiSprite: " + sushiSprite + " sushiTile: " + sushiTile + " sushiObject: " + sushiObject);
+        // Debug.Log("sushiSprite: " + sushiSprite + " sushiTile: " + sushiTile + " sushiObject: " + sushiObject);
     }
 
     private void enableUI(bool enable){
@@ -368,6 +369,7 @@ public class StallManager : MonoBehaviour
                 for(int i=0; i<inventorySpawner.stallManagers.Length; i++){
                     inventorySpawner.stallManagers[i].newSushiImage = null;
                 }
+                activeBuffs.updateActiveBuff();
             }
         }
         

@@ -6,6 +6,7 @@ using TMPro;
 
 public class sushiGacha : MonoBehaviour
 {
+    public ActiveBuffs activeBuffs;
     public GemController gemController;
     public GachaPopup gachaPopup;
     public SushiConversions sushiConversions;
@@ -47,6 +48,7 @@ public class sushiGacha : MonoBehaviour
             contentSpawner.createButton();
         }
         gachaPopup.gameObject.SetActive(false);
+        activeBuffs.updateActiveBuff();
         ready = true;
     }
 
