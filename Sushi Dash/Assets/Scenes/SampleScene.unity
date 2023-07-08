@@ -745,6 +745,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a19ba18f524404aac572a2fdf72370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemController: {fileID: 915313936}
   gachaPopup: {fileID: 208382881}
   common:
   - {fileID: 7794169282846594475, guid: 48d61fb12c150844fbdf2e52254dea61, type: 3}
@@ -10720,6 +10721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3eafa5e0d9d8604691d9ecd2718bce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemController: {fileID: 915313936}
   gachaPopup: {fileID: 208382881}
   common:
   - {fileID: 1996320605784428448, guid: 927bd89706416c748828afb80c3c6a29, type: 3}
@@ -14172,7 +14174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1705228589
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15828,7 +15830,6 @@ GameObject:
   - component: {fileID: 1912655879}
   - component: {fileID: 1912655878}
   - component: {fileID: 1912655877}
-  - component: {fileID: 1912655880}
   - component: {fileID: 1912655881}
   m_Layer: 5
   m_Name: Sushi Gacha
@@ -15952,28 +15953,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912655875}
   m_CullTransparentMesh: 1
---- !u!114 &1912655880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1912655875}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6592acfd11cd24aa7ba27ea554c75b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gachaPopup: {fileID: 208382881}
-  sushiConversions: {fileID: 1661490543}
-  common:
-  - {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
-  - {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
-  - {fileID: 4445549704473147552, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
-  uncommon: []
-  rare: []
-  gachaItem: {fileID: 6018440061405428448, guid: 57f028f8a6f206944856bd6b727c5184, type: 3}
-  contentSpawner: {fileID: 424005528}
 --- !u!114 &1912655881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15986,6 +15965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e6c8f0d94a4b654fb0dfb4e8882eb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gemController: {fileID: 915313936}
   gachaPopup: {fileID: 208382881}
   sushiConversions: {fileID: 1661490543}
   common:
