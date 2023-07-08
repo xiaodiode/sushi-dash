@@ -22,9 +22,11 @@ public class sushiGacha : MonoBehaviour
     private string randomRarity, imageName;
     private int randomRarityIndex;
     private int gachaPrice = 25;
+    public bool ready;
     // Start is called before the first frame update
     void Start()
     {
+        ready = false;
         for(int i=0; i<commonChance; i++){
             rarityPicker.Add("common");
         }
@@ -35,6 +37,17 @@ public class sushiGacha : MonoBehaviour
             rarityPicker.Add("rare");
         }
         button = transform.GetComponent<Button>();
+        for(int i=0; i<3; i++){
+            inInventory.Add(common[i]);
+            gachaItem.transform.Find("Image_S").GetComponent<Image>().sprite = common[i];
+            SushiBuff currBuff = gachaItem.transform.GetComponent<SushiBuff>();
+            string sushiName = sushiConversions.getSushiName(common[i]);
+            currBuff.setSushiName(sushiName);
+            contentSpawner.setInventoryObject(gachaItem);
+            contentSpawner.createButton();
+        }
+        gachaPopup.gameObject.SetActive(false);
+        ready = true;
     }
 
     // Update is called once per frame

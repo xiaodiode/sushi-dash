@@ -10,9 +10,23 @@ public class SushiBuff : MonoBehaviour
     public int level;
     public string rarity, buffDescription;
     public float baseBuff, buffRate;
+
+    public float speedBuff, freezeBuff, completionBuff, slowBuff, killBuff, 
+        lifeBuff, levelBuff;
+    public int coinBuff, gemBuff;
     // Start is called before the first frame update
     void Start()
     {
+        speedBuff = 0;
+        freezeBuff = 0;
+        completionBuff = 0;
+        slowBuff = 0;
+        killBuff = 0;
+        lifeBuff = 0;
+        levelBuff = 0;
+        coinBuff = 0; 
+        gemBuff = 0;
+
         level = 0;
 
     }
@@ -43,6 +57,8 @@ public class SushiBuff : MonoBehaviour
         rarity = "Common";
         buffDescription = "Speed up the sushi-making progress by \n<color=red>" + (100*(baseBuff + (buffRate*level))).ToString() + 
         "%</color> (+" + (100*buffRate).ToString() + "% / level)";
+
+        speedBuff = baseBuff + (buffRate*level);
     }
     private void tunaBuff(){
         baseBuff = 5;
@@ -51,6 +67,7 @@ public class SushiBuff : MonoBehaviour
         buffDescription = "Start each game with <color=red>\n" + (baseBuff + (buffRate*level)).ToString() + 
         "</color> coins (+" + (buffRate).ToString() + " coins / level)";
 
+        coinBuff = Mathf.FloorToInt(baseBuff + (buffRate*level)); 
     }
     private void eggBuff(){
         baseBuff = .01f;
@@ -58,11 +75,10 @@ public class SushiBuff : MonoBehaviour
         rarity = "Common";
         buffDescription = "Slow down customers' walking speed by \n<color=red>" + (100*(baseBuff + (buffRate*level))).ToString() + 
         "%</color> (+" + (100*buffRate).ToString() + "% / level)";
+
+        slowBuff = baseBuff + (buffRate*level);
     }
 
-    public void setSushiDescription(){
-        
-    }
     public void increaseLevel(){
         level+=1;
         switch(sushiName){
