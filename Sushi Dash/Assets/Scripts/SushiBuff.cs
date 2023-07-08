@@ -15,18 +15,6 @@ public class SushiBuff : MonoBehaviour
     {
         level = 0;
 
-        // switch(sushiName){
-        //     case "Salmon Nigiri":
-        //         salmonBuff();
-        //         break;
-        //     case "Tuna Nigiri":
-        //         tunaBuff();
-        //         break;
-        //     case "Egg Nigiri":
-        //         eggBuff();
-        //         break;
-        // }
-
     }
 
     // Update is called once per frame

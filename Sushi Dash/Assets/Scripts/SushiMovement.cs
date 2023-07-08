@@ -5,10 +5,12 @@ using UnityEngine;
 public class SushiMovement : MonoBehaviour
 {
     // Start is called before the first frame update
+    private PlayerController player;
     private float spin_speed;
     private float minXPosition = -30;
     void Start()
     {
+        player = GameObject.FindObjectOfType<PlayerController>();
         spin_speed = 1000f;
     }
 
@@ -16,6 +18,7 @@ public class SushiMovement : MonoBehaviour
     void Update()
     {
         if(transform.position.x < minXPosition){
+            player.sushiMissed += 1;
             Destroy(gameObject);
         }
         

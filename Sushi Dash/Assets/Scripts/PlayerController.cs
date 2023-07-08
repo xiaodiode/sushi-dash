@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public int selectedLevel;
     public int levelsUnlocked;
     public int playerCoins=0;
+    public int sushiMissed;
 
     public StallManager[] tables;
     private Vector3 heldSushiOffset = new Vector3(0.1f,0,0);
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     
     void Start()
     {
+        sushiMissed = 0;
         levelsUnlocked = 1;
         selectedLevel = 0;
         thrownSushi = null;

@@ -6,6 +6,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public GemController gemController;
     public GameManager gameManager;
     public PlayerController player;
     private int hours, minutes, seconds;
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(countUp){
             // secondsPassed = Mathf.FloorToInt(Time.time) - secondsStarted;
             secondsPassed = Mathf.FloorToInt(Time.time) - secondsStarted;
@@ -55,6 +57,7 @@ public class Timer : MonoBehaviour
                 leadingZeroS = ":0";
             }
             timeText = leadingZeroH + hours.ToString() + leadingZeroM + minutes.ToString() + leadingZeroS + seconds.ToString();
+            
         }
         else if(countDown){
             secondsPassed = totalSeconds - (Mathf.FloorToInt(Time.time) - secondsStarted);
@@ -74,8 +77,11 @@ public class Timer : MonoBehaviour
             }
             if(secondsPassed == 0){
                 levelClear = true;
-                if(player.selectedLevel == player.levelsUnlocked)
-                    player.levelsUnlocked+=1;
+                if(player.selectedLevel == player.levelsUnlocked){
+                    gemController.enableGemPopup("level");
+                    if(player.selectedLevel != 100)
+                        player.levelsUnlocked+=1;
+                }
                 gameManager.gameOver();
                 resetTimer();
             }
@@ -97,6 +103,7 @@ public class Timer : MonoBehaviour
         countDown = true;
     }
     public void pauseTimer(){
+        
         if(countUp){
             wasCountingUp = 1;
             countUp = false;
@@ -116,5 +123,11 @@ public class Timer : MonoBehaviour
         countUp = false;
         countDown = false;
         hours = 0; minutes = 0; seconds = 0;
+    }
+    public void sendTime(){
+        Debug.Log("sending time and enabling popup! ");
+        gemController.setTime(timeText, totalSeconds);
+        gemController.enableGemPopup("endless");
+        
     }
 }

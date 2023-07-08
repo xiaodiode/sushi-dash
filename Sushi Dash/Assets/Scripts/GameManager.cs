@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public GemController gemController;
     public bool inEditMode;
     public Timer timer;
     public PlayerController player;
@@ -106,6 +107,7 @@ public class GameManager : MonoBehaviour
     }
     public void setGameMode(){
         gameMode = initialize;
+        gemController.enableGemAmount(false);
         Time.timeScale = 1;
         //customerSpawner.startCustomerSpawner();
     }
@@ -125,9 +127,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void quitGameMode(){
-        timer.resetTimer();
-        Debug.Log("ENTERED QUIT MODE");
         Time.timeScale = 0;
+        Debug.Log("entering quit mode - endlessMode: " + endlessMode);
+        if(endlessMode){
+            gemController.setCoins(player.playerCoins);
+            timer.sendTime();
+        }
+        timer.resetTimer();
+        
         levelMode = false;
         endlessMode = false;
         gameMode = stop;
@@ -136,6 +143,8 @@ public class GameManager : MonoBehaviour
         editCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
         pauseCanvas.gameObject.SetActive(false);
+        
+        gemController.enableGemAmount(true);
 
         player.resetPlayer();
         customerSpawner.resetCustomerSpawner();
@@ -158,6 +167,7 @@ public class GameManager : MonoBehaviour
     public void editMode(){
         modeText.text = "EDIT MODE";
         inEditMode = true;
+        gemController.enableGemAmount(false);
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(false);
 
@@ -165,6 +175,7 @@ public class GameManager : MonoBehaviour
 
     public void gachaMode(){
         modeText.text = "Gacha";
+        gemController.enableGemAmount(true);
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(false);
         gachaCanvas.gameObject.SetActive(true);
@@ -172,6 +183,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void returnToMainMenu(){
+        gemController.enableGemAmount(true);
         inEditMode = false;
         gameMode = stop;
         returnButton.gameObject.SetActive(true);
@@ -185,6 +197,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void enableLevelMode(){
+        gemController.enableGemAmount(false);
         levelMode = true;
         modeText.text = "Level Selection";
         mainMenuCanvas.gameObject.SetActive(false);
