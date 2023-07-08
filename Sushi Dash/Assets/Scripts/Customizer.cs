@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Customizer : MonoBehaviour
 {
     private InventorySpawner inventorySpawner;
-    private Image sushi, foreground, background;
+    public Image sushi, foreground, background;
     private Button button;
     // Start is called before the first frame update
     void Start()
