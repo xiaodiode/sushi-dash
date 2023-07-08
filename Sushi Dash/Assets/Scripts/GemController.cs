@@ -21,7 +21,7 @@ public class GemController : MonoBehaviour
     void Start()
     {
         currMode = "";
-        gemAmount = 0;
+        gemAmount = 1000;
         endlessGems = 0;
 
         gemPopupCanvas = transform.Find("Gem Popup Canvas").GetComponent<Canvas>();
@@ -38,6 +38,7 @@ public class GemController : MonoBehaviour
         gameObject.SetActive(true);
         gemPopupCanvas.gameObject.SetActive(false);
         enableGemAmount(true);
+        updateGemAmount(0);
 
     }
 
@@ -49,6 +50,9 @@ public class GemController : MonoBehaviour
     
     public void enableGemAmount(bool boolean){
         gemAmountCanvas.gameObject.SetActive(boolean);
+    }
+    public void updateGemAmount(int gemChange){
+        gemAmount += gemChange;
         gemAmountText.text = gemAmount.ToString();
     }
     public void enableGemPopup(string mode){
@@ -71,16 +75,15 @@ public class GemController : MonoBehaviour
     public void closeGemPopup(){
         gemPopupCanvas.gameObject.SetActive(false);
         if(currMode == "level"){
-            gemAmount += 5;
-            
+            updateGemAmount(5);
         }
         else{
-            
             endlessGems = 0;
-            
         }
     }
-
+    public int getGemAmount(){
+        return gemAmount;
+    }
 
     public void setTime(string timeText, int totalSeconds){
         int gemsEarned = (totalSeconds/30) + (endlessCoins/100);
@@ -93,12 +96,7 @@ public class GemController : MonoBehaviour
             gemsEarned + "\n" + player.sushiMissed.ToString() +
             "\n\n" + endlessGems;
 
-        gemAmount += endlessGems;
-        Debug.Log("gemAmount: " + gemAmount);
-        enableGemAmount(true);
+        updateGemAmount(endlessGems);
         
     }
-
-
-
 }

@@ -6,16 +6,19 @@ using TMPro;
 
 public class BackgroundGacha : MonoBehaviour
 {
+    public GemController gemController;
     public GachaPopup gachaPopup;
     public Sprite[] common, uncommon, rare;
     public Customizer gachaItem;
     public InventorySpawner contentSpawner;
     private Sprite randomSprite;
+    private Button button;
     int commonChance = 6; int uncommonChance = 3; int rareChance = 1;
     private List<string> rarityPicker = new List<string>();
     private List<Sprite> inInventory = new List<Sprite>();
     private bool addToInventory;
     private string randomRarity, imageName;
+    private int gachaPrice = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +31,22 @@ public class BackgroundGacha : MonoBehaviour
         for(int i=0; i<rareChance; i++){
             rarityPicker.Add("rare");
         }
+        button = transform.GetComponent<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(gemController.getGemAmount() < gachaPrice){
+            button.interactable = false;
+        }
+        else{
+            button.interactable = true;
+        }
     }
 
     public void runBackgroundGacha(){
+        gemController.updateGemAmount(-gachaPrice);
         imageName = "Image_B"; 
         addToInventory = false;
         int randomRarityIndex = Random.Range(0,rarityPicker.Count);

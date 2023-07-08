@@ -6,7 +6,7 @@ using TMPro;
 
 public class sushiGacha : MonoBehaviour
 {
-    
+    public GemController gemController;
     public GachaPopup gachaPopup;
     public SushiConversions sushiConversions;
     public Sprite[] common, uncommon, rare;
@@ -21,6 +21,7 @@ public class sushiGacha : MonoBehaviour
     private bool addToInventory;
     private string randomRarity, imageName;
     private int randomRarityIndex;
+    private int gachaPrice = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +34,21 @@ public class sushiGacha : MonoBehaviour
         for(int i=0; i<rareChance; i++){
             rarityPicker.Add("rare");
         }
+        button = transform.GetComponent<Button>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(gemController.getGemAmount() < gachaPrice){
+            button.interactable = false;
+        }
+        else{
+            button.interactable = true;
+        }
     }
     public void runSushiGacha(){
+        gemController.updateGemAmount(-gachaPrice);
         imageName = "Image_S"; 
         addToInventory = false;
         randomRarityIndex = Random.Range(0,rarityPicker.Count);
