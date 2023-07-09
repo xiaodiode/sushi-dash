@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private SushiMovement heldSushi, chosenSushi, thrownSushi;
     public int selectedLevel;
     public int levelsUnlocked;
-    public int playerCoins=0;
+    public int playerCoins;
     public int sushiMissed;
 
     public StallManager[] tables;
@@ -213,4 +213,5 @@ public class PlayerController : MonoBehaviour
     public void setLevelsUnlocked(int level){
         levelsUnlocked = level;
     }
+    
 }

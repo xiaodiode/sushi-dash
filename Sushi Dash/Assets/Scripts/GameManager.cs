@@ -6,6 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public ActiveBuffs activeBuffs;
     public sushiGacha s_gacha;
     public GemController gemController;
     public bool inEditMode;
@@ -59,11 +60,11 @@ public class GameManager : MonoBehaviour
 
         gameMode = stop;
 
+        StartCoroutine(WaitForSushiGacha());
         gameObject.SetActive(true);
         sushiBuffCanvas.gameObject.SetActive(true);
         editCanvas.gameObject.SetActive(true);
         gachaCanvas.gameObject.SetActive(true);
-        StartCoroutine(WaitForSushiGacha());
         mainMenuCanvas.gameObject.SetActive(true);
         wallpaperCanvas.gameObject.SetActive(true);
         gameplayCanvas.gameObject.SetActive(false);
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
         gachaCanvas.gameObject.SetActive(false);
     }
     public void setGameMode(){
+        activeBuffs.updateActiveBuff();
         gameMode = initialize;
         gemController.enableGemAmount(false);
         Time.timeScale = 1;

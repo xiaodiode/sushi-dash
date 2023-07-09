@@ -125,8 +125,8 @@ public class Timer : MonoBehaviour
         hours = 0; minutes = 0; seconds = 0;
     }
     public void sendTime(){
-        Debug.Log("sending time and enabling popup! ");
-        gemController.setTime(timeText, totalSeconds);
+        Debug.Log("sending time and enabling popup! totalSeconds: " + totalSeconds);
+        gemController.setTime(timeText, secondsPassed);
         gemController.enableGemPopup("endless");
         
     }

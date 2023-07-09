@@ -10,7 +10,7 @@ public class CustomerMovement : MonoBehaviour
     private SushiSpot sushi1,sushi2,sushi3;
     
     private Collider2D myCollider;
-    private Vector3 speedRate = new Vector3(1f,0,0);
+    public Vector3 speedRate;
     private int xMin = -31;
     
     // private int randomSushiIndex;
@@ -44,7 +44,7 @@ public class CustomerMovement : MonoBehaviour
             customerType = 3; 
         }
         
-        
+        Debug.Log("speedRate: " + speedRate);
 
     }
 
@@ -123,5 +123,6 @@ public class CustomerMovement : MonoBehaviour
             }
         }
     }
+    
     
 }

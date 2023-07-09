@@ -31,7 +31,8 @@ public class StallManager : MonoBehaviour
     private int sushiPosition;
     //private float progressSpeed = 0.07f;
     public bool upgradeAction;
-    private float progressTime = 4f;
+    private float baseProgressTime = 4f;
+    private float actualProgressTime;
     private float startTime, passedTime, progress, progressUpdating;
 
     int tableLeft = 2;
@@ -197,7 +198,7 @@ public class StallManager : MonoBehaviour
         else{
             progressUpdating = 1;
             passedTime = Time.time - timeStarted;
-            progress = Mathf.Clamp01(passedTime/progressTime);
+            progress = Mathf.Clamp01(passedTime/actualProgressTime);
             //gradually fill the sushi stall's progress bar
             stallProgress.gameObject.SetActive(true);
             stallProgress.value = progress * 100;
@@ -373,6 +374,11 @@ public class StallManager : MonoBehaviour
             }
         }
         
+    }
+
+    public void applySpeedBuff(float buff){
+        actualProgressTime = baseProgressTime - (baseProgressTime*buff);
+        Debug.Log("updated progressTime: " + actualProgressTime);
     }
 
 }

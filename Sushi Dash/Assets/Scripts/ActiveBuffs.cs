@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class ActiveBuffs : MonoBehaviour
 {
+    public StallManager[] stallManagers;
+    public CustomerSpawner customerSpawner;
     private KeyPressButton[] activeBuffs;
     private SushiBuff[] inventoryBuffs;
     private List<Image> activeSushi = new List<Image>();
 
-    private float speedBuff, freezeBuff, completionBuff, slowBuff, killBuff, 
+    private float speedBuff, freezeBuff, completionBuff, killBuff, 
         lifeBuff, levelBuff;
+    public float slowBuff;
     private int coinBuff, gemBuff;
 
     // Start is called before the first frame update
@@ -34,7 +37,7 @@ public class ActiveBuffs : MonoBehaviour
             foreach(SushiBuff sushi in inventoryBuffs){
                 Image inventoryImage = sushi.transform.Find("Image_S").GetComponent<Image>();
                 if(inventoryImage.sprite == activeSushi[i].sprite){
-                    Debug.Log("found matching buff inventoryImage.sprite: " + inventoryImage.sprite);
+                    // Debug.Log("found matching buff inventoryImage.sprite: " + inventoryImage.sprite);
                     speedBuff += sushi.speedBuff;
                     freezeBuff += sushi.freezeBuff; 
                     completionBuff += sushi.completionBuff; 
@@ -48,6 +51,11 @@ public class ActiveBuffs : MonoBehaviour
                 }
             }
         }
+        for(int i=0; i<stallManagers.Length; i++){
+            stallManagers[i].applySpeedBuff(speedBuff);
+        }
+        customerSpawner.applyCoinBuff(coinBuff);
+        customerSpawner.applySlowBuff(slowBuff);
         Debug.Log("activeBuffs: \nspeedBuff: " + speedBuff + "\nfreezeBuff: " + freezeBuff +
             "\ncompletionBuff: " + completionBuff + "\nslowBuff: " + slowBuff + "\nkillBuff: " +
             killBuff + "\nlifeBuff: " + lifeBuff + "\nlevelBuff: " + levelBuff + "\ncoinBuff: " +

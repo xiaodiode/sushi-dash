@@ -9,6 +9,8 @@ public class CustomerSpawner : MonoBehaviour
     public PlayerController player;
     public bool gameOver;
     
+    private float customerBaseSpeed = 1f;
+    private Vector3 customerSpeed;
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
@@ -21,7 +23,6 @@ public class CustomerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalCoins = 0;
         InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
         
     }
@@ -46,7 +47,7 @@ public class CustomerSpawner : MonoBehaviour
         CustomerMovement customerType = (customerTypes[randomCustomerIndex]);
 
         customer = Instantiate(customerType,spawnPos,customerType.transform.rotation);
-
+        customer.speedRate = customerSpeed;
         customer.transform.parent = transform;
     }
 
@@ -65,6 +66,14 @@ public class CustomerSpawner : MonoBehaviour
     }
     public void startCustomerSpawner(){
         InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
+    }
+
+    public void applyCoinBuff(int buff){
+        totalCoins = buff;
+        Debug.Log("playerCoins: " + totalCoins);
+    }
+    public void applySlowBuff(float buff){
+        customerSpeed = new Vector3(customerBaseSpeed - buff, 0, 0);
     }
 
 }

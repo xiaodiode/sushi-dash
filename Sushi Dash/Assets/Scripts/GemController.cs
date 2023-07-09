@@ -91,7 +91,8 @@ public class GemController : MonoBehaviour
         if(endlessGems < 0){
             endlessGems = 0;
         }
-
+        Debug.Log("endlessCoins: " + endlessCoins);
+        Debug.Log("totalSeconds: " + totalSeconds);
         endlessStatsText.text = timeText + "\n" + endlessCoins.ToString() + "\n" + 
             gemsEarned + "\n" + player.sushiMissed.ToString() +
             "\n\n" + endlessGems;

@@ -78,7 +78,7 @@ public class SushiBuff : MonoBehaviour
         gemBuff = 0;
     }
     private void eggBuff(){
-        baseBuff = .01f;
+        baseBuff = .5f;
         buffRate = .01f;
         rarity = "Common";
         buffDescription = "Slow down customers' walking speed by \n<color=red>" + (100*(baseBuff + (buffRate*level))).ToString() + 

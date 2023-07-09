@@ -137,7 +137,6 @@ public class sushiGacha : MonoBehaviour
                 
             
         }
-        
         gachaPopup.enablePopup();
     }
 }
