@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1427664509440357598}
   - component: {fileID: 5532347549348999842}
   m_Layer: 0
-  m_Name: TunaNigiri
+  m_Name: Squid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3074612675543281716, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+  m_Sprite: {fileID: -2223945405291889460, guid: 01bd0c88be072e64783511bb9a89e1a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354a7b366f3a9204b9b67bd4a7bb9af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin: 0
 --- !u!50 &1427664509440357598
 Rigidbody2D:
   serializedVersion: 4

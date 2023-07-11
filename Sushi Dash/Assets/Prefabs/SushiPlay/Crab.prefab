@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5178796501324272904
+--- !u!1 &5390720918787750680
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8291770864168462514}
-  - component: {fileID: 7233085469199736120}
-  - component: {fileID: 1755135366110638019}
-  - component: {fileID: -8379519124655456216}
-  - component: {fileID: -5027875518505409009}
+  - component: {fileID: 2454223036485695703}
+  - component: {fileID: 8554420071451559630}
+  - component: {fileID: 5912606754646552174}
+  - component: {fileID: 1427664509440357598}
+  - component: {fileID: 5532347549348999842}
   m_Layer: 0
-  m_Name: SalmonNigiri
+  m_Name: Crab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8291770864168462514
+--- !u!4 &2454223036485695703
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178796501324272904}
+  m_GameObject: {fileID: 5390720918787750680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7233085469199736120
+--- !u!212 &8554420071451559630
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178796501324272904}
+  m_GameObject: {fileID: 5390720918787750680}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8073892327334104052, guid: 736c847cf20865d4ab24a9ce7b5060a6, type: 3}
+  m_Sprite: {fileID: 6114667988026378847, guid: 01bd0c88be072e64783511bb9a89e1a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,27 +87,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1755135366110638019
+--- !u!114 &5912606754646552174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178796501324272904}
+  m_GameObject: {fileID: 5390720918787750680}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 354a7b366f3a9204b9b67bd4a7bb9af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spin: 0
---- !u!50 &-8379519124655456216
+--- !u!50 &1427664509440357598
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178796501324272904}
+  m_GameObject: {fileID: 5390720918787750680}
   m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -127,13 +126,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &-5027875518505409009
+--- !u!61 &5532347549348999842
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5178796501324272904}
+  m_GameObject: {fileID: 5390720918787750680}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -159,7 +158,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.1583314, y: 0.17642659}
+  m_Offset: {x: 0.12987566, y: 0.1716215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -170,5 +169,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2951264, y: 0.6471468}
+  m_Size: {x: 1.2949605, y: 0.656757}
   m_EdgeRadius: 0

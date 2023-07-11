@@ -31,13 +31,13 @@ public class SushiBuff : MonoBehaviour
     public void setSushiName(string newSushiName){
         sushiName = newSushiName;
         switch(sushiName){
-            case "Salmon Nigiri":
+            case "Salmon Nigiri (Sake)":
                 salmonBuff();
                 break;
-            case "Tuna Nigiri":
+            case "Tuna Nigiri (Akami)":
                 tunaBuff();
                 break;
-            case "Egg Nigiri":
+            case "Egg Nigiri (Tamago)":
                 eggBuff();
                 break;
         }
