@@ -10,13 +10,14 @@ public class sushiGacha : MonoBehaviour
     public GemController gemController;
     public GachaPopup gachaPopup;
     public SushiConversions sushiConversions;
+    public Sprite[] defaultSushi;
     public Sprite[] common, uncommon, rare;
     public Customizer gachaItem;
     public InventorySpawner contentSpawner;
     private SushiBuff[] sushiBuffs;
     private Sprite randomSprite;
     private Button button;
-    int commonChance = 6; int uncommonChance = 3; int rareChance = 1;
+    int commonChance = 75; int uncommonChance = 95;
     private List<string> rarityPicker = new List<string>();
     private List<Sprite> inInventory = new List<Sprite>();
     private bool addToInventory;
@@ -28,21 +29,12 @@ public class sushiGacha : MonoBehaviour
     void Start()
     {
         ready = false;
-        for(int i=0; i<commonChance; i++){
-            rarityPicker.Add("common");
-        }
-        for(int i=0; i<uncommonChance; i++){
-            rarityPicker.Add("uncommon");
-        }
-        for(int i=0; i<rareChance; i++){
-            rarityPicker.Add("rare");
-        }
         button = transform.GetComponent<Button>();
-        for(int i=0; i<3; i++){
-            inInventory.Add(common[i]);
-            gachaItem.transform.Find("Image_S").GetComponent<Image>().sprite = common[i];
+        for(int i=0; i<defaultSushi.Length; i++){
+            inInventory.Add(defaultSushi[i]);
+            gachaItem.transform.Find("Image_S").GetComponent<Image>().sprite = defaultSushi[i];
             SushiBuff currBuff = gachaItem.transform.GetComponent<SushiBuff>();
-            string sushiName = sushiConversions.getSushiName(common[i]);
+            string sushiName = sushiConversions.getSushiName(defaultSushi[i]);
             currBuff.setSushiName(sushiName);
             contentSpawner.setInventoryObject(gachaItem);
             contentSpawner.createButton();
@@ -66,8 +58,16 @@ public class sushiGacha : MonoBehaviour
         gemController.updateGemAmount(-gachaPrice);
         imageName = "Image_S"; 
         addToInventory = false;
-        randomRarityIndex = Random.Range(0,rarityPicker.Count);
-        randomRarity = rarityPicker[randomRarityIndex];
+        randomRarityIndex = Random.Range(0,101);
+        if(randomRarityIndex <= commonChance){
+            randomRarity = "common";
+        }
+        else if(randomRarityIndex <= uncommonChance){
+            randomRarity = "uncommon";
+        }
+        else{
+            randomRarity = "rare";
+        }
         if(randomRarity == "common"){
             randomRarityIndex = Random.Range(0,common.Length);
             randomSprite = common[randomRarityIndex];
@@ -119,6 +119,8 @@ public class sushiGacha : MonoBehaviour
                 if(sushiBuff.sushiName == gachaItem.transform.GetComponent<SushiBuff>().sushiName){
                     gachaPopup.gachaItemText.text = sushiBuff.sushiName + "\nRarity: " + sushiBuff.rarity +
                             "\nLevel: 1 \n\nSushi Buff: " + sushiBuff.buffDescription;
+                    Debug.Log("sushiBuff basebuff: " + sushiBuff.baseBuff + "baserate: " + sushiBuff.buffRate +
+                    "level: " + sushiBuff.level);
                 }
             }
         }
@@ -129,9 +131,12 @@ public class sushiGacha : MonoBehaviour
                 if(sushiBuff.sushiName == gachaItem.transform.GetComponent<SushiBuff>().sushiName){
                     if(sushiBuff.level!=9){
                         sushiBuff.increaseLevel();
-                        gachaPopup.gachaItemText.text = sushiBuff.sushiName + "\nRarity: " + sushiBuff.rarity +
-                            "\n<color=red>Level: " + (sushiBuff.level+1).ToString() + "</color>\n\nSushi Buff: " + sushiBuff.buffDescription;
                     }
+                    gachaPopup.gachaItemText.text = sushiBuff.sushiName + "\nRarity: " + sushiBuff.rarity +
+                    "\n<color=red>Level: " + (sushiBuff.level+1).ToString() + "</color>\n\nSushi Buff: " + 
+                    sushiBuff.buffDescription;
+
+                    Debug.Log("sushiBuff basebuff: " + sushiBuff.baseBuff);
                 }
             }
                 

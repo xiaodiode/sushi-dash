@@ -11,7 +11,7 @@ public class ActiveBuffs : MonoBehaviour
     private SushiBuff[] inventoryBuffs;
     private List<Image> activeSushi = new List<Image>();
 
-    private float speedBuff, freezeBuff, completionBuff, killBuff, 
+    private float spawnBuff, speedBuff, freezeBuff, completionBuff, 
         lifeBuff, levelBuff;
     public float slowBuff;
     private int coinBuff, gemBuff;
@@ -38,11 +38,11 @@ public class ActiveBuffs : MonoBehaviour
                 Image inventoryImage = sushi.transform.Find("Image_S").GetComponent<Image>();
                 if(inventoryImage.sprite == activeSushi[i].sprite){
                     // Debug.Log("found matching buff inventoryImage.sprite: " + inventoryImage.sprite);
+                    spawnBuff += sushi.spawnBuff;
                     speedBuff += sushi.speedBuff;
                     freezeBuff += sushi.freezeBuff; 
                     completionBuff += sushi.completionBuff; 
                     slowBuff += sushi.slowBuff; 
-                    killBuff += sushi.killBuff; 
                     lifeBuff += sushi.lifeBuff; 
                     levelBuff += sushi.levelBuff;
                     coinBuff += sushi.coinBuff; 
@@ -56,19 +56,18 @@ public class ActiveBuffs : MonoBehaviour
         }
         customerSpawner.applyCoinBuff(coinBuff);
         customerSpawner.applySlowBuff(slowBuff);
-        Debug.Log("activeBuffs: \nspeedBuff: " + speedBuff + "\nfreezeBuff: " + freezeBuff +
-            "\ncompletionBuff: " + completionBuff + "\nslowBuff: " + slowBuff + "\nkillBuff: " +
-            killBuff + "\nlifeBuff: " + lifeBuff + "\nlevelBuff: " + levelBuff + "\ncoinBuff: " +
-            coinBuff + "\ngemBuff: " + gemBuff); 
+        Debug.Log("activeBuffs: \nspawnBuff: " + spawnBuff + "\nspeedBuff: " + speedBuff + "\nfreezeBuff: " + freezeBuff +
+            "\ncompletionBuff: " + completionBuff + "\nslowBuff: " + slowBuff + "\nlifeBuff: " + lifeBuff + 
+            "\nlevelBuff: " + levelBuff + "\ncoinBuff: " + coinBuff + "\ngemBuff: " + gemBuff); 
         
     }
 
     private void clearBuffs(){
+        spawnBuff=0;
         speedBuff=0; 
         freezeBuff=0; 
         completionBuff=0; 
         slowBuff=0; 
-        killBuff=0; 
         lifeBuff=0; 
         levelBuff=0;
         coinBuff=0; 
