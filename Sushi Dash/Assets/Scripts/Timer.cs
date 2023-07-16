@@ -130,4 +130,16 @@ public class Timer : MonoBehaviour
         gemController.enableGemPopup("endless");
         
     }
+    public int getTime(){
+        return Mathf.FloorToInt(Time.time);
+    }
+
+    public bool trackTime(float seconds, bool timeReady){
+        int startTime = Mathf.FloorToInt(Time.time);
+        while((Mathf.FloorToInt(Time.time) - startTime) != seconds){
+            timeReady = false;
+        }
+        timeReady = true;
+        return timeReady;
+    }
 }

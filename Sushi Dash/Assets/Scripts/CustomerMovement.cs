@@ -6,12 +6,18 @@ public class CustomerMovement : MonoBehaviour
 {
     
     public bool gameOver;
+    public Timer timer;
+    public Sprite freezeSushi;
     private Checkmark checkmark1, checkmark2, checkmark3;
     private SushiSpot sushi1,sushi2,sushi3;
     
     private Collider2D myCollider;
     public Vector3 speedRate;
     private int xMin = -31;
+    private float freezeTime = 3f;
+    private float freezeStart, freezeEnd;
+    private bool freezeDone;
+    private int finished = 1;
     
     // private int randomSushiIndex;
     private int customerType;
@@ -19,6 +25,8 @@ public class CustomerMovement : MonoBehaviour
     private CustomerSpawner customerSpawner;
     void Start()
     {
+        finished = 1;
+        freezeDone = false;
         customerSpawner = GetComponentInParent<CustomerSpawner>();
         gameOver = false;
         myCollider = GetComponent<Collider2D>();
@@ -51,6 +59,10 @@ public class CustomerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timer.getTime() == freezeEnd){
+            speedRate = customerSpawner.customerSpeed * finished;
+            freezeDone = false;
+        }
         if(transform.position.x > xMin)
             transform.position = transform.position + speedRate*Time.deltaTime;
         else    
@@ -80,46 +92,79 @@ public class CustomerMovement : MonoBehaviour
             // Debug.Log("collision.gameObject.GetComponent<SpriteRenderer>(): " + collision.gameObject.GetComponent<SpriteRenderer>().sprite + " sushi trigger: " + sushi1.getSushiTrigger());
             if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi1.getSushiTrigger()) && !checkmark1.isEnabled()){
                 checkmark1.enable(true);
-                speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
                 customerSpawner.updateCoins(10);
+                speedRate = -customerSpawner.customerSpeed;
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
+                finished = -1;
             }
         }
         else if(customerType == 2){
             if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi1.getSushiTrigger()) && !checkmark1.isEnabled()){
                 checkmark1.enable(true);
                 Destroy(collision.gameObject);
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi2.getSushiTrigger()) && !checkmark2.isEnabled()){
                 checkmark2.enable(true);
                 Destroy(collision.gameObject);
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled()){
                 speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
                 customerSpawner.updateCoins(20);
+                finished = -1;
             }
         }
         else if(customerType == 3){
             if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi1.getSushiTrigger()) && !checkmark1.isEnabled()){
                 checkmark1.enable(true);
                 Destroy(collision.gameObject);
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi2.getSushiTrigger()) && !checkmark2.isEnabled()){
                 checkmark2.enable(true);
                 Destroy(collision.gameObject);
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi3.getSushiTrigger()) && !checkmark3.isEnabled()){
                 checkmark3.enable(true);
                 Destroy(collision.gameObject);
+                if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
+                    freezeStart = timer.getTime();
+                    freezeEnd = freezeStart + freezeTime;
+                    speedRate = Vector3.zero;
+                }
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled() && checkmark3.isEnabled()){
                 speedRate = -speedRate;
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
                 customerSpawner.updateCoins(30);
+                finished = -1;
             }
         }
     }

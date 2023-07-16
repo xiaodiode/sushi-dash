@@ -341,13 +341,13 @@ public class SushiBuff : MonoBehaviour
         "%</color> (+" + (100*buffRate).ToString() + "% / level)";
 
         speedBuff = baseBuff + (buffRate*level);
-        freezeBuff = 0;
-        completionBuff = 0;
-        slowBuff = 0;
-        lifeBuff = 0;
-        levelBuff = 0;
-        coinBuff = 0; 
-        gemBuff = 0;
+        // freezeBuff = 0;
+        // completionBuff = 0;
+        // slowBuff = 0;
+        // lifeBuff = 0;
+        // levelBuff = 0;
+        // coinBuff = 0; 
+        // gemBuff = 0;
     }
     private void sardineBuff(){
         // baseBuff = 0;

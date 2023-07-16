@@ -8,9 +8,11 @@ public class CustomerSpawner : MonoBehaviour
     private CustomerMovement customer;
     public PlayerController player;
     public bool gameOver;
+    public Timer timer;
+    public Sprite freezeSushi;
     
     private float customerBaseSpeed = 1f;
-    private Vector3 customerSpeed;
+    public Vector3 customerSpeed;
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
@@ -49,6 +51,8 @@ public class CustomerSpawner : MonoBehaviour
         customer = Instantiate(customerType,spawnPos,customerType.transform.rotation);
         customer.speedRate = customerSpeed;
         customer.transform.parent = transform;
+        customer.timer = timer;
+        customer.freezeSushi = freezeSushi;
     }
 
     public void updateCoins(int coins){
