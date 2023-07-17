@@ -29,7 +29,7 @@ public class GemController : MonoBehaviour
         endlessModeCanvas = popup.transform.Find("Endless Mode Canvas").GetComponent<Canvas>();
         endlessStatsText = endlessModeCanvas.transform.Find("Stats Text").GetComponent<TextMeshProUGUI>();
         levelModeCanvas = popup.transform.Find("Level Mode Canvas").GetComponent<Canvas>();
-        closeButton = gemPopupCanvas.transform.Find("Close Button").GetComponent<Button>();
+        closeButton = popup.transform.Find("Close Button").GetComponent<Button>();
         
         gemAmountCanvas = transform.Find("Gem Amount Canvas").GetComponent<Canvas>();
         gemAmountText = gemAmountCanvas.transform.Find("Gem Amount Text").GetComponent<TextMeshProUGUI>();
@@ -39,13 +39,13 @@ public class GemController : MonoBehaviour
         gemPopupCanvas.gameObject.SetActive(false);
         enableGemAmount(true);
         updateGemAmount(0);
+        Debug.Log("INITIALIZING GEMS");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     
     public void enableGemAmount(bool boolean){

@@ -9,7 +9,7 @@ public class CustomerSpawner : MonoBehaviour
     public PlayerController player;
     public bool gameOver;
     public Timer timer;
-    public Sprite freezeSushi;
+    public Sprite freezeSushi, completionSushi, confusionSushi;
     
     private float customerBaseSpeed = 1f;
     public Vector3 customerSpeed;
@@ -53,6 +53,8 @@ public class CustomerSpawner : MonoBehaviour
         customer.transform.parent = transform;
         customer.timer = timer;
         customer.freezeSushi = freezeSushi;
+        customer.completionSushi = completionSushi;
+        customer.confusionSushi = confusionSushi;
     }
 
     public void updateCoins(int coins){

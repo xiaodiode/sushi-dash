@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         gameplayCanvas.gameObject.SetActive(false);
         returnCanvas.gameObject.SetActive(true);
         gachaItemCanvas.gameObject.SetActive(false);
-
+        //gemController.gameObject.SetActive(true);
 
         
     }
@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log("Gemcontroller: " + gemController);
         if(gameMode == initialize){
             player.transform.position = intialPlayerPosition;
             
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
     public void setGameMode(){
         activeBuffs.updateActiveBuff();
         gameMode = initialize;
+        
         gemController.enableGemAmount(false);
         Time.timeScale = 1;
         //customerSpawner.startCustomerSpawner();
