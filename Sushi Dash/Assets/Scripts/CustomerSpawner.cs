@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public GameManager gameManager;
     public CustomerMovement[] customerTypes;
     private CustomerMovement customer;
     public PlayerController player;
@@ -11,21 +12,23 @@ public class CustomerSpawner : MonoBehaviour
     public Timer timer;
     public Sprite freezeSushi, completionSushi, confusionSushi;
     
-    private float customerBaseSpeed = 1f;
+    
     public Vector3 customerSpeed;
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
     private float spawnXPosition = -30;
-    private float startSpawnTime = 4;
-    private float repeatRate = 3.25f;
-
+    private float startSpawnTime = 4f;
+    private float repeatRate, customerBaseSpeed;
     private int totalCoins;
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
+        // startSpawnTime = 4f;
+        // repeatRate = 2f;
+        // customerBaseSpeed = 2f;
+        //InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
         
     }
 
@@ -37,6 +40,9 @@ public class CustomerSpawner : MonoBehaviour
         }
         if(player.playerCoins != totalCoins){
             setCoins();
+        }
+        if(gameManager.endlessMode){
+            
         }
         
     }
@@ -68,7 +74,8 @@ public class CustomerSpawner : MonoBehaviour
             Destroy(child.gameObject);
         }
         totalCoins = 0;
-        gameObject.SetActive(false);
+        CancelInvoke("spawnCustomer");
+        // gameObject.SetActive(false);
     }
     public void startCustomerSpawner(){
         InvokeRepeating("spawnCustomer",startSpawnTime,repeatRate);
@@ -80,6 +87,10 @@ public class CustomerSpawner : MonoBehaviour
     }
     public void applySlowBuff(float buff){
         customerSpeed = new Vector3(customerBaseSpeed - buff, 0, 0);
+    }
+    public void initializeCustomerSpeed(float newRepeatRate, float newCustomerBaseSpeed){
+        repeatRate = newRepeatRate;
+        customerBaseSpeed = newCustomerBaseSpeed;
     }
 
 }

@@ -25,7 +25,13 @@ public class GameManager : MonoBehaviour
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
     private bool levelMode;
-    private bool endlessMode;
+    public bool endlessMode;
+    private float endlessRate = 4f;
+    private float endlessSpeed = 1f;
+    private float levelRate = 4f;
+    private float levelSpeed = 0.5f;
+    private float levelRateDecrease = -0.02f;
+    private float levelSpeedIncrease = 0.015f;
     private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
     // Start is called before the first frame update
     void Start()
@@ -34,7 +40,7 @@ public class GameManager : MonoBehaviour
         levelMode = false;
         endlessMode = false; 
         levelSpawner.gameObject.SetActive(true);
-        customerSpawner.gameObject.SetActive(false);
+        customerSpawner.gameObject.SetActive(true);
         mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
 
         returnCanvas = gameObject.transform.Find("Return Canvas").GetComponent<Canvas>();
@@ -88,7 +94,7 @@ public class GameManager : MonoBehaviour
             editCanvas.gameObject.SetActive(false);
             pauseCanvas.gameObject.SetActive(false);
             mainMenuCanvas.gameObject.SetActive(false);
-            customerSpawner.gameObject.SetActive(true);
+            customerSpawner.startCustomerSpawner();
             returnButton.gameObject.SetActive(false);
             
             if(levelMode){
@@ -117,6 +123,9 @@ public class GameManager : MonoBehaviour
         gachaCanvas.gameObject.SetActive(false);
     }
     public void setGameMode(){
+        if(endlessMode){
+            customerSpawner.initializeCustomerSpeed(endlessRate, endlessSpeed);
+        }
         activeBuffs.updateActiveBuff();
         gameMode = initialize;
         
@@ -141,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public void quitGameMode(){
         Time.timeScale = 0;
-        Debug.Log("entering quit mode - endlessMode: " + endlessMode);
+        //Debug.Log("entering quit mode - endlessMode: " + endlessMode);
         if(endlessMode){
             gemController.setCoins(player.playerCoins);
             timer.sendTime();

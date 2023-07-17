@@ -9203,6 +9203,7 @@ MonoBehaviour:
   initialize: 1
   proceed: 2
   pause: 3
+  endlessMode: 0
 --- !u!1 &1027832966
 GameObject:
   m_ObjectHideFlags: 0
@@ -16030,6 +16031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ac5a479e062734c9e8b974b17afe18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1020290755}
   customerTypes:
   - {fileID: 7418403749734924664, guid: 7a5ce59c72957d748a3b2dd2fb8d1a11, type: 3}
   - {fileID: -7135442802249780554, guid: 64a3b511298a8004eb3ff286e4f955ab, type: 3}

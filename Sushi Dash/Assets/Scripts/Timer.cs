@@ -125,13 +125,16 @@ public class Timer : MonoBehaviour
         hours = 0; minutes = 0; seconds = 0;
     }
     public void sendTime(){
-        Debug.Log("sending time and enabling popup! totalSeconds: " + totalSeconds);
+        //Debug.Log("sending time and enabling popup! totalSeconds: " + totalSeconds);
         gemController.setTime(timeText, secondsPassed);
         gemController.enableGemPopup("endless");
         
     }
     public int getTime(){
         return Mathf.FloorToInt(Time.time);
+    }
+    public int getGameTime(){
+        return secondsPassed;
     }
 
     public bool trackTime(float seconds, bool timeReady){
