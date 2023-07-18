@@ -29,6 +29,7 @@ public class LevelButton : MonoBehaviour
         
     }
     private void levelSelected(){
+        Debug.Log("levelSelected: " + level + " unlocked: " + unlocked);
         if(unlocked){
             player.selectedLevel = level;
             gameManager.setGameMode();

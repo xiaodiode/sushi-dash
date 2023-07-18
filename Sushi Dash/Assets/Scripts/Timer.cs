@@ -79,7 +79,7 @@ public class Timer : MonoBehaviour
                 levelClear = true;
                 if(player.selectedLevel == player.levelsUnlocked){
                     gemController.enableGemPopup("level");
-                    if(player.selectedLevel != 100)
+                    if(player.selectedLevel != 101)
                         player.levelsUnlocked+=1;
                 }
                 gameManager.gameOver();

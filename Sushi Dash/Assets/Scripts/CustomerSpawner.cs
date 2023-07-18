@@ -20,7 +20,10 @@ public class CustomerSpawner : MonoBehaviour
     private float spawnXPosition = -30;
     private float startSpawnTime = 4f;
     private float repeatRate, customerBaseSpeed;
+    private bool speedFlag = true;
+    private bool rateFlag = true;
     private int totalCoins;
+    private Vector3 endlessSpeedIncrease = new Vector3(0.05f, 0, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +45,26 @@ public class CustomerSpawner : MonoBehaviour
             setCoins();
         }
         if(gameManager.endlessMode){
-            
+            if(rateFlag && timer.getGameTime()>0 && timer.getGameTime()%30 == 0 && timer.getGameTime() < 601){
+                rateFlag = false;
+                customerSpeed += endlessSpeedIncrease;
+                Debug.Log("new customerSpeed: " + customerSpeed);
+                
+            }
+            else if(timer.getGameTime()>0 && timer.getGameTime()%30 != 0){
+                rateFlag = true;
+            }
+            if(speedFlag && timer.getGameTime()>0 && timer.getGameTime()%20 == 0 && timer.getGameTime() < 401){
+                speedFlag = false;
+                CancelInvoke("spawnCustomer");
+                repeatRate -= 0.1f;
+                InvokeRepeating("spawnCustomer",0.01f,repeatRate);
+                Debug.Log("new spawningRate: " + repeatRate);
+                
+            }
+            else if(timer.getGameTime()>0 && timer.getGameTime()%20 != 0){
+                speedFlag = true;
+            }
         }
         
     }
@@ -91,6 +113,7 @@ public class CustomerSpawner : MonoBehaviour
     public void initializeCustomerSpeed(float newRepeatRate, float newCustomerBaseSpeed){
         repeatRate = newRepeatRate;
         customerBaseSpeed = newCustomerBaseSpeed;
+        Debug.Log("repeatRate: " + repeatRate + " customerBaseSpeed: " + customerBaseSpeed);
     }
 
 }

@@ -31,7 +31,7 @@ public class StallManager : MonoBehaviour
     private int sushiPosition;
     //private float progressSpeed = 0.07f;
     public bool upgradeAction;
-    private float baseProgressTime = 4f;
+    private float baseProgressTime = 2.75f;
     private float actualProgressTime;
     private float startTime, passedTime, progress, progressUpdating;
 
@@ -378,7 +378,7 @@ public class StallManager : MonoBehaviour
 
     public void applySpeedBuff(float buff){
         actualProgressTime = baseProgressTime - (baseProgressTime*buff);
-        Debug.Log("updated progressTime: " + actualProgressTime);
+        //Debug.Log("updated progressTime: " + actualProgressTime);
     }
 
 }

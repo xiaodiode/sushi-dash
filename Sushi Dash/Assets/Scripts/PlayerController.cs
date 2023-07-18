@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         sushiMissed = 0;
-        levelsUnlocked = 1;
+        levelsUnlocked = 99;
         selectedLevel = 0;
         thrownSushi = null;
         tableX = 6;

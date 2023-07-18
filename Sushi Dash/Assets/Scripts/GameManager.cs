@@ -126,6 +126,11 @@ public class GameManager : MonoBehaviour
         if(endlessMode){
             customerSpawner.initializeCustomerSpeed(endlessRate, endlessSpeed);
         }
+        else if(levelMode){
+            float adjustedRate = levelRateDecrease*player.selectedLevel;
+            float adjustedSpeed = levelSpeedIncrease*player.selectedLevel;
+            customerSpawner.initializeCustomerSpeed(levelRate+adjustedRate, levelSpeed+adjustedSpeed);
+        }
         activeBuffs.updateActiveBuff();
         gameMode = initialize;
         
@@ -224,7 +229,7 @@ public class GameManager : MonoBehaviour
         modeText.text = "Level Selection";
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(true);
-        if(timer.levelClear){
+        if(timer.levelClear && player.levelsUnlocked!=101){
             Debug.Log("levelSpawner size: " + levelSpawner.levelButtons.Count);
             Debug.Log("player.levelUnlocked: " + player.levelsUnlocked);
             levelSpawner.levelButtons[player.levelsUnlocked-1].setUnlocked(true);
