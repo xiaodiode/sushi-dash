@@ -145,7 +145,7 @@ public class GameManager : MonoBehaviour
         gameMode = pause;
         timer.pauseTimer();
         Time.timeScale = 0;
-    }
+    } //just want to commit this for future reference...
     public void resumeGameMode(){
         pauseCanvas.gameObject.SetActive(false);
         gameMode = proceed;
