@@ -96,6 +96,7 @@ public class CustomerSpawner : MonoBehaviour
             Destroy(child.gameObject);
         }
         totalCoins = 0;
+        gameOver = false;
         CancelInvoke("spawnCustomer");
         // gameObject.SetActive(false);
     }
