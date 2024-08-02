@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
     private bool levelMode;
     public bool endlessMode;
-    private float endlessRate = 4f;
+    // private float endlessRate = 4f;
+    private float endlessRate = 3f;
     private float endlessSpeed = 1f;
     private float levelRate = 4f;
     private float levelSpeed = 0.5f;
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
         gameMode = pause;
         timer.pauseTimer();
         Time.timeScale = 0;
-    } //just want to commit this for future reference...
+    } 
     public void resumeGameMode(){
         pauseCanvas.gameObject.SetActive(false);
         gameMode = proceed;

@@ -93,6 +93,7 @@ public class Timer : MonoBehaviour
         
         time.text = timeText;
     }
+
     public void startCountUp(){
         secondsStarted = Mathf.FloorToInt(Time.time);
         hours = 0; minutes = 0; seconds = 0;
@@ -102,6 +103,7 @@ public class Timer : MonoBehaviour
         secondsStarted = Mathf.FloorToInt(Time.time);
         countDown = true;
     }
+    
     public void pauseTimer(){
         
         if(countUp){
@@ -113,6 +115,7 @@ public class Timer : MonoBehaviour
             countDown = false;
         }
     }
+
     public void resumeTimer(){
         if(wasCountingUp == 1)
             countUp = true;

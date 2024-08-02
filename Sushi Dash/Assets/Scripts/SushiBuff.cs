@@ -12,7 +12,7 @@ public class SushiBuff : MonoBehaviour
     public float baseBuff, buffRate;
 
     public float speedBuff, freezeBuff, completionBuff, slowBuff, 
-        lifeBuff, levelBuff, spawnBuff;
+        lifeBuff, levelBuff, spawnBuff, confusionBuff;
     public int coinBuff, gemBuff;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class SushiBuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
     public void setSushiName(string newSushiName){
         sushiName = newSushiName;
@@ -45,6 +45,7 @@ public class SushiBuff : MonoBehaviour
         levelBuff = 0;
         coinBuff = 0; 
         gemBuff = 0;
+        confusionBuff = 0;
         
         switch(sushiName){
             case "Low-Quality Salmon Nigiri (Sake)":
@@ -464,18 +465,21 @@ public class SushiBuff : MonoBehaviour
         // gemBuff = 0;
     }
     private void wagyuBuff(){
-        // baseBuff = 0;
-        // buffRate = 0;
+        baseBuff = .02f;
+        buffRate = .02f;
+        rarity = "<color=green>Common</color>";
+        buffDescription = "Speed up the sushi-making progress by \n<color=red>" + (100*(baseBuff + (buffRate*level))).ToString() + 
+        "%</color> (+" + (100*buffRate).ToString() + "% / level)";
 
-        // spawnBuff = 0;
-        // slowBuff = 0;
-        // speedBuff = 0;
+        speedBuff = baseBuff + (buffRate*level);
         // freezeBuff = 0;
         // completionBuff = 0;
+        // slowBuff = 0;
         // lifeBuff = 0;
         // levelBuff = 0;
         // coinBuff = 0; 
         // gemBuff = 0;
+        confusionBuff = baseBuff + (buffRate*level);
     }
     private void yellowtailBuff(){
         // baseBuff = 0;
