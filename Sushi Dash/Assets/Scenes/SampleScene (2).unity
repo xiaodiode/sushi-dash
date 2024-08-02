@@ -5293,7 +5293,10 @@ MonoBehaviour:
   player: {fileID: 451672641}
   customerSpawner: {fileID: 1875979596}
   levelSpawner: {fileID: 555392420}
-  stallManagers: []
+  stallManagers:
+  - {fileID: 2043058286}
+  - {fileID: 2134738662}
+  - {fileID: 156029079}
   gameplayCanvas: {fileID: 991729238}
   mainMenuCanvas: {fileID: 1631095576}
   pauseCanvas: {fileID: 278106263}

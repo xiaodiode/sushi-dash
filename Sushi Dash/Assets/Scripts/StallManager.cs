@@ -27,7 +27,7 @@ public class StallManager : MonoBehaviour
 
     private Vector3Int[] platePositions = new Vector3Int[4];
     
-    private int tableLevel;
+    public int tableLevel;
     private int sushiPosition;
     //private float progressSpeed = 0.07f;
     public bool upgradeAction;
@@ -205,8 +205,6 @@ public class StallManager : MonoBehaviour
         }
         
     }
-
-
 
     /*
         Checks the table for any empty plates based on level. If an empty

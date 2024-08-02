@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 
     public void quitGameMode(){
         Time.timeScale = 0;
-        //Debug.Log("entering quit mode - endlessMode: " + endlessMode);
+        Debug.Log("entering quit mode - endlessMode: " + endlessMode);
         if(endlessMode){
             gemController.setCoins(player.playerCoins);
             timer.sendTime();
@@ -155,7 +155,9 @@ public class GameManager : MonoBehaviour
         customerSpawner.resetCustomerSpawner();
         for(int i=0; i<stallManagers.Length; i++){
             stallManagers[i].resetStallManager();
+            Debug.Log("Stall " + i + " table level: " + stallManagers[i].tableLevel);
         }
+        Debug.Log("stall managers reset");
         SushiMovement[] sushis = FindObjectsOfType<SushiMovement>();
         foreach(SushiMovement sushi in sushis){
             Destroy(sushi.gameObject);
