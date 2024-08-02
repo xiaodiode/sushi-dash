@@ -12,11 +12,7 @@ public class GachaPopup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gachaItemCanvas = transform.Find("Gacha Item Canvas").GetComponent<Canvas>();
-        gachaItemText = transform.Find("Gacha Text").GetComponent<TextMeshProUGUI>();
-        background = transform.Find("Background Image").GetComponent<Image>();
-        foreground = transform.Find("Foreground Image").GetComponent<Image>();
-        sushi = transform.Find("Sushi Image").GetComponent<Image>();
+        
     }
 
     // Update is called once per frame

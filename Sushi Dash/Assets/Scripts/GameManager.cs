@@ -16,24 +16,23 @@ public class GameManager : MonoBehaviour
     public LevelSpawner levelSpawner;
     public StallManager[] stallManagers;
     
-    private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
+    [SerializeField] private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
                     wallpaperCanvas, returnCanvas, levelCanvas, sushiBuffCanvas, gachaItemCanvas;
-    public Canvas backgroundCanvas;
     public Button resetEditTab;
-    private TextMeshProUGUI coinText, modeText;
-    private Button resumeButton, returnButton;
+    [SerializeField] private TextMeshProUGUI coinText, modeText;
+    [SerializeField] private Button resumeButton, returnButton;
     public int gameMode;
     public int stop = 0; public int initialize = 1; public int proceed = 2; public int pause = 3;
-    private bool levelMode;
+    [SerializeField] private bool levelMode;
     public bool endlessMode;
     // private float endlessRate = 4f;
-    private float endlessRate = 3f;
-    private float endlessSpeed = 1f;
-    private float levelRate = 4f;
-    private float levelSpeed = 0.5f;
-    private float levelRateDecrease = -0.02f;
-    private float levelSpeedIncrease = 0.015f;
-    private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
+    [SerializeField] private float endlessRate = 3f;
+    [SerializeField] private float endlessSpeed = 1f;
+    [SerializeField] private float levelRate = 4f;
+    [SerializeField] private float levelSpeed = 0.5f;
+    [SerializeField] private float levelRateDecrease = -0.02f;
+    [SerializeField] private float levelSpeedIncrease = 0.015f;
+    [SerializeField] private Vector3 intialPlayerPosition = new Vector3(5.95f,0,0);
     // Start is called before the first frame update
     void Start()
     {
@@ -42,28 +41,6 @@ public class GameManager : MonoBehaviour
         endlessMode = false; 
         levelSpawner.gameObject.SetActive(true);
         customerSpawner.gameObject.SetActive(true);
-        mainMenuCanvas = gameObject.transform.Find("MainMenu Canvas").GetComponent<Canvas>();
-
-        returnCanvas = gameObject.transform.Find("Return Canvas").GetComponent<Canvas>();
-        modeText = returnCanvas.transform.Find("Mode Text").GetComponent<TextMeshProUGUI>();
-        returnButton = returnCanvas.transform.Find("Return Button").GetComponent<Button>();
-
-        gameplayCanvas = gameObject.transform.Find("Gameplay Canvas").GetComponent<Canvas>();
-        
-        pauseCanvas = gameplayCanvas.transform.Find("Pause Canvas").GetComponent<Canvas>();
-        resumeButton = pauseCanvas.transform.Find("Resume Button").GetComponent<Button>();
-        coinCanvas = gameplayCanvas.transform.Find("Coin Canvas").GetComponent<Canvas>();
-        coinText = coinCanvas.transform.Find("Coin Text").GetComponent<TextMeshProUGUI>();
-
-        wallpaperCanvas = gameObject.transform.Find("Wallpaper").GetComponent<Canvas>();
-
-        editCanvas = gameObject.transform.Find("Edit Canvas").GetComponent<Canvas>();
-        sushiBuffCanvas = gameObject.transform.Find("SushiBuff Canvas").GetComponent<Canvas>();
-
-        gachaCanvas = gameObject.transform.Find("Gacha Canvas").GetComponent<Canvas>();
-        gachaItemCanvas = gachaCanvas.transform.Find("Gacha Item Canvas").GetComponent<Canvas>();
-
-        levelCanvas = gameObject.transform.Find("Level Canvas").GetComponent<Canvas>();
 
         gameMode = stop;
 
