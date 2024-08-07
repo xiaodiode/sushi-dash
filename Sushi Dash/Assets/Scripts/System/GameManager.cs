@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public StallManager[] stallManagers;
     
     [SerializeField] private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
-                    wallpaperCanvas, returnCanvas, levelCanvas, sushiBuffCanvas, gachaItemCanvas;
+                    wallpaperCanvas, returnCanvas, levelCanvas, sushiBuffCanvas, gachaItemCanvas, settingsCanvas;
     public Button resetEditTab;
     [SerializeField] private TextMeshProUGUI coinText, modeText;
     [SerializeField] private Button resumeButton, returnButton;
@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         gameplayCanvas.gameObject.SetActive(false);
         returnCanvas.gameObject.SetActive(true);
         gachaItemCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(false);
         //gemController.gameObject.SetActive(true);
 
         
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
             mainMenuCanvas.gameObject.SetActive(false);
             customerSpawner.startCustomerSpawner();
             returnButton.gameObject.SetActive(false);
+            settingsCanvas.gameObject.SetActive(false);
+
             
             if(levelMode){
                 modeText.text = "Level " + player.selectedLevel.ToString();
@@ -186,7 +189,13 @@ public class GameManager : MonoBehaviour
         mainMenuCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(false);
         gachaCanvas.gameObject.SetActive(true);
+    }
 
+    public void settingsMode(){
+        modeText.text = "Settings";
+        gemController.enableGemAmount(false);
+        levelCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(true);
     }
 
     public void returnToMainMenu(){
@@ -197,6 +206,7 @@ public class GameManager : MonoBehaviour
         mainMenuCanvas.gameObject.SetActive(true);
         gachaCanvas.gameObject.SetActive(false);
         levelCanvas.gameObject.SetActive(false);
+        settingsCanvas.gameObject.SetActive(false);
         resetEditTab.onClick.Invoke();
         levelMode = false;
         endlessMode = false;

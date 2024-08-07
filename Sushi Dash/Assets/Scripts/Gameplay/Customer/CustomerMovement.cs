@@ -60,10 +60,10 @@ public class CustomerMovement : MonoBehaviour
     void Update()
     {
         if(timer.getTime() == freezeEnd){
-            speedRate = customerSpawner.customerSpeed * finished;
+            speedRate = customerSpawner.customerNormSpeed * finished;
         }
         if(timer.getTime() == confusionEnd){
-            speedRate = customerSpawner.customerSpeed * finished;
+            speedRate = customerSpawner.customerNormSpeed * finished;
         }
         if(transform.position.x > xMin)
             transform.position = transform.position + speedRate*Time.deltaTime;
@@ -97,7 +97,7 @@ public class CustomerMovement : MonoBehaviour
                 myCollider.enabled = false;
                 Destroy(collision.gameObject);
                 customerSpawner.updateCoins(10);
-                speedRate = -customerSpawner.customerSpeed;
+                speedRate = -customerSpawner.customerNormSpeed;
                 if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == freezeSushi){
                     freezeStart = timer.getTime();
                     freezeEnd = freezeStart + freezeTime;
@@ -122,7 +122,7 @@ public class CustomerMovement : MonoBehaviour
                 else if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == confusionSushi){
                     confusionStart = timer.getTime();
                     confusionEnd = confusionStart + confusionTime;
-                    speedRate = -customerSpawner.customerSpeed;
+                    speedRate = -customerSpawner.customerNormSpeed;
                 }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi2.getSushiTrigger()) && !checkmark2.isEnabled()){
@@ -139,7 +139,7 @@ public class CustomerMovement : MonoBehaviour
                 else if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == confusionSushi){
                     confusionStart = timer.getTime();
                     confusionEnd = confusionStart + confusionTime;
-                    speedRate = -customerSpawner.customerSpeed;
+                    speedRate = -customerSpawner.customerNormSpeed;
                 }
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled()){
@@ -162,7 +162,7 @@ public class CustomerMovement : MonoBehaviour
                 else if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == confusionSushi){
                     confusionStart = timer.getTime();
                     confusionEnd = confusionStart + confusionTime;
-                    speedRate = -customerSpawner.customerSpeed;
+                    speedRate = -customerSpawner.customerNormSpeed;
                 }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi2.getSushiTrigger()) && !checkmark2.isEnabled()){
@@ -180,7 +180,7 @@ public class CustomerMovement : MonoBehaviour
                 else if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == confusionSushi){
                     confusionStart = timer.getTime();
                     confusionEnd = confusionStart + confusionTime;
-                    speedRate = -customerSpawner.customerSpeed;
+                    speedRate = -customerSpawner.customerNormSpeed;
                 }
             }
             else if((collision.gameObject.GetComponent<SpriteRenderer>().sprite == sushi3.getSushiTrigger()) && !checkmark3.isEnabled()){
@@ -198,7 +198,7 @@ public class CustomerMovement : MonoBehaviour
                 else if(collision.gameObject.GetComponent<SpriteRenderer>().sprite == confusionSushi){
                     confusionStart = timer.getTime();
                     confusionEnd = confusionStart + confusionTime;
-                    speedRate = -customerSpawner.customerSpeed;
+                    speedRate = -customerSpawner.customerNormSpeed;
                 }
             }
             if(checkmark1.isEnabled() && checkmark2.isEnabled() && checkmark3.isEnabled()){
@@ -207,7 +207,7 @@ public class CustomerMovement : MonoBehaviour
         }
     }
     private void orderComplete(int coins){
-        speedRate = -customerSpawner.customerSpeed;
+        speedRate = -customerSpawner.customerNormSpeed;
         myCollider.enabled = false;
         customerSpawner.updateCoins(coins);
         finished = -1;

@@ -13,7 +13,8 @@ public class CustomerSpawner : MonoBehaviour
     public Sprite freezeSushi, completionSushi, confusionSushi;
     
     
-    public Vector3 customerSpeed;
+    public Vector3 customerNormSpeed;
+    public Vector3 customerReturnSpeed;
     private int[] lanes = {0,-3,-6};
     private int randomLaneIndex;
     private int randomCustomerIndex;
@@ -47,8 +48,8 @@ public class CustomerSpawner : MonoBehaviour
         if(gameManager.endlessMode){
             if(rateFlag && timer.getGameTime()>0 && timer.getGameTime()%30 == 0 && timer.getGameTime() < 601){
                 rateFlag = false;
-                customerSpeed += endlessSpeedIncrease;
-                Debug.Log("new customerSpeed: " + customerSpeed);
+                customerNormSpeed += endlessSpeedIncrease;
+                Debug.Log("new customerSpeed: " + customerNormSpeed);
                 
             }
             else if(timer.getGameTime()>0 && timer.getGameTime()%30 != 0){
@@ -77,7 +78,7 @@ public class CustomerSpawner : MonoBehaviour
         CustomerMovement customerType = (customerTypes[randomCustomerIndex]);
 
         customer = Instantiate(customerType,spawnPos,customerType.transform.rotation);
-        customer.speedRate = customerSpeed;
+        customer.speedRate = customerNormSpeed;
         customer.transform.parent = transform;
         customer.timer = timer;
         customer.freezeSushi = freezeSushi;
@@ -109,7 +110,7 @@ public class CustomerSpawner : MonoBehaviour
         Debug.Log("playerCoins: " + totalCoins);
     }
     public void applySlowBuff(float buff){
-        customerSpeed = new Vector3(customerBaseSpeed - buff, 0, 0);
+        customerNormSpeed = new Vector3(customerBaseSpeed - buff, 0, 0);
     }
     public void initializeCustomerSpeed(float newRepeatRate, float newCustomerBaseSpeed){
         repeatRate = newRepeatRate;
