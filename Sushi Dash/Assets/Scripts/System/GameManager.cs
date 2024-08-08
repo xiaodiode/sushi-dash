@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public CustomerSpawner customerSpawner;
     public LevelSpawner levelSpawner;
     public StallManager[] stallManagers;
+    [SerializeField] private AudioController audioController;
     
     [SerializeField] private Canvas gameplayCanvas, mainMenuCanvas, pauseCanvas, coinCanvas, editCanvas, gachaCanvas, 
                     wallpaperCanvas, returnCanvas, levelCanvas, sushiBuffCanvas, gachaItemCanvas, settingsCanvas;
@@ -112,12 +113,17 @@ public class GameManager : MonoBehaviour
             float adjustedSpeed = levelSpeedIncrease*player.selectedLevel;
             customerSpawner.initializeCustomerSpeed(levelRate+adjustedRate, levelSpeed+adjustedSpeed);
         }
+        
+
         activeBuffs.updateActiveBuff();
         gameMode = initialize;
-        
+
+        audioController.playGameplayMusic();
         gemController.enableGemAmount(false);
         Time.timeScale = 1;
         //customerSpawner.startCustomerSpawner();
+
+        
     }
 
     public void pauseGameMode(){
@@ -125,13 +131,19 @@ public class GameManager : MonoBehaviour
         resumeButton.gameObject.SetActive(true);
         gameMode = pause;
         timer.pauseTimer();
+
         Time.timeScale = 0;
+
+        audioController.multiplyMusicVolume(0.4f);
     } 
     public void resumeGameMode(){
         pauseCanvas.gameObject.SetActive(false);
         gameMode = proceed;
         timer.resumeTimer();
+
         Time.timeScale = 1;
+
+        audioController.multiplyMusicVolume(2.5f);
     }
 
     public void quitGameMode(){
@@ -165,6 +177,8 @@ public class GameManager : MonoBehaviour
         foreach(SushiMovement sushi in sushis){
             Destroy(sushi.gameObject);
         }
+
+        audioController.playMainMenuMusic();
     }
 
     public void gameOver(){
